@@ -42,6 +42,9 @@ input[type="text"]{
     padding-left: 30px;
     color: #969696;
 }
+.sub_package>ul>li>a:visited{
+    color: #969696;
+}
 #middle {   /*중간 큰박스*/
     width: 100%;
     height: 60px;
