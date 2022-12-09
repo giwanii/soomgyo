@@ -1,15 +1,10 @@
-*{
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    text-decoration: 0;
-}
+
 body{
     background: white;
     font-family: 'Jua', sans-serif;   
 }
 h1{
-    color: #ffcd28;
+    color: #c3abd0;
     font-size: 48px;
     letter-spacing: 5px; /* 글자 사이 간격*/
     text-align: center;
@@ -23,9 +18,14 @@ input::placeholder{
     padding-bottom: 20px;
 }
 
-.sub_menu ul{
+.sub_menu{
+    padding-top: 20px;
     display: flex;
     justify-content: space-evenly;
+    
+}
+.sub_menu a{
+    color: #828282b9;
 }
 .sub_menu ul a:visited{
     color: #828282;
@@ -33,7 +33,12 @@ input::placeholder{
 .sub_menu>ul>li:last-child{
     padding-top: 3px;
 }
-
+.login_header{
+    display: flex;
+    justify-content: space-between;
+    width: 100%
+    
+}
 /* pc버전 */
 @media all and (min-width:1024px){
     #container{
@@ -57,7 +62,7 @@ input::placeholder{
         height: 50px;
         border: none;
         border-radius: 10px;
-        background-color: #ffcd28;
+        background-color: #ecd3ce;
         font-family: 'Jua', sans-serif;
         color: white;
         font-size: 20px;
@@ -65,7 +70,7 @@ input::placeholder{
     .sub_menu{
         width: 50%;
         margin: 0 auto;
-        padding-top: 30px;
+        
     }
 }
 
@@ -92,7 +97,7 @@ input::placeholder{
         height: 50px;
         border: none;
         border-radius: 10px;
-        background-color: #ffcd28;
+        background-color: #ecd3ce;
         font-family: 'Jua', sans-serif;
         color: white;
         font-size: 20px;
@@ -100,6 +105,6 @@ input::placeholder{
     .sub_menu{
         width: 80%;
         margin: 0 auto;
-        padding-top: 30px;
+        
     }
 }
