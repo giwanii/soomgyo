@@ -11,36 +11,6 @@ a{
     color: black;
 }
 
-#related_video {
-    width: 100%;
-    height: 500px;
-    margin-bottom: 10px;
-}
-.related_video-font {
-    width: 100%;
-    height: 30px; 
-    margin-bottom: 5px; 
-}
-.related_video_big-box {
-    width: 100%;
-    height: 470px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-.video-box {
-    width: 30%;
-    height: 45%;
-}
-.youtube {
-    border: 1px solid black;
-    border-radius: 5px;
-    width: 100%;
-    height: 85%;
-}
-.youbube-title>p{
-    margin-top: 8px;
-}
 #container2{
     width: 100%;
 }
@@ -165,4 +135,44 @@ a{
     margin-top: 35px;
     text-align: center;
 }
+/* pc버전 */
+@media all and (min-width:760px){
+    #related_video {
+        width: 100%;
+        height: 500px;
+        margin-bottom: 10px;
+    }
+    .related_video-font {
+        width: 100%;
+        height: 30px; 
+        margin-bottom: 5px; 
+    }
+    .related_video_big-box {
+        width: 100%;
+        height: 470px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .video-box {
+        width: 30%;
+        height: 45%;
+    }
+    .youtube, .youtube-1{
+        border: 1px solid black;
+        border-radius: 5px;
+        width: 100%;
+        height: 85%;
+    }
+    .youbube-title>p{
+        margin-top: 8px;
+    }
+}
+/* 모바일버전 */
+@media all and (max-width:759px){
 
+}
+/* 관련동영상만 영상 하나로 줄어듬*/
+@media all and (max-width:320px){
+
+}
