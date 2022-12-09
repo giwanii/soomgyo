@@ -5,9 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="css/reset.css">
     <style>
+      
+    @media all and (min-width:760px){
         #container{
-            width: 40%;
+            width: 60%;
             margin: 0 auto;
         }
         .category{
@@ -53,14 +56,101 @@
         }
         .reply input{
             margin-left: 10px;
-            width: 75%;
+            width: 70%;
             height: 30px;
         }
         .btn_comment{
             height: 36px;
-            width: 10%;
+            width: 40px;
         }
-        
+        .content{
+            display: flex;
+            flex-direction: column;
+        }
+        .comment_img{
+            width: 20%;
+            height: 30px;
+        }
+        .comment_img_label{
+            font-size: 0.8rem;
+            padding-bottom: 10px;
+            
+        }
+    }
+    @media all and (max-width:759px){
+        #container{
+            width: 80%;
+            margin: 0 auto;
+        }
+        .category{
+            padding-bottom: 10px;
+        }
+        .title{
+            padding-bottom: 12px;
+        }
+        .board_info{
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        .sp_category{
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: gray;
+        }
+        .sp_title{
+            font-size: 2rem;
+        }
+        .sp_writer{
+            font-size: 1rem;
+            float: left;
+        }
+        .sp_date{
+            font-size: 0.8rem;
+        }
+        .sp_count{
+            font-size: 0.8rem;
+        }
+        .board_info{
+            display: flex;
+            justify-content: space-between;
+        }
+        .reply{
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .reply label{
+            line-height: 38px;
+        }
+        .reply input{
+            margin-left: 10px;
+            width: 70%;
+            height: 30px;
+        }
+        .btn_comment{
+            height: 36px;
+            width: 40px;
+        }
+        .content{
+            display: flex;
+            flex-direction: column;
+        }
+        .comment_img{
+            width: 20%;
+            height: 30px;
+        }
+        .comment_img_label{
+            font-size: 0.8rem;
+            padding-bottom: 10px;
+            
+        }
+        .reply_label{
+            width: 10%;
+            font-size: 0.9rem;
+        }
+    }
+      
     </style>
 </head>
 <body>
@@ -87,9 +177,17 @@
         
         <div class="content">
             <p>내용</p>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="comment_img">
+                <img src="img/comment.png" alt="" style="width: 14px;"> <span class="comment_img_label"> 댓글 0</span>
+            </div>
         </div>
         <div class="reply">
-            <label for="comment">댓글 </label>
+            <label for="comment" class="reply_label">댓글 </label>
             <input type="text" placeholder="댓글을 입력해주세요!" id="comment"name="comment">
             <button class="btn_comment">입력</button>
         </div>
