@@ -4,6 +4,7 @@
     margin: 0 auto;
 }
 h3{
+    font-family: 'Jua', sans-serif;
     font-size: 25px;
 }
 a{
@@ -11,6 +12,36 @@ a{
     color: black;
 }
 
+#related_video {
+    width: 100%;
+    height: 500px;
+    margin-bottom: 10px;
+}
+.related_video-font {
+    width: 100%;
+    height: 30px; 
+    margin-bottom: 5px; 
+}
+.related_video_big-box {
+    width: 100%;
+    height: 470px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.video-box {
+    width: 30%;
+    height: 45%;
+}
+.youtube {
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 100%;
+    height: 85%;
+}
+.youbube-title>p{
+    margin-top: 8px;
+}
 #container2{
     width: 100%;
 }
@@ -62,23 +93,8 @@ a{
 .teacher-title>p{
     margin-top: 8px;
 }
-#final {
-    width: 100%;
-    height: 400px;
-    margin-top: 40px;
-    display: flex;
-    justify-content: space-between;
-}
-.community-box {
-    width: 45%;
-    height: 100%;
-    border-radius: 10px;
-}
-.notice-box{
-    width: 45%;
-    height: 100%;
-    border-radius: 10px;
-}
+
+
 .community-font-box{
     width: 100%;
     height: 10%;
@@ -137,42 +153,40 @@ a{
 }
 /* pc버전 */
 @media all and (min-width:760px){
-    #related_video {
+    #final {
         width: 100%;
-        height: 500px;
-        margin-bottom: 10px;
-    }
-    .related_video-font {
-        width: 100%;
-        height: 30px; 
-        margin-bottom: 5px; 
-    }
-    .related_video_big-box {
-        width: 100%;
-        height: 470px;
+        height: 400px;
+        margin-top: 40px;
         display: flex;
-        flex-wrap: wrap;
         justify-content: space-between;
     }
-    .video-box {
-        width: 30%;
-        height: 45%;
+    .community-box {
+        width: 45%;
+        height: 100%;
+        border-radius: 10px;
     }
-    .youtube, .youtube-1{
-        border: 1px solid black;
-        border-radius: 5px;
-        width: 100%;
-        height: 85%;
-    }
-    .youbube-title>p{
-        margin-top: 8px;
+    .notice-box{
+        width: 45%;
+        height: 100%;
+        border-radius: 10px;
     }
 }
 /* 모바일버전 */
 @media all and (max-width:759px){
+    #final {
+        width: 100%;
+        height: 400px;
+        margin-top: 40px;
+    }
+    .community-box {
+        width: 100%;
+        height: 100%;
+        margin-top: 80px;
+        margin-bottom: 80px;
 
-}
-/* 관련동영상만 영상 하나로 줄어듬*/
-@media all and (max-width:320px){
-
+    }
+    .notice-box{
+        width: 100%;
+        height: 100%;
+    }
 }
