@@ -1,15 +1,11 @@
-*{
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    text-decoration: 0;
-}
+
 body{
-    background: white;
+    background: #ecd3ce48;
     font-family: 'Jua', sans-serif;   
+
 }
 h1{
-    color: #ffcd28;
+    color: #c3abd0;
     font-size: 48px;
     letter-spacing: 5px; /* 글자 사이 간격*/
     text-align: center;
@@ -39,7 +35,7 @@ input[type=submit]{
     height: 50px;
     border: none;
     border-radius: 10px;
-    background-color: #ffcd28;
+    background-color: #c3abd0;
     font-family: 'Jua', sans-serif;
     color: white;
     font-size: 20px;
@@ -68,7 +64,7 @@ input[type=submit]{
         width: 100%;
         margin: 0 auto;
         text-align: center;
-        padding-top: 100px;
+        padding-top: 50px;
     }
     .join_input{
         width: 80%;

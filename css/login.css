@@ -9,6 +9,7 @@ h1{
     letter-spacing: 5px; /* 글자 사이 간격*/
     text-align: center;
     padding-bottom: 30px;
+    position: relative;
 }
 
 input::placeholder{
@@ -33,12 +34,9 @@ input::placeholder{
 .sub_menu>ul>li:last-child{
     padding-top: 3px;
 }
-.login_header{
-    display: flex;
-    justify-content: space-between;
-    width: 100%
-    
-}
+
+
+
 /* pc버전 */
 @media all and (min-width:1024px){
     #container{
@@ -62,10 +60,11 @@ input::placeholder{
         height: 50px;
         border: none;
         border-radius: 10px;
-        background-color: #ecd3ce;
+        background-color: #c3abd0;
         font-family: 'Jua', sans-serif;
         color: white;
         font-size: 20px;
+        cursor: pointer;
     }
     .sub_menu{
         width: 50%;
@@ -97,10 +96,11 @@ input::placeholder{
         height: 50px;
         border: none;
         border-radius: 10px;
-        background-color: #ecd3ce;
+        background-color: #c3abd0;
         font-family: 'Jua', sans-serif;
         color: white;
         font-size: 20px;
+        cursor: pointer;
     }
     .sub_menu{
         width: 80%;
