@@ -140,6 +140,11 @@
         transition: all 0.3s;
         border-radius: 5px;
        }
+       #comm_menu_bar {
+        z-index: 9999;
+        position: sticky;
+        top: 0;
+       }
 
        @media all and (max-width:1050px) {
         #comm_main{
@@ -183,10 +188,18 @@
         .comm_menu_bar_1 {
           display: flex;
           justify-content: space-between;
-          margin-bottom: 20px;
-          padding-bottom: 30px;
-          border-bottom:1px solid #eee ;
+ 
+
         }
+        #comm_board {
+          margin-top: 20px;
+        }
+        #comm_menu{
+          z-index: 9999;
+          position: sticky;
+          top: 0;
+          background-color: white;
+         }
   
        }
 
