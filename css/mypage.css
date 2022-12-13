@@ -81,12 +81,13 @@ a{
     border: 1px solid black;
 }
 .join_modify{
-    width: 50%;
+    width: 70%;
     margin: 0 auto;
     padding-top: 30px;
+
 }
 input[type=text], input[type=password], input[type=email] {
-    width: 100%;
+    width: 30%;
     height: 50px;
     border: none;
     border-radius: 10px;
@@ -94,6 +95,7 @@ input[type=text], input[type=password], input[type=email] {
     font-family: 'Jua', sans-serif;
     background-color: #eeeaea;
     margin-bottom: 10px;
+    
 }
 input::placeholder{
     color: #c9c4c4;
@@ -158,6 +160,17 @@ input[type=submit]{
     width: 50%;
     margin: 0 auto;
     padding-top: 150px;
+}
+.container1{
+
+    width: 20%;
+}
+.modify_input {
+ width: 50%;   
+
+}
+.join_modify_box{
+    display: flex;
 }
 /* pc버전 */
 @media all and (min-width:760px){
