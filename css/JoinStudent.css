@@ -39,8 +39,11 @@ input[type=submit]{
     font-family: 'Jua', sans-serif;
     color: white;
     font-size: 20px;
+    cursor: pointer;
 }
-
+#ck_num{
+     display: none;
+}
 /* pc버전 */
 @media all and (min-width:1024px) {
     #container{
