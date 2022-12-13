@@ -51,7 +51,7 @@ input[type=submit]{
     margin: 0 auto;
 }
 .sub_checkbox label{
-    width: 93%;
+    width: 90%;
     cursor: pointer;
     
 }
@@ -117,10 +117,23 @@ input[type='checkbox'] {
   .join_input2{
    border-top:30px ; 
   }
+  .join_input {
+    position: relative;
+  }
+  .join_input button {
+    width: 20%;
+    border: none;
+    background-color: #eeeaea ;
+    color: #828282;
+    font-weight: bold;
+    position: absolute;
+    top: 40px;
+    right: 0;
+    cursor: pointer;
+  }
 
 
-
-
+ 
 
 /* pc버전 */
 @media all and (min-width:1024px) {
