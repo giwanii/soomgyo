@@ -58,18 +58,25 @@
             flex-direction: column;
         }
         .comment_img{
-            width: 20%;
-            height: 30px;
+            width: 100%;
+            height: 50px;
+            margin-top: 20px;
+            
         }
         .comment_img_label{
             font-size: 0.8rem;
-            padding-bottom: 10px;
+        
             
         }
-      
+        .content_btn{
+
+            float: right;
+        }
+
     @media all and (max-width:760px){
         #container{
             width: 90%;
             margin: 0 auto;
         }
+    
     }

@@ -1,0 +1,25 @@
+student table
+id(P) password name email phone number
+
+teacher table
+id(P) password adr1 adr2 name email phone number title content Profileimage portfolio count
+
+board table
+title writer(F) content reply id(P)
+
+reply table
+writer(F) content board(F) id(p)
+
+lesson table
+stuid(F) teaid(F) id(P) 
+
+youtube table
+title thumnail video id(P)
+
+MyVideo table
+stuid(F) youtubeId(F) id(P)
+
+
+
+
+
