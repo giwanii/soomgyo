@@ -73,67 +73,132 @@ a{
 }
 .tab_menu .cont_area .cont{
     width: 100%;
-    height: 650px;
+    height: 800px;
     display:none; 
-}
-.cont_area{
     margin-top: 15px;
-    border: 1px solid black;
+}
+.member_modify_box{
+    width: 90%;
+    height: 550px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
 }
 .join_modify{
-    width: 70%;
-    margin: 0 auto;
-    padding-top: 30px;
-
+    width: 40%;
+    height: 100%;
+    border-radius: 30px;
+    margin-top: 45px;
 }
 input[type=text], input[type=password], input[type=email] {
-    width: 30%;
+    width: 100%;
     height: 50px;
     border: none;
     border-radius: 10px;
+    margin-top: 5px;
     font-size: 18px;
     font-family: 'Jua', sans-serif;
     background-color: #eeeaea;
-    margin-bottom: 10px;
-    
 }
 input::placeholder{
     color: #c9c4c4;
+}
+.join_input>label{
+    font-family: 'Jua', sans-serif;
+    margin-top: 10px;
 }
 label{
     float: left;
     color: #828282;
     font-size: 20px;
     padding-bottom: 5px;
-    font-family: 'Jua', sans-serif;
-}
-input[type=submit]{
-    width: 100%;
-    height: 50px;
-    border: none;
-    border-radius: 10px;
-    background-color: #c3abd0;
-    font-family: 'Jua', sans-serif;
-    color: white;
-    font-size: 20px;
-    cursor: pointer;
 }
 .sub_checkbox{
+    width: 40%;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    width: 40%;
-    margin: 0 auto;
+    margin-top: 30px;
 }
 .sub_checkbox label{
     width: 93%;
-    cursor: pointer;   
+    cursor: pointer;
 }
 .sub_checkbox_box{
     margin: 20px;
     border-bottom: solid #828282 ;
     padding: 15px 0;
-    cursor: pointer;  
+    cursor: pointer;
 }
+/*체크박스 css*/
+input[type='checkbox'] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    height: 20px;
+    outline: 0;
+    width: 20px;
+    border: 1px solid #bebfc5;
+    border-radius: 0px;
+    position: relative;
+    float: right;
+  }
+  input[type='checkbox']::before {
+    content: '';
+    
+    background-size: 80% 80%;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.3;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+  }
+
+  input[type='checkbox']::after {
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    content: '';
+    display: none;
+    height: 40%;
+    left: 40%;
+    position: relative;
+    top: 20%;
+    transform: rotate(45deg);
+    width: 15%;
+  }
+  input[type='checkbox']:checked {
+    background: #c3abd0;
+    border: none;
+  }
+  input[type='checkbox']:checked::after {
+    display: block;
+  }
+  .join_input2{
+   border-top:30px ; 
+  }
+  .button_box{
+    width: 90%;
+    height: 50px;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 50px;
+  }
+  .button_box>button{
+    width: 40%;
+    height: 100%;
+    border: none;
+    border-radius: 10px;
+    font-size: 35px;
+    color: white;
+    font-family: 'Jua', sans-serif;
+    background: #c3abd0;
+  }
 .matching_teacher{
     width: 80%;
     height: 20%;
@@ -159,18 +224,21 @@ input[type=submit]{
 .delete_info{
     width: 50%;
     margin: 0 auto;
-    padding-top: 150px;
+    padding-top: 50px;
 }
-.container1{
-
-    width: 20%;
+input[type="submit"]{
+    width: 100%;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    margin-top: 10px;
+    font-size: 18px;
+    font-family: 'Jua', sans-serif;
+    background-color: #c3abd0;
+    color: white;
 }
-.modify_input {
- width: 50%;   
-
-}
-.join_modify_box{
-    display: flex;
+.join_input{
+    text-align: center;
 }
 /* pc버전 */
 @media all and (min-width:760px){
