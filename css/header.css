@@ -66,6 +66,15 @@ a:visited{
 #bottom>img{
     width: 100%;
 }
+#wrap {
+    z-index: 9999;
+    position: sticky;
+    top: 0;
+    background-color: white;
+    
+    
+    
+}
 /* pc버전 */
 @media all and (min-width:760px){
     #top{
