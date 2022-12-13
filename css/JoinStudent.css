@@ -1,7 +1,7 @@
 
 body{
     background: #ecd3ce1c;
-    font-family: 'Jua', sans-serif;   
+     
 
 }
 h1{
@@ -41,9 +41,31 @@ input[type=submit]{
     font-size: 20px;
     cursor: pointer;
 }
+
+.join_input {
+    position: relative;
+  }
+  .join_input button {
+    width: 20%;
+    border: none;
+    background-color: #eeeaea ;
+    color: #828282;
+
+    position: absolute;
+    top: 40px;
+    right: 0;
+    cursor: pointer;
+  }
 #ck_num{
-     display: none;
+    display: none;
 }
+#ck_id{
+    display: none;
+}
+.atag_color a{
+    color: #828282;
+}
+
 /* pc버전 */
 @media all and (min-width:1024px) {
     #container{
