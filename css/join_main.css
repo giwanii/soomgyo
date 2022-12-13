@@ -47,13 +47,13 @@ a>p{
         justify-content: space-around;
     }
     .teacher{
-        width: 30%;
+        width: 40%;
         height: 100%;
         background-color: #c3abd0;
         border-radius: 10px;
     }
     .student{
-        width: 30%;
+        width: 40%;
         height: 100%;
         background-color: #ecd3ce;
         border-radius: 10px;

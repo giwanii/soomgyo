@@ -130,8 +130,8 @@ a:visited{
     input[id="menuicon"] + label {
         display: block;
         margin: 30px;
-        width: 60px;
-        height: 50px;
+        width: 35px;
+        height: 30px;
         position: relative;
         cursor: pointer;
     }
@@ -184,7 +184,7 @@ a:visited{
     }
     .sidebar{
         font-family: 'Do Hyeon', sans-serif;
-        font-size: 35px;
+        font-size: 2rem;
         color: white;
         padding-top: 100px;
         text-align: center;
@@ -223,4 +223,5 @@ a:visited{
     .mobile_login>ul>li>a:visited{
         color: white;
     }
+
 }

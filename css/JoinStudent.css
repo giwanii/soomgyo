@@ -1,11 +1,11 @@
 
 body{
-    background: #ecd3ce48;
+    background: #ecd3ce1c;
     font-family: 'Jua', sans-serif;   
 
 }
 h1{
-    color: #c3abd0;
+    color: #ecd3ce;
     font-size: 48px;
     letter-spacing: 5px; /* 글자 사이 간격*/
     text-align: center;
@@ -35,7 +35,7 @@ input[type=submit]{
     height: 50px;
     border: none;
     border-radius: 10px;
-    background-color: #c3abd0;
+    background-color: #ecd3ce;
     font-family: 'Jua', sans-serif;
     color: white;
     font-size: 20px;

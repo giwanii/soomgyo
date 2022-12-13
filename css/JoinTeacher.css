@@ -114,6 +114,9 @@ input[type='checkbox'] {
   input[type='checkbox']:checked::after {
     display: block;
   }
+  .join_input2{
+   border-top:30px ; 
+  }
 
 
 
@@ -127,8 +130,18 @@ input[type='checkbox'] {
 
         padding-top: 100px;
     }
+    .sub_checkbox{
+        margin-bottom: 40px;
+
+
+    }
     .join_input{
         width: 50%;
+        margin: 0 auto;
+        padding-bottom: 15px;
+    }
+    .join_input2{
+        width: 40%;
         margin: 0 auto;
         padding-bottom: 15px;
     }
@@ -138,7 +151,7 @@ input[type='checkbox'] {
 /* 모바일버전 */
 @media all and (max-width:1023px) {
     #container{
-        width: 80%;
+        width: 100%;
         margin: 0 auto;
 
         padding-top: 50px;
@@ -148,14 +161,29 @@ input[type='checkbox'] {
         margin: 0 auto;
         padding-bottom: 15px;
     }
-    .sub_checkbox{
+    .join_input2{
+        width: 70%;
+        margin: 0 auto;
+        padding-bottom: 15px;
+    }
 
+    .sub_checkbox{
+        margin-bottom: 30px;
         width: 60%;
 
     }
     .sub_checkbox label{
-        width: 94%; 
+        width: 80%; 
     }
+    .sub_checkbox_box{
+        
+        border-bottom: solid #828282 ;
+        padding: 10px 0;
+     
+
+        
+    }
+    
 
    
 }
