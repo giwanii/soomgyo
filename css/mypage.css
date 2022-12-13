@@ -15,7 +15,7 @@ h3{
     text-align: center;
 }
 .member{
-    width: 100%;
+    width: 50%;
     height: 150px;
     display: flex;
 }
@@ -78,6 +78,61 @@ a{
 }
 .cont_area{
     margin-top: 15px;
+}
+.join_modify{
+    width: 50%;
+    margin: 0 auto;
+    padding-top: 30px;
+}
+input[type=text], input[type=password], input[type=email] {
+    width: 100%;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    font-family: 'Jua', sans-serif;
+    background-color: #eeeaea;
+    margin-bottom: 10px;
+}
+input::placeholder{
+    color: #c9c4c4;
+}
+label{
+    float: left;
+    color: #828282;
+    font-size: 20px;
+    padding-bottom: 5px;
+    font-family: 'Jua', sans-serif;
+}
+input[type=submit]{
+    width: 100%;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    background-color: #c3abd0;
+    font-family: 'Jua', sans-serif;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+.sub_checkbox{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin: 0 auto;
+}
+.sub_checkbox label{
+    width: 93%;
+    cursor: pointer;
+    
+}
+.sub_checkbox_box{
+    margin: 20px;
+    border-bottom: solid #828282 ;
+    padding: 15px 0;
+    cursor: pointer;
+    
+    
 }
 
 
