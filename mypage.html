@@ -31,7 +31,7 @@
             <div class="tab_menu">
               <ul class="list">
                 <li class="is_on">
-                  <a href="#tab1" class="btn">회원정보 수정</a>
+                  <a href="#tab1" class="btn">회원정보수정</a>
                 </li>
                 <li>
                   <a href="#tab2" class="btn">매칭강사</a>
@@ -40,7 +40,7 @@
                   <a href="#tab3" class="btn">계정탈퇴</a>
                 </li>
                 <li>
-                    <a href="#tab4" class="btn">강사정보 등록</a>
+                    <a href="#tab4" class="btn">강사정보등록</a>
                 </li>
               </ul>
               <div class="cont_area">
@@ -87,11 +87,46 @@
                   </div>
                 </div>
                 <div id="tab2" class="cont">
-                  Tab Content2
+                  <div class="matching_teacher">
+                    <div class="teacher_img"></div>
+                    <div class="teacher_info">
+                        <p>이름 : 임해원</p>
+                        <p>연락처 : 01050045517</p>
+                        <p>관심 종목 : 자바 웹 프로그래밍</p>
+                    </div>
+                  </div>
+
+                  <div class="matching_teacher">
+                    <div class="teacher_img"></div>
+                    <div class="teacher_info">
+                        <p>이름 : 임해원</p>
+                        <p>연락처 : 01050045517</p>
+                        <p>관심 종목 : 자바 웹 프로그래밍</p>
+                    </div>
+                  </div>
                 </div>
                 <div id="tab3" class="cont">
-                  Tab Content3
+                    <div class="delete_info">
+                        <form action="" method="post" name="delete_form">
+                            <!--비밀번호-->
+                            <div class="join_input">
+                                <label for="pwd">비밀번호</label><br>
+                                <input type="password" name="pwd" size="20" placeholder="비밀번호를 입력해 주세요"><br>
+                            </div>
+                            <!--비밀번호 확인-->
+                            <div class="join_input">
+                                <label for="pwd_check">비밀번호 확인</label><br>
+                                <input type="password" name="pwd_check" size="20" placeholder="비밀번호를 다시 한번 입력해 주세요"><br>
+                            </div>
+                            <!--탈퇴하기-->
+                            <div class="join_input">
+                                <input type="submit" value="탈퇴하기" onclick="return delete_confirm()">
+                            </div>
+                            <script></script>
+                        </form>
+                  </div>
                 </div>
+
                 <div id="tab4" class="cont">
                     등록
                 </div>

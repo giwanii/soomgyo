@@ -78,6 +78,7 @@ a{
 }
 .cont_area{
     margin-top: 15px;
+    border: 1px solid black;
 }
 .join_modify{
     width: 50%;
@@ -123,19 +124,41 @@ input[type=submit]{
 }
 .sub_checkbox label{
     width: 93%;
-    cursor: pointer;
-    
+    cursor: pointer;   
 }
 .sub_checkbox_box{
     margin: 20px;
     border-bottom: solid #828282 ;
     padding: 15px 0;
-    cursor: pointer;
-    
-    
+    cursor: pointer;  
 }
-
-
+.matching_teacher{
+    width: 80%;
+    height: 20%;
+    margin: 0 auto;
+    display: flex;
+    padding-top: 30px;
+}
+.teacher_img{
+    width: 20%;
+    height: 100%;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+.teacher_info{
+    width: 80%;
+    height: 100%;
+}
+.teacher_info>p{
+    line-height: 2;
+    padding-top: 5px;
+    padding-left: 5px;
+}
+.delete_info{
+    width: 50%;
+    margin: 0 auto;
+    padding-top: 150px;
+}
 /* pc버전 */
 @media all and (min-width:760px){
 
