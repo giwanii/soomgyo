@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+ pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -6,17 +8,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>숨교</title>
     <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/login.css">
     <link rel="stylesheet" href="/css/header.css">
-    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+
     <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/462a97624e.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
     <div id="main_container">
-       <div id="wrap">
+       <div id="header_wrap">
             <div id="top">
                 <div class="logo">
-                    <a href="#"><h1>SoomGyo</h1></a>
+                    <a href="/"><h1>SoomGyo</h1></a>
                 </div>
                 <div class="search">
                     <form class="search_form">
@@ -26,8 +32,8 @@
                 </div>
                 <div class="sub_package">
                     <ul>
-                        <li><a href="#">로그인</a></li>
-                        <li><a href="#">회원가입</a></li>
+                        <li><a href="/auth/login">로그인</a></li>
+                        <li><a href="/auth/join">회원가입</a></li>
                     </ul>
                 </div>
                 <div class="mobile_tap">
@@ -40,14 +46,14 @@
                     <div class="sidebar">
                         <div class="mobile_search">
                             <form class="search_form">
-                                <input type="text" name="search">
+                                <input type="text" name="search" style="background-color: white">
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </form>
                         </div>
                         <div class="mobile_login">
                             <ul>
-                                <li><a href="#">로그인</a></li>
-                                <li><a href="#">회원가입</a></li>
+                                <li><a href="/auth/login">로그인</a></li>
+                                <li><a href="/auth/join">회원가입</a></li>
                             </ul>
                         </div>
                         <div class="mobile_menu">
@@ -68,23 +74,4 @@
                 <div class="box"><a href="#">커뮤니티</a></div>
             </div>
         </div>
-     
-        <p>zz</p>
-        <p>zz</p>
-        <p>zz</p>
-        <p>zz</p>
-        <p>zz</p>
-        <p>zz</p>
-        <p>zz</p>
-        <p>zz</p>
-        <p>zz</p>
-        <p>zz</p>
-        <p>zz</p>
-        <p>zz</p>
-
-        <p>zz</p>
-        <p>zz</p>
-
     </div>
-</body>
-</html>

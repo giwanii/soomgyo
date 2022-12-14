@@ -1,0 +1,199 @@
+#banner_image_cotainer{
+    width: 100%;
+}
+.banner_img>img{
+    width: 100%;
+}
+/*관련동영상 시작*/
+#container {
+    width: 80%;
+    padding-top: 30px;
+    margin: 0 auto;
+}
+h3{
+    font-family: 'Jua', sans-serif;
+    font-size: 25px;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+
+#related_video {
+    width: 100%;
+    height: 500px;
+    margin-bottom: 10px;
+}
+.related_video-font {
+    width: 100%;
+    height: 30px; 
+    margin-bottom: 10px; 
+}
+.related_video_big-box {
+    width: 100%;
+    height: 470px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.video-box {
+    width: 30%;
+    height: 45%;
+}
+.youtube {
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 100%;
+    height: 85%;
+}
+.youbube-title>p{
+    margin-top: 8px;
+}
+/*광고*/
+#container2{
+    width: 100%;
+}
+#ad{
+    padding-bottom: 30px;
+}
+#ad>img{
+    width: 100%;
+}
+/*강사찾기부터 시작*/
+#container3 {
+    width: 80%;
+    padding-top: 10px;
+    margin: 0 auto;
+}
+#find_teacher {
+    width: 100%;
+    height: 300px;
+    margin-bottom: 10px;
+}
+.find_teacher-font{
+    width: 100%;
+    height: 30px; 
+    margin-bottom: 10px; 
+}
+.find_teacher_bog-box{
+    width: 100%;
+    height: 270px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.teacher-box {
+    width: 30%;
+    height: 100%;
+}
+.teacher{
+    width: 100%;
+    height: 90%;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.teacher-title{
+    width: 100%;
+    height: 10%;
+}
+.teacher-title>p{
+    margin-top: 8px;
+}
+
+/* 커뮤니티*/
+.community-font-box{
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid black;
+    
+}
+.notice-font-box {
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid black;
+}
+.fa-plus{
+    font-size: 20px;
+}
+.board-box{
+    width: 100%;
+    height: 90%;
+    border-radius: 10px;
+}
+.board-detail-box{
+    width: 100%;
+    height: 25%;
+    border-bottom: 1px solid gray;
+    display: flex;
+}
+.category{
+    width: 20%;
+    height: 100%;
+}
+.category>p{
+    margin-top: 35px;
+    text-align: center;
+}
+.content-box{
+    width: 80%;
+    height: 100%;
+    align-items: center;
+}
+.title{
+    width: 100%;
+    height: 50%;
+    padding-top: 20px;
+}
+.order{
+    width: 20%;
+    height: 100%;
+}
+.order>p{
+    margin-top: 35px;
+    text-align: center;
+}
+/* pc버전 */
+@media all and (min-width:760px){
+    #final {
+        width: 100%;
+        height: 400px;
+        margin-top: 40px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .community-box {
+        width: 45%;
+        height: 100%;
+        border-radius: 10px;
+    }
+    .notice-box{
+        width: 45%;
+        height: 100%;
+        border-radius: 10px;
+    }
+}
+/* 모바일버전 */
+@media all and (max-width:759px){
+    #final {
+        width: 100%;
+        height: 400px;
+        margin-top: 40px;
+    }
+    .community-box {
+        width: 100%;
+        height: 100%;
+        margin-top: 80px;
+        margin-bottom: 80px;
+
+    }
+    .notice-box{
+        width: 100%;
+        height: 100%;
+    }
+}
