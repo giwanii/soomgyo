@@ -7,10 +7,10 @@
         </div>
         <div class="box">
             <div class="student">
-                <a href="#"><p class="small_font">학생</p></a>
+                <a href="/auth/joinstudent"><p class="small_font">학생</p></a>
             </div>
             <div class="teacher">
-                <a href="#"><p class="small_font">선생님</p></a>
+                <a href="/auth/jointeacher"><p class="small_font">선생님</p></a>
             </div>
         </div>
     </div>

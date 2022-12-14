@@ -39,7 +39,7 @@ input::placeholder{
 #login_container{
 	padding:200px 0;
 	height:100%;
-	background-color:#ccc;
+
 }
 
 /* pc버전 */
@@ -86,7 +86,7 @@ input::placeholder{
         padding-top: 100px;
         text-align: center;
     }
-.id_box input[type=text], input[type=password]{
+.id_box input[type=text],.pwd_box input[type=password]{
         width: 80%;
         height: 50px;
         border: none;

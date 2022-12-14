@@ -6,15 +6,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>학생- 회원가입</title>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/JoinStudent.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/joinStudent.css">
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <title>숨교:학생 회원가입</title>
 </head>
 <body>
-    <div id="container">
+    <div id="join_student_container2">
         <!--LOGO-->
-        <a href=""><h1>학생 가입</h1></a>
+        <a href="/"><h1 class="join_h1">SoomGyo</h1></a>
+        <a href="/auth/join"><h1 class="join_h1">학생 가입</h1></a>
         <!--회원가입 Form-->
         <form action="" method="post" name="join_frm">
             <!--이름-->

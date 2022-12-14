@@ -17,6 +17,7 @@
 .teacher{
     background-color: #c3abd0;
     border-radius: 10px;
+    border:none;
 }
 .student{
     background-color: #ecd3ce;

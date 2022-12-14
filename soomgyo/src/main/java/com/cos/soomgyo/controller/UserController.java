@@ -21,5 +21,16 @@ public class UserController {
 	public String pwdsearch() {
 		return "user/FogetPassword";
 	}
+	@GetMapping("auth/joinstudent")
+	public String joinstu() {
+		
+		return"user/JoinStudent";
+	}
+	@GetMapping("auth/jointeacher")
+	public String jointea() {
+		
+		return"user/JoinTeacher";
+	}
+	
 	
 }

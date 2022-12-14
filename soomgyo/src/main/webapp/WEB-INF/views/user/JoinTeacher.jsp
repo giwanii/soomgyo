@@ -6,9 +6,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>교수: 회원가입</title>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/JoinTeacher.css">
+    <title>숨교: 교수 회원가입</title>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/joinTeacher.css">
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
     <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
     <script src="js/join.js"></script>

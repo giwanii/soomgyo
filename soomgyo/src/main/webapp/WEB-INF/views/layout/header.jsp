@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/css/login.css">
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/join_main.css">
-    <link rel="stylesheet" href="/css/joinStudent.css">
+    
     <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/462a97624e.js" crossorigin="anonymous"></script>
@@ -20,10 +20,10 @@
 
 <body>
     <div id="main_container">
-       <div id="header_wrap">
+       <div id="wrap">
             <div id="top">
                 <div class="logo">
-                    <a href="/"><h1>SoomGyo</h1></a>
+                    <a href="#"><h1>SoomGyo</h1></a>
                 </div>
                 <div class="search">
                     <form class="search_form">
@@ -47,7 +47,7 @@
                     <div class="sidebar">
                         <div class="mobile_search">
                             <form class="search_form">
-                                <input type="text" name="search" style="background-color: white">
+                                <input type="text" name="search">
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </form>
                         </div>
@@ -69,10 +69,10 @@
                 </div>
             </div>
             <div id="middle">
-                <div class="box"><a href="#">관련 동영상</a></div>
-                <div class="box"><a href="#">내 강의실</a></div>
-                <div class="box"><a href="#">강사찾기</a></div>
-                <div class="box"><a href="#">커뮤니티</a></div>
+                <div class="middle_box"><a href="#">관련 동영상</a></div>
+                <div class="middle_box"><a href="#">내 강의실</a></div>
+                <div class="middle_box"><a href="#">강사찾기</a></div>
+                <div class="middle_box"><a href="#">커뮤니티</a></div>
             </div>
         </div>
     </div>
