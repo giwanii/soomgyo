@@ -9,7 +9,12 @@ body{
     font-size: 48px;
     letter-spacing: 5px; /* 글자 사이 간격*/
     text-align: center;
-    padding-bottom: 30px;
+    padding-bottom: 20px;
+}
+span{
+	 color: #828282;
+    font-size: 20px;
+    
 }
 .join_input>input[type=text],.join_input>input[type=email],.join_input>input[type=password] {
     width: 100%;
@@ -19,12 +24,13 @@ body{
     font-size: 18px;
     font-family: 'Jua', sans-serif;
     background-color: #eeeaea;
+    margin-top:10px;
 }
 input::placeholder{
     color: #c9c4c4;
 }
 
-label{
+join_inputlabel{
     float: left;
     color: #828282;
     font-size: 20px;

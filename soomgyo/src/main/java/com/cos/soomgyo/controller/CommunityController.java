@@ -10,6 +10,10 @@ public class CommunityController {
 		return "index";
 		
 	}
+	@GetMapping("/auth/community")
+	public String community() {
+		return "community/community";
+	}
 	
 	
 

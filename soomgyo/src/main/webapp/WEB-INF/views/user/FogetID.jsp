@@ -14,12 +14,11 @@
 <body>
     <div id="join_student_container">
         <!--LOGO-->
-        <a href="/"><h1 class="join_h1">Soomgyo</h1></a>
+        <a href="/"><h1 class="join_h1">SoomGyo</h1></a>
         <!--회원가입 Form-->
+        <span>등록한 이메일을 입력해주세요~!</span>
         <form action="" method="post" name="join_frm">
-  
             <div class="join_input">
-                <label for="useremail">이메일</label><br>
                 <input type="email" name="useremail" size="20" placeholder="이메일을 입력해 주세요">
             </div>
             <div class="join_input">
