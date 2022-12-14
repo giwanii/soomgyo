@@ -1,4 +1,4 @@
-#container{
+#join_main_container{
     width: 80%;
     margin: 0 auto;
 }
@@ -8,7 +8,7 @@
     text-align: center;
     margin-top: 50px;
 }
-h3{
+.join_font>h3{
     font-size: 50px;
     font-family: 'Do Hyeon', sans-serif;
     color: #828282;
@@ -22,14 +22,14 @@ h3{
     background-color: #ecd3ce;
     border-radius: 10px;
 }
-a{
+.teacher>a, .student>a{
     display: inline-block;
     width: 100%;
     height: 100%;
     text-decoration: none;
 }
 
-a>p{
+a>.small_font{
     font-size: 50px;
     margin-top: 75px;
     color: white;
