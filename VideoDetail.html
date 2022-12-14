@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/reset.css">
+    <title>Document</title>
+    <style>
+        #container {
+            width: 60%;
+            margin: 0 auto;
+        }
+        textarea {
+
+            resize: none;
+            outline: none;
+            margin-bottom: 20px;
+        }
+        #save_memo,#save_reply {
+            float: right;
+            background-color: #edd3dc;
+            border: none;
+            border-radius: 5px;
+            width: 60px;
+            height: 25px;
+            margin-bottom: 10px;
+
+        }
+        #save_reply{
+            width: 15%;
+            height: 35px;
+        }
+        .youtube{
+            width: 100%;
+            border: 1px solid black;
+            height: 400px;
+            margin-bottom: 30px;
+            
+        }
+        .reply_box{
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <form>
+            <ul>
+                <li>
+                    <div class="youtube">
+                        유튜브 연결 장소
+                    </div>        
+                </li>   
+                <li>
+                    <span class="title">Memo</span>
+                    <input type="button" id="save_memo" name="save_memo" value="저장">
+                </li>
+    
+                <li>
+                    <textarea name="memo" id="memo" style="width: 99%; height: 300px; border-radius: 5px;"placeholder="메모 하고 싶으면 여기다가~"></textarea>
+                </li>
+                <li>
+                    <span class="title">댓글</span>
+                </li>
+                <li class="reply_box" style="margin-top: 10px;">
+                    <textarea style="width: 80%; "placeholder="댓글을 적어주세요~"></textarea> 
+                    <input type="button" id="save_reply" name="save_reply" value="작성">
+                </li>
+                <li>
+                    <div>
+                        댓글목록
+                    </div>
+                </li>
+            </ul>
+        </form>
+    </div>
+</body>
+</html>
