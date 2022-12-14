@@ -30,7 +30,7 @@ img{
     display: flex;
     margin: 0 auto;
 }
-.box{
+.middle_box{
     width: 25%;
     height: 60px;
     display: flex;
@@ -41,25 +41,25 @@ img{
     color: #ecd3ce;
     transition: all 0.3s;
 }
-.box>a{
+.middle_box>a{
     color: #ecd3ce;
     display: inline-block;
     height: 100%;
     padding-top: 30px;
     transition: all 0.3s;
 }
-.box>a:visited{
+.middle_box>a:visited{
     color: #ecd3ce;
 }
-.box:hover{
+.middle_box:hover{
     background-color: #ecd3ce;
 }
-.box>a{
+.middle_box>a{
     display: inline-block;
     width: 100%;
     text-align: center;
 }
-.box>a:hover{
+.middle_box>a:hover{
     color: white;
 }
 #bottom{

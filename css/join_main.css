@@ -37,7 +37,7 @@ a>.small_font{
 }
 /* pc버전 */
 @media all and (min-width:760px){
-    .box{
+    .join_box{
         width: 80%;
         height: 200px;
         margin: 0 auto;
@@ -61,7 +61,7 @@ a>.small_font{
 }
 /* 모바일버전 */
 @media all and (max-width:759px){
-    .box{
+    .join_box{
         width: 100%;
         height: 200px;
         padding-top: 100px;
