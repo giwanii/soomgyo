@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/css/login.css">
     <link rel="stylesheet" href="/css/header.css">
-
+    <link rel="stylesheet" href="/css/join_main.css">
+    <link rel="stylesheet" href="/css/joinStudent.css">
     <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/462a97624e.js" crossorigin="anonymous"></script>
