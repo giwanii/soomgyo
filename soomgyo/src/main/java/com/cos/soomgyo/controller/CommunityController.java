@@ -15,6 +15,9 @@ public class CommunityController {
 		return "community/community";
 	}
 	
-	
+	@GetMapping("/saveboard")
+	public String board() {
+		return"community/CommunitySaveForm";
+	}
 
 }

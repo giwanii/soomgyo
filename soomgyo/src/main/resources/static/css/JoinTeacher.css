@@ -1,7 +1,6 @@
 
 body{
-    background: #ecd3ce09;
-    font-family: 'Jua', sans-serif;   
+    background: #ecd3ce1c;
 
 }
 #container2,#container3 {
@@ -141,7 +140,7 @@ input[type='checkbox'] {
         width: 80%;
         margin: 0 auto;
 
-        padding-top: 100px;
+        padding-top: 50px;
     }
     .sub_checkbox{
         margin-bottom: 40px;

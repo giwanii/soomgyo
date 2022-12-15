@@ -4,7 +4,11 @@ body{
      
 
 }
+.join_h1_padding{
+	padding-top:50px;
+}
 .join_h1{
+	
     color: #ecd3ce;
     font-size: 48px;
     letter-spacing: 5px; /* 글자 사이 간격*/
@@ -52,14 +56,14 @@ join_inputlabel{
     position: relative;
   }
   .join_input button {
-    width: 20%;
+    width: 15%;
     border: none;
     background-color: #eeeaea ;
     color: #828282;
-
+	font-size:1rem;
     position: absolute;
     top: 40px;
-    right: 0;
+    right: 0px;
     cursor: pointer;
   }
 #ck_num{
@@ -84,6 +88,7 @@ join_inputlabel{
     #join_student_container{
         width: 80%;
         margin: 0 auto;
+        
         text-align: center;
         padding-top:200px;
         
@@ -116,4 +121,13 @@ join_inputlabel{
         margin: 0 auto;
         padding-bottom: 15px;
     }
+      .join_input button {
+	    width: 15%;
+	    color: #828282;
+		font-size:1rem;
+	    position: absolute;
+	    top: 40px;
+	    right: 0px;
+	    cursor: pointer;
+	  }
 }
