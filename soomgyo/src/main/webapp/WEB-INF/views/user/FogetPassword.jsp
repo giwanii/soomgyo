@@ -16,11 +16,12 @@
         <!--LOGO-->
         <a href="/"><h1 class="join_h1">SoomGyo</h1></a>
         <!--회원가입 Form-->
+        <span>찾고싶은 아이디를 입력해주세요!</span>
         <form action="" method="post" name="join_frm">
-  
+  			
             <div class="join_input">
-                <label for="userid">아이디</label><br>
-                <input type="text" name="userid" size="20" placeholder="아이디를 입력해 주세요">
+                
+                <input type="text" name="userid" size="20" placeholder="아이디를 입력해 주세요" id="userid">
                 <input type="hidden" name="reid" size="20"><br>
             </div>
             <div class="join_input">

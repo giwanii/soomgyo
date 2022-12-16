@@ -16,7 +16,8 @@
 <body>
     <div id="container">
         <div id="container1">
-            <a href=""><h1>과목 선택</h1></a>
+        	<a href="/"><h1>SoomGyo</h1></a>
+            <a href="/auth/join"><h1>과목 선택</h1></a>
             <div class="sub_checkbox">
                 <div class="sub_checkbox_box">
                     <label for="JAVA">JAVA</label>
@@ -48,7 +49,8 @@
         </div>
         <div id="container3">
             <!--LOGO-->
-            <a href=""><h1>교수 가입</h1></a>
+           	<a href="/"><h1>SoomGyo</h1></a>
+            <a href="/auth/join"><h1>교수 가입</h1></a>
             <!--회원가입 Form-->
             <form action="" method="post" name="join_frm">
                 <!--이름-->
