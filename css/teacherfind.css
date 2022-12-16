@@ -109,3 +109,20 @@
 .find_teacher_big_font>h2{
     font-family: 'Jua', sans-serif;
 }
+
+/* 모바일버전 */
+@media all and (max-width:1050px){
+    .T_list{
+        width: 90%;
+        height: 30%;
+        margin-top: 30px;
+    }
+    .first_T_box{
+        width: 100%;
+        height: 100%;
+    }
+    .second_T_box{
+        width: 100%;
+        height: 100%;
+    }
+}
