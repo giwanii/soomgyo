@@ -9,16 +9,17 @@
     <link rel="stylesheet" href="css/JoinTeacher.css">
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
     <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-    <script src="js/join.js"></script>
+    <script src="js/JoinTeacher.js"></script>
+
 </head>
 <body>
-    <div id="container">
+    <div id="container">                                                                                                        
         <div id="container1">
             <a href=""><h1>과목 선택</h1></a>
             <div class="sub_checkbox">
                 <div class="sub_checkbox_box">
                     <label for="JAVA">JAVA</label>
-                    <input type="checkbox"  value="JAVA" name="JAVA" id="JAVA" class="btn_check">
+                    <input type="checkbox"  value="JAVA" id="JAVA" name="JAVA" class="btn_check">
                 </div>
                 <div class="sub_checkbox_box">
                     <label for="Cc">C</label>
@@ -26,7 +27,7 @@
                 </div>
                 <div class="sub_checkbox_box">
                     <label for="C++">C++</label>
-                    <input type="checkbox" value="C++" name="C++" id="C++" class="btn_check">
+                    <input type="checkbox" value="C++" name="C" id="C" class="btn_check">
                 </div>
                 <div class="sub_checkbox_box">
                     <label for="Python">Python</label>
@@ -38,9 +39,10 @@
                 </div>
             </div>
                 <div class="join_input2">
-                    <input type="submit" value="다음으로" onclick="nextJoin()">
+                    <input type="submit" value="다음으로" onclick="return nextJoin()">
                 </div>
         </div>
+
         <div id="container2">
             주소지 
         </div>
