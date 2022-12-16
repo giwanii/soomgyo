@@ -10,7 +10,14 @@ public class CommunityController {
 		return "index";
 		
 	}
+	@GetMapping("/auth/community")
+	public String community() {
+		return "community/community";
+	}
 	
-	
+	@GetMapping("/saveboard")
+	public String board() {
+		return"community/CommunitySaveForm";
+	}
 
 }

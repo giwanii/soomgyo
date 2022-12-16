@@ -1,5 +1,7 @@
 #banner_image_cotainer{
     width: 100%;
+    margin-bottom:30px;
+    
 }
 .banner_img>img{
     width: 100%;
@@ -22,6 +24,7 @@ a{
 #related_video {
     width: 100%;
     height: 500px;
+    margin-top:50px;
     margin-bottom: 10px;
 }
 .related_video-font {
@@ -52,6 +55,8 @@ a{
 /*광고*/
 #container2{
     width: 100%;
+    margin-top:100px;
+    margin-bottom:100px;
 }
 #ad{
     padding-bottom: 30px;
@@ -64,6 +69,7 @@ a{
     width: 80%;
     padding-top: 10px;
     margin: 0 auto;
+   
 }
 #find_teacher {
     width: 100%;
@@ -163,7 +169,7 @@ a{
     #final {
         width: 100%;
         height: 400px;
-        margin-top: 40px;
+        margin-top: 200px;
         display: flex;
         justify-content: space-between;
     }
@@ -180,6 +186,11 @@ a{
 }
 /* 모바일버전 */
 @media all and (max-width:759px){
+	#banner_image_cotainer{
+
+    margin-bottom:0px;
+    
+}
     #final {
         width: 100%;
         height: 400px;
@@ -196,4 +207,14 @@ a{
         width: 100%;
         height: 100%;
     }
+    #container2{
+
+    margin-top:30px;
+    margin-bottom:30px;
+	}
+	#container {
+	
+	    padding-top: 0px;
+	 
+	}
 }
