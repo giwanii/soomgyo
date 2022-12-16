@@ -118,7 +118,7 @@
         cursor: pointer;
       }
       #comm_menu_bar :nth-child(2):hover{
-        background-color: #ecd3ce;
+        background-color: #c3abd0;
         transition: all 0.7s;
       }
       #comm_menu_bar :nth-child(3):hover{
@@ -189,7 +189,7 @@
           display: flex;
           justify-content: space-between;
  
-
+          color: rgba(0, 128, 0, 0.514)
         }
         #comm_board {
           margin-top: 20px;
