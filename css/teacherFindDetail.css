@@ -1,10 +1,10 @@
 #T_find_detail_container{
-    width: 70%;
+    width: 50%;
     margin: 0 auto;
     padding-top: 30px;
 }
 .T_main_box{
-    width: 90%;
+    width: 100%;
     height: 500px;
 }
 .first_row_box{
@@ -14,31 +14,31 @@
     align-items: center;
 }
 .T_profile_img{
-    width: 20%;
+    width: 60%;
     height: 90%;
     border: 1px solid black;
     border-radius: 10px;
 }
 .T_profile_text{
-    width: 70%;
+    width: 60%;
     height: 90%;
-    margin-left: 10px;
+    margin-left: 35px;
 }
 .T_profile_text>p{
     font-size: 30px;
     line-height: 2;
     margin: 10px;
 }
+
 .second_row_box{
-    width: 45%;
+    width: 100%;
     height: 50%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    float: left;
 }
 .sub_img_box{   /* 첫번째 서브 이미지 박스*/
-    width: 45%;
+    width: 48%;
     height: 90%;
     border: 1px solid black;
     border-radius: 10px;
@@ -47,7 +47,7 @@
     width: 45%;
     height: 90%;
     border-radius: 10px;
-    margin-left: 30px;
+
 }
 .img_first_row{
     width: 100%;
@@ -67,13 +67,15 @@
 }
 
 #counsel_box{   /* 상담하기 버튼 들어있는 큰 박스*/
-    float: right;
-    width: 40%;
-    height: 150px;
-    background-color: #82828214;
+    width: 50%;
+    height: 100px;
+    background-color:  #ecd3ce;
     border-radius: 10px;
-    margin-top: 35px;
     display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
 }
 .count_content{
     width: 50%;
@@ -82,17 +84,12 @@
 .employee_font{
     width: 100%;
     height: 50%;
-    font-size: 45px;
+    font-size: 40px;
     text-align: center;
+    color: white;
 }
 .employee_font>p{
-    margin-top: 15px;
-}
-.employee_count_font{
-    width: 100%;
-    height: 50%;
-    font-size: 30px;
-    text-align: center;
+    margin-top: 35px;
 }
 .consel_btn_box{
     width: 50%;
@@ -116,6 +113,7 @@
     }
 }
 #T_info_box{
+    clear: both;
     width: 100%;
     height: 800px;
     margin-top: 50px;
@@ -141,4 +139,45 @@
 }
 .teacher_infomation_text>p, .survice_detail_text>p{
     margin-top: 10px;
+}
+
+/* tablet&mobile버전 */
+@media all and (max-width:1050px){
+    #T_find_detail_container{
+        width: 90%;
+        margin: 0 auto;
+        padding-top: 30px;
+    }
+    .T_main_box{
+        width: 100%;
+        height: 500px;
+    }
+    .T_profile_img{
+        width: 30%;
+        height: 90%;
+        border: 1px solid black;
+        border-radius: 10px;
+    }
+    .T_profile_text{
+        width: 70%;
+        height: 90%;
+        margin-left: 10px;
+    }
+    .second_row_box{
+        width: 100%;
+        height: 50%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    #counsel_box{   /* 상담하기 버튼 들어있는 큰 박스*/
+        width: 100%;
+        height: 100px;
+        background-color:  #ecd3ce;
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
 }
