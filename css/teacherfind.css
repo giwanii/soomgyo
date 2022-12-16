@@ -1,98 +1,128 @@
-#find_teacher_container {
-width: 80%;
-margin: 0 auto;
-}
-#find_teacher_fontbox {
-width: 100%;
-height: 50px;
-margin-bottom: 50px;
-}
-#find_teacher_fontbox>h2 {
-font-family: 'Do Hyeon', sans-serif;
-font-size: 50px;
-text-align: center;
-color: #828282;
-}
-
-#primium_teacher {
-width: 100%;
-height: 300px;
-margin-bottom: 20px;
-}
-.primium_teacher_font {
-width: 100%;
-height: 10%;
-
-}
-.primium_teacher_font>h3{
-    font-family: 'Jua', sans-serif;
-    font-size: 35px;
-}
-.slideshow{
-width: 100%;
-height: 90%;
-display: flex;
-}
-.primiun_vip {
-width: 25%;
-height: 100%;
-}
-.primiun_text {
-width: 100%;
-height: 50%;
-border: 1px solid rgb(236, 169, 222);
-background-color: rgb(248, 242, 233);
-border-radius: 20px;
-margin-bottom: 20px;
-}
-.title1 {
-width: 100%;
-height: 25%;
-}
-#general_teacher {
-width: 100%;
-height: 800px;
-margin-top: 30px;
-}
-.slider{
-    width: 100%;
-    height: 20px;
-    position: relative;
+#T_find_main_container{
+    width: 80%;
     margin: 0 auto;
+}
+
+.slide_big_box{
+    width: 100%;
+    height: 500px;
+    margin-top: 50px;
+}
+.pri_T_bold_font{
+    width: 100%;
+    height: 10%;
+    margin-top: 10px;
+}
+.pri_T_bold_font>h2{
+    font-size: 40px;
     text-align: center;
 }
+.swiper {
+    width: 100%;
+    height: 90%;
+}
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.primium_T_img{
+    width: 90%;
+    height: 60%;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.primium_t_title{
+    width: 100%;
+    height: 20%;
+}
+.primium_t_title>p, .primium_t_content>p{
+    margin-top: 30px;
+}
+.primium_t_content{
+    width: 100%;
+    height: 20%;
+}
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/* 일반 선생님 박스*/
+.normal_big_box{
+    width: 100%;
+    height: 700px;
+    margin-top: 100px;
+}
+.T_list{
+    width: 90%;
+    height: 30%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+.first_T_box, .second_T_box{
+    width: 45%;
+    height: 100%;
+    display: flex;
+}
+.normal_Teacher_img{
+    width: 50%;
+    height: 100%;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.normal_Teacher_contentbox{
+    width: 50%;
+    height: 100%;
+}
+#normal_title{
+    width: 100%;
+    height: 30%;
+}
+#normal_contents{
+    width: 100%;
+    height: 70%;
+}
+#normal_title>p, #normal_contents>p{
+    margin-top: 30px;
+    margin-left: 10px;
+}
+.find_teacher_big_font{
+    font-size: 45px;
+    color: black;
+}
+.find_teacher_big_font>h2{
+    font-family: 'Jua', sans-serif;
+}
 
-.row_box {
-width: 100%;
-height: 23%;
-display: flex;
-margin-bottom: 20px;
-}
-.teacher_profile_box {
-width: 50%;
-height: 100%;
-display: flex;
-}
-.image_box {
-width: 50%;
-height: 100%;
-border: 1px solid black;
-border-radius: 10px;
-border: 1px solid rgb(236, 169, 222);
-background-color: rgb(248, 242, 233);
-}
-.text_box {
-width: 50%;
-height: 100%;
-}
-.title2 {
-width: 100%;
-height: 50%;
-}
-.pagination {
-display: flex;
-justify-content: center;
-}
-.page-link {
-color: rgba(0, 0, 0, 0.600);
+/* 모바일버전 */
+@media all and (max-width:1050px){
+    .T_list{
+        width: 90%;
+        height: 30%;
+        margin-top: 30px;
+    }
+    .first_T_box{
+        width: 100%;
+        height: 100%;
+    }
+    .second_T_box{
+        width: 100%;
+        height: 100%;
+    }
 }
