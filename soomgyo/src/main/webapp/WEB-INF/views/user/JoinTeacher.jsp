@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/css/joinTeacher.css">
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
     <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="js/join.js"></script>
 </head>
 <body>
@@ -48,51 +49,70 @@
             주소지 
         </div>
         <div id="container3">
-            <!--LOGO-->
-           	<a href="/"><h1>SoomGyo</h1></a>
-            <a href="/auth/join"><h1>교수 가입</h1></a>
-            <!--회원가입 Form-->
-            <form action="" method="post" name="join_frm">
-                <!--이름-->
-                <div class="join_input">
-                    <label for="name">이름</label><br>
-                    <input type="text" name="name" size="20" placeholder="이름를 입력해 주세요"><br>
-                </div>
-                <!--아이디-->
-                <div class="join_input">
-                    <label for="userid">아이디</label><br>
-                    <input type="text" name="userid" size="20" placeholder="아이디를 입력해 주세요">
-                    <input type="hidden" name="reid" size="20"><br>
-                </div>
-                <!--비밀번호-->
-                <div class="join_input">
-                    <label for="pwd">비밀번호</label><br>
-                    <input type="password" name="pwd" size="20" placeholder="비밀번호를 입력해 주세요"><br>
-                </div>
-                <!--비밀번호 확인-->
-                <div class="join_input">
-                    <label for="pwd_check">비밀번호 확인</label><br>
-                    <input type="password" name="pwd_check" size="20" placeholder="비밀번호를 다시 한번 입력해 주세요"><br>
-                </div>
-                <!--이메일-->
-                <div class="join_input">
-                    <label for="email">이메일</label><br>
-                    <input type="email" name="email" size="20" placeholder="이메일를 입력해 주세요" id="email"><br>
-                    <br>
-                    <button>인증받기</button>
-                    <input type="text" placeholder="인증번호 입력">
-                    
-                </div>
-                <!--전화번호-->
-                <div class="join_input">
-                    <label for="phone">전화번호</label><br>
-                    <input type="text" name="phone" size="20" placeholder="전화번호를 입력해 주세요"><br>
-                </div>
-                <!--가입하기-->
-                <div class="join_input">
-                    <input type="submit" value="가입하기">
-                </div>
-            </form>
+             <!--LOGO-->
+        <a href="/"><h1 class="join_h1 join_h1_padding">SoomGyo</h1></a>
+        <a href="/auth/join"><h1 class="join_h1">교수 가입</h1></a>
+        <!--회원가입 Form-->
+        <form action="" method="post" name="join_frm">
+            <!--이름-->
+            <div class="join_input">
+                <label for="name">이름</label><br>
+                <input type="text" name="name" size="20" placeholder="이름를 입력해 주세요" id="name" onblur="nameck()" maxlength="10"><br>
+            </div>
+                <div class="msg redfont blankname">이름을 입력해주세요 </div>
+                <div class="msg redfont redname">한글과 영문 대 소문자를 사용해주세요. (특수기호, 공백 사용 불가) </div>
+                <div class="msg greenfont greenname">좋은 이름이네요! </div>
+            <!--아이디-->
+            <div class="join_input">
+                <label for="userid">아이디</label><br>
+                <input type="text" name="userid" size="20" placeholder="아이디를 입력해 주세요" onblur="idck(this.value)" id="userid" maxlength="20">
+                <input type="hidden" name="reid" size="20"><br>
+            </div>
+                <div class="msg redfont idLength">5~20자의 영문 소문자, 숫자만 사용 가능합니다!! </div>
+                <div class="msg redfont idOverlap">아쉽네요 이미 사용중인 아이디입니다! </div>
+                <div class="msg redfont idBlank">공백없이 입력해주세요! </div>
+                <div class="msg greenfont idtrue">멋진 아이디네요!</div>
+            <!--비밀번호-->
+            <div class="join_input">
+                <label for="pwd">비밀번호</label><br>
+                <input type="password" name="pwd" size="20" placeholder="비밀번호를 입력해 주세요" id="pwd" onblur="pwck()" maxlength="16" ><br>
+                <img alt="lock" src="/img/bluelock.png" class="lock bluelock">
+                <img alt="lock" src="/img/redlock.png" class="lock redlock">
+            </div>
+            	<div class="msg redfont pwdmsg">8~16자 영문 대 소문자, 숫자, 특수문자를 사용해주세요~</div>
+            	<div class="msg redfont pwdblank">공백없이 입력해주세요!</div>
+            	<div class="msg redfont pwdmix">영문,숫자,특수문자를 혼합하여 입력해주세요.</div>
+            	<div class="msg redfont pwdsame">같은 문자를 4번 이상 사용하실 수 없습니다.</div>
+         
+            <!--비밀번호 확인-->
+            <div class="join_input">
+                <label for="pwdcheck">비밀번호 확인</label><br>
+                <input type="password" name="pwd_check" size="20" placeholder="비밀번호를 다시 한번 입력해 주세요" id="pwd_check" onkeyup="pwdcheck()" maxlength="16"><br>
+            </div>
+           		<div class="msg redfont ckfalse">비밀번호가 맞지 않습니다! </div>
+               	<div class="msg greenfont cktrue">비밀번호가 정확히 맞습니다! </div>
+            <!--이메일-->
+            <div class="join_input">
+                <label for="email">이메일</label><br>
+                <input type="text" name="email" size="20" placeholder="이메일를 입력해 주세요" id="email" onblur="mailck()" maxlength="30"><br>
+                <button>인증받기</button>
+               
+                <input type="text" placeholder="인증번호 입력"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" /maxlength="6">
+                
+            </div>
+             <div class="msg redfont mailmsg">지금 이메일이 정확한가요? </div>
+            <!--전화번호-->
+            <div class="join_input">
+                <label for="phone">전화번호 (선택)</label><br>
+                <input type="text" name="phone" size="20" placeholder="전화번호를 입력해 주세요"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" /maxlength="11"><br>
+                <div class="msg redfont">전화번호를 확인해주세요!</div>
+            </div>
+            <!--가입하기-->
+            
+        </form>
+        <div class="join_input">
+                <input type="submit" value="가입하기" onclick="allck(); return false;" >
+        </div>
         </div>
     </div>
 </body>

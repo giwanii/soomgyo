@@ -381,9 +381,39 @@ function mailck() {
 };
 
 
-function save(){
-	
-}
+	function save(){
+		console.log('save함수허출')
+		//alert('user의 save함수 호출됨');
+		let data={
+			userid: $("#userid").val(),
+			name: $("#name").val(),
+			password: $("#pwd").val(),
+			email: $("#email").val(),
+			phone: $("#phone").val()
+		};
+		//console.log(data); 자바스크립트 오브젝트
+		//console.log(JSON.stringfy(data)) json 오브젝트
+		//ajax호출시 디폴트가 비동기 호출
+		//ajax가 통신을 성공하고 서버가 json을 리턴해주면 자동으로 자바 오브젝트로 변환
+		$.ajax({ 
+			//회원가입 수행 요청 
+			//(100초라 가정한다면 도중에 done이나 fail 실행 )
+			type:"POST",
+			url:"/auth/joinProc",
+			data:JSON.stringify(data), //http body 데이터
+			contentType:"application/json; charset=utf-8",
+			dataType:"json" //자동으로 변환해주기 때문에 생략 가능
+			//응답의 결과가 문자열이 아닌 json으로 변환
+		}).done(function(resp){
+			alert("회원가입이 완료되었습니다.");
+			location.href="/";
+			//응답이 정상
+		}).fail(function(error){
+			alert(JSON.stringify(error));
+			//응답이 비정상
+		});
+		//ajax통신을 이용해서 3개의 데이터를 json으로 변경하여 insert요청!!
+	}
 
     
     

@@ -2,6 +2,8 @@ package com.cos.soomgyo.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -46,7 +48,8 @@ public class Users {
 		
 		@Column(length=50)//해쉬로 변경하여 암호화 length 크게
 		private String adr2; 
-	
+		@Column(nullable=false, length=100)
+		private String category;
 		
 		@Column(nullable=false, length=15)
 		private String name;
@@ -57,8 +60,8 @@ public class Users {
 		@Column(length=100)
 		private String phone;
 		
-		@Column(length=10)
-		private int num;
+		@Enumerated(EnumType.STRING)
+		private RoleType roles; //Enum을 쓰는게 좋다. //도메인 사용해야해서. 
 		
 		@Column(length=100)
 		private String title;

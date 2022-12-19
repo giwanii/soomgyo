@@ -10,5 +10,5 @@ import com.cos.soomgyo.model.Users;
 
 
 public interface UserRepositroy extends JpaRepository<Users,Integer>{
-	Optional<Users> findByUsernameOptional(String userid);
+	Optional<Users> findByUserid(String userid);
 }
