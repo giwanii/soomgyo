@@ -48,7 +48,7 @@ public class Users {
 		
 		@Column(length=50)//해쉬로 변경하여 암호화 length 크게
 		private String adr2; 
-		@Column(nullable=false, length=100)
+		@Column(length=100)
 		private String category;
 		
 		@Column(nullable=false, length=15)

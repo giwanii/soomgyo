@@ -69,14 +69,14 @@
             <!--전화번호-->
             <div class="join_input">
                 <label for="phone">전화번호 (선택)</label><br>
-                <input type="text" name="phone" size="20" placeholder="전화번호를 입력해 주세요"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" /maxlength="11"><br>
+                <input type="text" name="phone" id="phone" size="20" placeholder="전화번호를 입력해 주세요"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" /maxlength="11"><br>
                 <div class="msg redfont">전화번호를 확인해주세요!</div>
             </div>
             <!--가입하기-->
             
         </form>
         <div class="join_input">
-                <input type="submit" value="가입하기" onclick="allck(); return false;" >
+                <input type="submit" value="가입하기" onclick="allck();" >
             </div>
     </div>
      <script type="text/javascript" src="/JS/join.js"></script>
