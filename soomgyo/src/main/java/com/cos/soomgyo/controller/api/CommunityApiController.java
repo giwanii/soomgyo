@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cos.soomgyo.dto.ResponseDto;
 import com.cos.soomgyo.model.Community;
 
 @RestController
