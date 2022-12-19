@@ -25,10 +25,7 @@
       h1{
         margin: 0;
       }
-      .comm_menu_span{
       
-      	font-size:1.5rem;
-      }
       .comm_menu img {
         width: 30px;
         height: 30px;
@@ -41,8 +38,9 @@
       flex-direction: row;
       align-items: center;
       padding: 0.3rem;
-
+	  border-radius:10px;
       height: 64px;
+        cursor: pointer;
       
       }
       .comm_menu>img{
@@ -56,18 +54,16 @@
       }
       #comm_menu{
         width: 20%;
+        
       }
       #comm_menu_bar li{
         border-radius: 10px;
+        margin-top:5px;
       }
-      #comm_menu_bar li:first-child{
-        background-color: #ecd3ce;
-        border-radius: 10px;
-        
-      }
+  	
       .comm_board{
         width: 100%;
-        margin-left: 10%;
+        margin-left: 5%;
       
       }
       .comm_board_ul li{
@@ -76,7 +72,6 @@
         border-bottom:1px solid #ccc ;
       }
       .comm_board p{
-        
         padding-bottom: 10px;
       }
       .comm_category{
@@ -122,24 +117,11 @@
         color: #222;
         cursor: pointer;
       }
-      #comm_menu_bar :nth-child(2):hover{
-        background-color: #ecd3ce;
-        transition: all 0.7s;
+      #comm_menu_bar :nth-child(1) li:hover{
+      	 transition: all 0.5s;
+      	 background-color: #ecd3ce;
       }
-      #comm_menu_bar :nth-child(3):hover{
-        background-color: #ecd3ce;
-        transition: all 0.7s;
-        
-      }
-      #comm_menu_bar :nth-child(4):hover{
-        background-color: #ecd3ce;
-        transition: all 0.7s;
-        
-      }
-      #comm_menu_bar :nth-child(5):hover{
-        background-color: #ecd3ce;
-        transition: all 0.7s;
-      }
+      
       .comm_board_box:hover {
         background-color: rgb(255, 247, 247);
         transition: all 0.3s;
@@ -175,7 +157,10 @@
         #comm_menu_bar li{
           
           width:30%;
-          margin: 0;
+          padding-top:5px;
+          padding-bottom:5px;
+          margin-right:1px;
+          margin-top: 0px;
         }
         .comm_menu img {
          margin-left: 10px;
@@ -208,7 +193,7 @@
           top: 0;
           background-color: white;
          }
-  
+  		
        }
        
   

@@ -34,7 +34,7 @@ input::placeholder{
     color: #c9c4c4;
 }
 
-join_inputlabel{
+label{
     float: left;
     color: #828282;
     font-size: 20px;
@@ -62,7 +62,7 @@ join_inputlabel{
     color: #828282;
 	font-size:1rem;
     position: absolute;
-    top: 40px;
+    top: 50px;
     right: 0px;
     cursor: pointer;
   }
@@ -83,6 +83,32 @@ join_inputlabel{
   
         
     }
+.msg{
+	font-size :0.9235rem;
+	padding-bottom: 5px;
+	
+}
+
+.greenfont {
+	
+	
+	color:rgba(0, 128, 0, 0.5);
+	display:none;
+}
+.redfont{
+	
+	color:rgba(255, 0, 0, 0.6);
+	display:none;
+}
+.lock{
+	width: 27px;
+	position: absolute;
+	top:45px;
+	right:5px;
+	display:none;
+}
+
+
 /* pc버전 */
 @media all and (min-width:1024px) {
     #join_student_container{
@@ -126,7 +152,7 @@ join_inputlabel{
 	    color: #828282;
 		font-size:1rem;
 	    position: absolute;
-	    top: 40px;
+	    top: 50px;
 	    right: 0px;
 	    cursor: pointer;
 	  }

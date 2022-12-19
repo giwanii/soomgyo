@@ -29,40 +29,40 @@
       <div id="comm_menu">
         <ul id="comm_menu_bar">
           <div class="comm_menu_bar_1">
-            <li>
-              <a href="#" onclick="hide1();" return false;>
+            <li class="menu1">
+              <a onclick="hide1();" return false;>
                 <div class="comm_menu comm_menu1">
                		<img alt="all" src="/img/all.png">
                   <span class="comm_menu_span">전체</span>
                 </div>
               </a>
             </li>
-            <li>
-              <a href="#" onclick="hide2();" return false;>
+            <li class="menu2">
+              <a onclick="hide2();" return false;>
                 <div class="comm_menu comm_menu2">
                   <img src="/img/team.png" alt="공유해요">
                   <span>공유해요</span>
                 </div>
               </a>
             </li>
-            <li>
-              <a href="#" onclick="hide3();" return false;>
+            <li class="menu3">
+              <a onclick="hide3();" return false;>
                 <div class="comm_menu comm_menu3">
                   <img src="/img/problem.png" alt="질문해요">
                   <span>질문해요</span>
                 </div>
               </a>
             </li>
-            <li>
-              <a href="#" onclick="hide4();" return false;>
+            <li class="menu4">
+              <a onclick="hide4();" return false;>
                 <div class="comm_menu comm_menu4">
                   <img src="/img/study.png" alt="공부해요">
                   <span>공부해요</span>
                 </div>
               </a>
             </li>
-            <li>
-              <a href="#" onclick="hide5();" return false;>
+            <li class="menu5">
+              <a onclick="hide5();" return false;>
                 <div class="comm_menu comm_menu5">
                   <img src="/img/campaign.png" alt="공지사항">
                   <span>공지사항</span>

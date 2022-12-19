@@ -1,11 +1,11 @@
 student table
-id(P) password name email phone number
+id(P) userid password name email phone number(학생)
 
 teacher table
-id(P) password adr1 adr2 name email phone number title content Profileimage portfolio count
+id(P) userid password  name email phone number(선생) adr1 adr2 title content Profileimage portfolio count
 
 board table
-title writer(F) content reply id(P)
+title writer(F) content reply img id(P) time
 
 reply table
 writer(F) content board(F) id(p)
@@ -18,6 +18,11 @@ title thumnail video id(P)
 
 MyVideo table
 stuid(F) youtubeId(F) id(P)
+
+채팅 시스템
+https://velog.io/@jay/software-architecture-chat
+
+이미지 https://25gstory.tistory.com/87
 
 
 
