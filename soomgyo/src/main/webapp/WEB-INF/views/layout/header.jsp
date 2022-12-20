@@ -46,7 +46,7 @@
                             <ul>
                                 <li><a href="#">관련 동영상</a></li>
                                 <li><a href="#">내 강의실</a></li>
-                                <li><a href="#">강사찾기</a></li>
+                                <li><a href="/auth/FindTeacher">강사찾기</a></li>
                                 <li><a href="/auth/community">커뮤니티</a></li>
                             </ul>
                         </div>
@@ -59,7 +59,7 @@
                 </div>
                 <div class="middle_box middle_box1"><a href="#">관련 동영상</a></div>
                 <div class="middle_box middle_box2"><a href="#">내 강의실</a></div>
-                <div class="middle_box middle_box3"><a href="#">강사찾기</a></div>
+                <div class="middle_box middle_box3"><a href="/auth/FindTeacher">강사찾기</a></div>
                 <div class="middle_box middle_box4"><a href="/auth/community">커뮤니티</a></div>
             </div>
         </div>
