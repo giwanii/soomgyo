@@ -102,7 +102,7 @@ function hide5(){
 
 let index = {
 	init: function(){
-		$("btn-save").on("click",()=>{
+		$("#btn-save").on("click",()=>{
 			this.save();
 		});
 	},
@@ -112,6 +112,7 @@ let index = {
 			title: $("#title").val(),
 			content: $("#content").val()
 		};
+		console.log(data)
 		$.ajax({
 			type:"POST",
 			url:"/api/board",
@@ -119,6 +120,7 @@ let index = {
 			contentType:"application/json; charset=utf-8",
 			dataType:"json"
 		}).done(function(resp){
+			alert("글쓰기가 완료되었습니다");
 			location.href="/auth/community";
 		}).fail(function(error){
 			alert(JSON.stringify(error));

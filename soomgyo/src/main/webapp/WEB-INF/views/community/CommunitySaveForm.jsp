@@ -86,6 +86,8 @@
 	</div>
 </div>
 <br/>
+
+ <script type="text/javascript" src="/JS/community.js"></script>
 <script>
       $('.summernote').summernote({
         tabsize: 2,

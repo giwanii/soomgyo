@@ -16,6 +16,7 @@ import com.cos.soomgyo.service.CommunityService;
 public class CommunityApiController {
 	@Autowired
 	private CommunityService communityService;
+	
 	@PostMapping("/api/board")
 	public ResponseDto<Integer> save(@RequestBody Community community, @AuthenticationPrincipal PrincipalDetail principal){
 		communityService.글쓰기(community,principal.getUser());
