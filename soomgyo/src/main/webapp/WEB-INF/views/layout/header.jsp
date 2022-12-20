@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
  pageEncoding="UTF-8"%>
 <%@ include file="link.jsp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<sec:authorize access="isAuthenticated()">
+	<sec:authentication property="principal" var="principal"/>
+</sec:authorize>
 <link rel="stylesheet" href="/css/header.css">
 </head>
 <body>
@@ -17,10 +22,20 @@
                     </form>
                 </div>
                 <div class="sub_package">
-                    <ul>
-                        <li><a href="/auth/login">로그인</a></li>
-                        <li><a href="/auth/join">회원가입</a></li>
-                    </ul>
+               <c:choose>
+	               <c:when test="${empty principal}">
+	                    <ul>
+	                        <li><a href="/auth/login">로그인</a></li>
+	                        <li><a href="/auth/join">회원가입</a></li>
+	                    </ul>
+	                </c:when>
+	                <c:otherwise>
+	                	<ul>
+	                        <li><a href="/logout">로그아웃</a></li>
+	                        <li><a href="/auth/join">마이 페이지</a></li>
+	                    </ul>
+	                </c:otherwise>
+                </c:choose>
                 </div>
                            <div class="mobile_tap">
                     <input type="checkbox" id="menuicon">

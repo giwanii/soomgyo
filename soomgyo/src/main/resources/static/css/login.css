@@ -40,6 +40,12 @@ input::placeholder{
 	
 
 }
+#valid{
+	font-size: 0.8rem;
+	color:rgba(255, 0, 0, 0.6);
+	padding-top: 10px;
+
+}
 
 /* pc버전 */
 @media all and (min-width:1024px){
@@ -76,6 +82,7 @@ input::placeholder{
         
     }
 }
+
 
 /* 모바일버전 */
 @media all and (max-width:1023px){

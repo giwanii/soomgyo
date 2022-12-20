@@ -13,21 +13,28 @@
 
         </div>
         <!--Form-->
-        <form action="" method="post">
+        <form action="/auth/loginProc" method="POST">
         
             <!--아이디 input-->
             <div class="id_box">
-                <input type="text" placeholder="아이디" name="userid" value="">
+                <input type="text" placeholder="아이디" name="userid" id="userid">
             </div>
             <!--비밀번호 input-->
             <div class="pwd_box">
-                <input type="password" placeholder="비밀번호" name="pwd">
+                <input type="password" placeholder="비밀번호" name="password" id="password">
+  
+                <c:if test="${error}">
+        		<p id="valid" class="alert alert-danger">${exception}</p>
+    			</c:if>
+            
             </div>
+            
+            <div class="login_box">
+            <input type="submit" value="로그인">
+        	</div>
         </form>
         <!--로그인 button-->
-        <div class="login_box">
-            <input type="submit" value="로그인">
-        </div>
+        
         <!--아이디 비번 회원가입-->
         <div class="sub_menu">
         <a href="/auth/searchid">아이디 찾기</a>
