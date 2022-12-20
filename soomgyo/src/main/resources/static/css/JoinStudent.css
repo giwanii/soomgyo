@@ -55,7 +55,7 @@ label{
 .join_input {
     position: relative;
   }
-  .join_input button {
+.join_input button {
     width: 15%;
     border: none;
     background-color: #eeeaea ;
@@ -65,7 +65,7 @@ label{
     top: 50px;
     right: 0px;
     cursor: pointer;
-  }
+ }
 #ck_num{
     display: none;
 }

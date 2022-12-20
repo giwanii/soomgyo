@@ -12,13 +12,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
     <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="js/join.js"></script>
+    
 </head>
 <body>
     <div id="container">
         <div id="container1">
-        	<a href="/"><h1>SoomGyo</h1></a>
-            <a href="/auth/join"><h1>과목 선택</h1></a>
+        	<a href="/" onclick="return test1()"><h1>SoomGyo</h1></a>
+            <a href="/auth/join" onclick="return test2()"><h1>과목 선택</h1></a>
             <div class="sub_checkbox">
                 <div class="sub_checkbox_box">
                     <label for="JAVA">JAVA</label>
@@ -29,8 +29,8 @@
                     <input type="checkbox" value="C" name="Cc" id="Cc" class="btn_check">
                 </div>
                 <div class="sub_checkbox_box">
-                    <label for="C++">C++</label>
-                    <input type="checkbox" value="C++" name="C++" id="C++" class="btn_check">
+                    <label for="Clag">C++</label>
+                    <input type="checkbox" value="C++" name="Clag" id="Clag" class="btn_check">
                 </div>
                 <div class="sub_checkbox_box">
                     <label for="Python">Python</label>
@@ -46,12 +46,29 @@
                 </div>
         </div>
         <div id="container2">
-            주소지 
+        	<a href="/" onclick="return test1()"><h1 class="join_h1 join_h1_padding">SoomGyo</h1></a>
+            <a href="/auth/join" onclick="return test2()"><h1 class="join_h1">주소</h1></a>
+	        <div class="join_input">
+        	<input type="text" id="adr_number" placeholder="우편번호" readonly>
+        	<input type="button" onclick="sample6_execDaumPostcode()" class="adr_btn">
+        	<div class="msg redfont adrnum">우편번호를 입력해주세요!</div>
+        	</div>
+			<div class="join_input">
+			<input type="text" id="adr1"  placeholder="주소" readonly><br>
+			</div>
+			<div class="join_input">
+			<input type="text" id="adr2" placeholder="상세주소">
+			<div class="msg redfont adr2">상세주소를 입력해주세요!</div>
+			</div>
+			<input type="hidden" id="sample6_extraAddress" placeholder="참고항목">
+			<div class="join_input2">
+                    <input type="submit" value="다음으로" onclick="nextJoin2()">
+            </div>
         </div>
         <div id="container3">
              <!--LOGO-->
-        <a href="/"><h1 class="join_h1 join_h1_padding">SoomGyo</h1></a>
-        <a href="/auth/join"><h1 class="join_h1">교수 가입</h1></a>
+        <a href="/" onclick="return test1()"><h1 class="join_h1 join_h1_padding">SoomGyo</h1></a>
+        <a href="/auth/join" onclick="return test2()"><h1 class="join_h1">교수 가입</h1></a>
         <!--회원가입 Form-->
         <form action="" method="post" name="join_frm">
             <!--이름-->
@@ -75,7 +92,7 @@
             <!--비밀번호-->
             <div class="join_input">
                 <label for="pwd">비밀번호</label><br>
-                <input type="password" name="pwd" size="20" placeholder="비밀번호를 입력해 주세요" id="pwd" onblur="pwck()" maxlength="16" ><br>
+                <input type="password" name="pwd" size="20" placeholder="비밀번호를 입력해 주세요" id="pwd" onkeyup="pwck()" maxlength="16" ><br>
                 <img alt="lock" src="/img/bluelock.png" class="lock bluelock">
                 <img alt="lock" src="/img/redlock.png" class="lock redlock">
             </div>
@@ -97,7 +114,7 @@
                 <input type="text" name="email" size="20" placeholder="이메일를 입력해 주세요" id="email" onblur="mailck()" maxlength="30"><br>
                 <button>인증받기</button>
                
-                <input type="text" placeholder="인증번호 입력"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" /maxlength="6">
+                <input type="text" placeholder="인증번호 입력" id="mail_ck"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" /maxlength="6">
                 
             </div>
              <div class="msg redfont mailmsg">지금 이메일이 정확한가요? </div>
@@ -115,5 +132,55 @@
         </div>
         </div>
     </div>
+ <script>
+    function sample6_execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var addr = ''; // 주소 변수
+                var extraAddr = ''; // 참고항목 변수
+
+                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    addr = data.roadAddress;
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    addr = data.jibunAddress;
+                }
+
+                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+                if(data.userSelectedType === 'R'){
+                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                        extraAddr += data.bname;
+                    }
+                    // 건물명이 있고, 공동주택일 경우 추가한다.
+                    if(data.buildingName !== '' && data.apartment === 'Y'){
+                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                    if(extraAddr !== ''){
+                        extraAddr = ' (' + extraAddr + ')';
+                    }
+                    // 조합된 참고항목을 해당 필드에 넣는다.
+                    document.getElementById("sample6_extraAddress").value = extraAddr;
+                
+                } else {
+                    document.getElementById("sample6_extraAddress").value = '';
+                }
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('adr_number').value = data.zonecode;
+                document.getElementById("adr1").value = addr;
+                // 커서를 상세주소 필드로 이동한다.
+                document.getElementById("adr2").focus();
+            }
+        }).open();
+    }
+</script>
+    <script type="text/javascript" src="/JS/join.js"></script>
 </body>
 </html>

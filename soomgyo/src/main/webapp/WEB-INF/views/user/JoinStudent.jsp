@@ -15,8 +15,8 @@
 <body>
     <div id="join_student_container2">
         <!--LOGO-->
-        <a href="/"><h1 class="join_h1 join_h1_padding">SoomGyo</h1></a>
-        <a href="/auth/join"><h1 class="join_h1">학생 가입</h1></a>
+        <a href="/" onclick="return test1()"><h1 class="join_h1 join_h1_padding">SoomGyo</h1></a>
+        <a href="/auth/join" onclick="return test2()"><h1 class="join_h1">학생 가입</h1></a>
         <!--회원가입 Form-->
         <form action="" method="post" name="join_frm">
             <!--이름-->
@@ -40,7 +40,7 @@
             <!--비밀번호-->
             <div class="join_input">
                 <label for="pwd">비밀번호</label><br>
-                <input type="password" name="pwd" size="20" placeholder="비밀번호를 입력해 주세요" id="pwd" onblur="pwck()" maxlength="16" ><br>
+                <input type="password" name="pwd" size="20" placeholder="비밀번호를 입력해 주세요" id="pwd" onkeyup="pwck()" maxlength="16" ><br>
                 <img alt="lock" src="/img/bluelock.png" class="lock bluelock">
                 <img alt="lock" src="/img/redlock.png" class="lock redlock">
             </div>

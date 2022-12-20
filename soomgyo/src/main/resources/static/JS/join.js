@@ -382,7 +382,6 @@ function mailck() {
 
 
 	function save(){
-		console.log('save함수허출')
 		//alert('user의 save함수 호출됨');
 		let data={
 			userid: $("#userid").val(),
@@ -414,7 +413,87 @@ function mailck() {
 		});
 		//ajax통신을 이용해서 3개의 데이터를 json으로 변경하여 insert요청!!
 	}
+	
+function nextJoin() {
+  
+  var java = document.getElementById("JAVA") 
+  var Cc = document.getElementById("Cc") 
+  var Clag = document.getElementById("Clag") 
+  var Python= document.getElementById("Python") 
+  var Oracle = document.getElementById("Oracle") 
+  if(!(java.checked || Cc.checked || Clag.checked|| Python.checked|| Oracle.checked )){
+     alert("체크를 해주세요.")
+     return false;
+  }
+  else{
+	$("#container1").hide();
+	$("#container2").show();
+	}
+	
+}
+function nextJoin2() {
+  var adrnum=$("#adr_number").val();
+  var adr1=$("#adr1").val();
+  var adr2=$("#adr2").val();
+  var result1=0;
+  var result2=0;
+  if(adrnum==""){
+	$(".adrnum").show();
+		result1=1;
+	}
+	else{
+		$(".adrnum").hide();
+		result1=0;
+	}
+  if(adr2==""){
+	$(".adr2").show();
+	result2=1;
+	
+	}
+	else{
+		$(".adr2").hide();
+		result=0;
+	}
+	if(result1==1||result2==1){
+		return false;
+	}
+	else{
+		$("#container2").hide();
+		$("#container3").show();
+	}
+ 
 
+
+	
+}
+
+function test2() {
+        if (!confirm("회원 선택 페이지로 돌아가시겠습니까?")) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+function test1() {
+    if (!confirm("메인 페이지로 돌아가시겠습니까?")) {
+        return false;
+    } else {
+        return true;
+    }
+}
+ 
+$("#mail_ck").click(function(){
+    
+    var email = $("#email").val();        // 입력한 이메일
+    
+    $.ajax({
+        
+        type:"GET",
+        url:"mailCheck?email=" + email
+                
+    });
+    
+});
     
     
 

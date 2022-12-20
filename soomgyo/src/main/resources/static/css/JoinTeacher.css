@@ -13,7 +13,7 @@ h1{
     text-align: center;
     padding-bottom: 30px;
 }
-input[type=text], input[type=password], input[type=email] {
+.join_input>input[type=text],.join_input>input[type=email],.join_input>input[type=password] {
     width: 100%;
     height: 50px;
     border: none;
@@ -21,6 +21,7 @@ input[type=text], input[type=password], input[type=email] {
     font-size: 18px;
     font-family: 'Jua', sans-serif;
     background-color: #eeeaea;
+    margin-top:10px;
 }
 input::placeholder{
     color: #c9c4c4;
@@ -46,7 +47,7 @@ input[type=submit]{
 .sub_checkbox{
     display: flex;
     flex-direction: column;
-    width: 40%;
+    width: 60%;
     margin: 0 auto;
 }
 .sub_checkbox label{
@@ -119,21 +120,54 @@ input[type='checkbox'] {
   .join_input {
     position: relative;
   }
-  .join_input button {
-    width: 20%;
+ .join_input button {
+    width: 15%;
     border: none;
     background-color: #eeeaea ;
     color: #828282;
-    font-weight: bold;
+	font-size:1rem;
     position: absolute;
-    top: 40px;
-    right: 0;
+    top: 50px;
+    right: 0px;
     cursor: pointer;
   }
-
-
+	.adr_btn{
+		z-index:1;
+		position: absolute;
+		top:0;
+		left:0;
+		width: 100%;
+		height: 50px;
+		border:none;
+		background-color:transparent;
+		cursor: pointer;
+	}
  
+.msg{
+	font-size :0.9235rem;
+	padding-top: 10px;
+	text-align: center;
+	
+}
 
+.greenfont {
+	
+	
+	color:rgba(0, 128, 0, 0.5);
+	display:none;
+}
+.redfont{
+	
+	color:rgba(255, 0, 0, 0.6);
+	display:none;
+}
+.lock{
+	width: 27px;
+	position: absolute;
+	top:45px;
+	right:5px;
+	display:none;
+}
 /* pc버전 */
 @media all and (min-width:1024px) {
     #container{
@@ -148,12 +182,12 @@ input[type='checkbox'] {
 
     }
     .join_input{
-        width: 50%;
+        width: 60%;
         margin: 0 auto;
         padding-bottom: 15px;
     }
     .join_input2{
-        width: 40%;
+        width: 60%;
         margin: 0 auto;
         padding-bottom: 15px;
     }
@@ -195,6 +229,15 @@ input[type='checkbox'] {
 
         
     }
+     .join_input button {
+	    width: 15%;
+	    color: #828282;
+		font-size:1rem;
+	    position: absolute;
+	    top: 50px;
+	    right: 0px;
+	    cursor: pointer;
+	  }
     
 
    
