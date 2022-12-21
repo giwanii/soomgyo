@@ -11,7 +11,7 @@ body{
 	
     color: #ecd3ce;
     font-size: 48px;
-    letter-spacing: 5px; /* 글자 사이 간격*/
+    letter-spacing: 5px; 
     text-align: center;
     padding-bottom: 20px;
 }
@@ -56,7 +56,7 @@ label{
     position: relative;
   }
 .join_input button {
-    width: 15%;
+    width: 17%;
     border: none;
     background-color: #eeeaea ;
     color: #828282;
@@ -88,7 +88,11 @@ label{
 	padding-bottom: 5px;
 	
 }
-
+#mail-check-span{
+	font-size :0.9235rem;
+	padding-bottom: 5px;
+	color:rgba(255, 0, 0, 0.6);
+}
 .greenfont {
 	
 	
@@ -109,7 +113,14 @@ label{
 }
 
 
-/* pc버전 */
+#timer{
+	font-size: 1rem;
+	color:#828282;
+	position: absolute;
+	top: 111px;
+	right: 0px;
+	width: 17%;
+}
 @media all and (min-width:1024px) {
     #join_student_container{
         width: 80%;
@@ -128,7 +139,7 @@ label{
     
 }
 
-/* 모바일버전 */
+
 @media all and (max-width:1023px) {
 	  #join_student_container2{
         width: 100%;
@@ -148,7 +159,7 @@ label{
         padding-bottom: 15px;
     }
       .join_input button {
-	    width: 15%;
+	    width: 17%;
 	    color: #828282;
 		font-size:1rem;
 	    position: absolute;
@@ -156,4 +167,8 @@ label{
 	    right: 0px;
 	    cursor: pointer;
 	  }
+	#timer{
+		right: 0px;
+		width: 18%;
+	}
 }

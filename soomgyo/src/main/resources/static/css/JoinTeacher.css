@@ -168,6 +168,15 @@ input[type='checkbox'] {
 	right:5px;
 	display:none;
 }
+#timer{
+	font-size: 1rem;
+	color:#828282;
+	position: absolute;
+	top: 111px;
+	right: 0px;
+	width: 17%;
+	text-align: center;
+}
 /* pc버전 */
 @media all and (min-width:1024px) {
     #container{
@@ -230,7 +239,7 @@ input[type='checkbox'] {
         
     }
      .join_input button {
-	    width: 15%;
+	    width: 20%;
 	    color: #828282;
 		font-size:1rem;
 	    position: absolute;
@@ -238,6 +247,10 @@ input[type='checkbox'] {
 	    right: 0px;
 	    cursor: pointer;
 	  }
+	  #timer{
+		right: 0px;
+		width: 20%;
+	}
     
 
    
