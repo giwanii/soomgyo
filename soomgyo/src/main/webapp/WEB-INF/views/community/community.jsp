@@ -73,13 +73,13 @@
         </ul>
       </div>
      
-     <c:forEach var="commu" items="${Community}">
  	 <div class="comm_board comm_board1">
+ 	 <c:forEach var="commu" items="${community}">
         <ul class="comm_board_ul">
-          <a href="#">
+          <a href="/auth/community/${commu.id}">
             <li class="comm_board_box">
               <div class="comm_board_text">
-                <p class="comm_category">${commu.category}/p>
+                <p class="comm_category">${commu.category}</p>
                 <p class="comm_title">${commu.title}</p>
                 <p class="comm_content"></p>
                 <p class="comm_comment"><img src="/img/comment.png" alt="댓글"> 0</p>
@@ -90,8 +90,9 @@
             </li>
           </a>
         </ul>
+        </c:forEach>
       </div>
-      </c:forEach>
+      
       
     </div>
   </section>

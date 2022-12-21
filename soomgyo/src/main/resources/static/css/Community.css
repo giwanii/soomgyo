@@ -133,9 +133,6 @@
         position: sticky;
         top: 0;
        }
-       .comm_board2, .comm_board3, .comm_board4,.comm_board5{
-       	display:none;
-       }
 
        @media all and (max-width:1050px) {
         #comm_main{

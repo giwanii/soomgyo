@@ -1,20 +1,20 @@
-
-            #container{
+		 #container{
             width: 60%;
             margin: 0 auto;
+            margin-top: 100px;
         }
         .category{
-            padding-bottom: 10px;
+            padding-bottom: 30px;
         }
         .title{
-            padding-bottom: 12px;
+            padding-bottom: 30px;
         }
         .board_info{
             padding-bottom: 20px;
             border-bottom: 1px solid #eee;
         }
         .sp_category{
-            font-size: 0.8rem;
+            font-size: 1rem;
             font-weight: bold;
             color: gray;
         }
@@ -27,6 +27,7 @@
         }
         .sp_date{
             font-size: 0.8rem;
+            padding-right: 10px;
         }
         .sp_count{
             font-size: 0.8rem;
@@ -56,6 +57,14 @@
         .content{
             display: flex;
             flex-direction: column;
+            height: 300px;
+        }
+        .content_uses{
+        	width: 100%;
+        	height: 90%;
+        }
+        .content_uses>p{
+        	margin-top: 10px;
         }
         .comment_img{
             width: 100%;

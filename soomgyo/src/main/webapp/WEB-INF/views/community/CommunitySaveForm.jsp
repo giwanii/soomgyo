@@ -55,14 +55,14 @@
 	<div class="title">
 		<p>게시물 작성</p>
 	</div>
-	<form>
+	<form name="CommuSaveForm" >
 		<div class=form-group>
 		<label for="category">Category </label><br>
-			<select class="category" id="category">
-				<option value="false">필수선택</option>
-				<option value="share">공유해요</option>
-				<option value="questions">질문해요</option>
-				<option value="study">공부해요</option>		
+			<select class="category" id="category" name="category">
+				<option value="">필수선택</option>
+				<option value="공유해요">공유해요</option>
+				<option value="질문해요">질문해요</option>
+				<option value="공부해요">공부해요</option>		
 			</select>
 		</div>
 		<div class="form-group">
@@ -87,10 +87,4 @@
 </div>
 <br/>
 
- <script type="text/javascript" src="/JS/community.js"></script>
-<script>
-      $('.summernote').summernote({
-        tabsize: 2,
-        height: 300
-      });
-</script>
+<script type="text/javascript" src="/JS/community.js"></script>

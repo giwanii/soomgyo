@@ -1,4 +1,5 @@
 package com.cos.soomgyo.model;
+
 import java.sql.Timestamp;
 import java.util.List;
 import javax.persistence.Column;
@@ -15,6 +16,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.data.annotation.CreatedDate;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -57,7 +60,7 @@ public class Community {
 	private List<Reply> reply;
 	
 	
-	@CreationTimestamp 
+	@CreationTimestamp
 	private Timestamp createDate;
 	
 	@Column(nullable=false, length=100)
