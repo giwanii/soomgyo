@@ -92,6 +92,25 @@
         </ul>
       </div>
       </c:forEach>
+     <c:forEach var="commu" items="${Community}">
+ 	 <div class="comm_board comm_board1">
+        <ul class="comm_board_ul">
+          <a href="#">
+            <li class="comm_board_box">
+              <div class="comm_board_text">
+                <p class="comm_category">${commu.category}/p>
+                <p class="comm_title">${commu.title}</p>
+                <p class="comm_content"></p>
+                <p class="comm_comment"><img src="/img/comment.png" alt="댓글"> 0</p>
+              </div>
+              <div class="comm_board_img" style="border: 1px solid black;">
+                <img src="">
+              </div>
+            </li>
+          </a>
+        </ul>
+      </div>
+      </c:forEach>
       
     </div>
   </section>

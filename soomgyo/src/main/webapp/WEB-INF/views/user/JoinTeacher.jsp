@@ -68,9 +68,8 @@
         <div id="container3">
              <!--LOGO-->
         <a href="/" onclick="return test1()"><h1 class="join_h1 join_h1_padding">SoomGyo</h1></a>
-        <a href="/auth/join" onclick="return test2()"><h1 class="join_h1">교수 가입</h1></a>
+        <a href="/auth/join" onclick="return test2()"><h1 class="join_h1">학생 가입</h1></a>
         <!--회원가입 Form-->
-        <form action="" method="post" name="join_frm">
             <!--이름-->
             <div class="join_input">
                 <label for="name">이름</label><br>
@@ -87,8 +86,10 @@
             </div>
                 <div class="msg redfont idLength">5~20자의 영문 소문자, 숫자만 사용 가능합니다!! </div>
                 <div class="msg redfont idOverlap">아쉽네요 이미 사용중인 아이디입니다! </div>
+                
                 <div class="msg redfont idBlank">공백없이 입력해주세요! </div>
                 <div class="msg greenfont idtrue">멋진 아이디네요!</div>
+                <span id="olmessage"></span>
             <!--비밀번호-->
             <div class="join_input">
                 <label for="pwd">비밀번호</label><br>
@@ -112,24 +113,24 @@
             <div class="join_input">
                 <label for="email">이메일</label><br>
                 <input type="text" name="email" size="20" placeholder="이메일를 입력해 주세요" id="email" onblur="mailck()" maxlength="30"><br>
-                <button>인증받기</button>
-               
-                <input type="text" placeholder="인증번호 입력" id="mail_ck"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" /maxlength="6">
+                <button class="send_mail" style="background-color:transparent;">인증받기</button>
+                <input type="hidden" id="useremail">
                 
+               
+                <input type="text" placeholder="인증번호 입력" id="ck_mail"  maxlength="8"><span id="timer"></span>
+                <span id="mail-check-span"></span>
             </div>
              <div class="msg redfont mailmsg">지금 이메일이 정확한가요? </div>
             <!--전화번호-->
             <div class="join_input">
                 <label for="phone">전화번호 (선택)</label><br>
-                <input type="text" name="phone" size="20" placeholder="전화번호를 입력해 주세요"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" /maxlength="11"><br>
+                <input type="text" name="phone" id="phone" size="20" placeholder="전화번호를 입력해 주세요"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" /maxlength="11"><br>
                 <div class="msg redfont">전화번호를 확인해주세요!</div>
             </div>
             <!--가입하기-->
-            
-        </form>
         <div class="join_input">
-                <input type="submit" value="가입하기" onclick="allck(); return false;" >
-        </div>
+                <input type="submit" value="가입하기" onclick="allck();" >
+            </div>
         </div>
     </div>
  <script>

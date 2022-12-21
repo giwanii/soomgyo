@@ -12,4 +12,7 @@ import com.cos.soomgyo.model.Users;
 public interface UserRepositroy extends JpaRepository<Users,Integer>{
 	Optional<Users> findByUserid(String userid);
 	
+
 }
+
+

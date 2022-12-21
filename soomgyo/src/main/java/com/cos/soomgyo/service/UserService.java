@@ -26,4 +26,7 @@ public class UserService {
 		user.setRoles(RoleType.STUDENT);
 		userRepository.save(user); //하나의 트랜젝션
 	}
+
 }
+
+

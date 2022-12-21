@@ -144,11 +144,6 @@ function allck(){
 
         
         } 
-        
-
-    
-	
-
 
   // 이메일 검증 스크립트 작성
   var emailVal = $("#email").val();
@@ -158,6 +153,10 @@ function allck(){
 
   if (emailVal.match(regExp) != null) {
     
+  }
+  if($("#useremail").val==null){
+	alert('이메일 인증을 해주세요!')
+	result=0;
   }
   else {
     $(".mailmsg").show();
@@ -173,6 +172,32 @@ function allck(){
 		return;
 	}
 }
+
+
+
+function checkId(){
+        var id = $('#userid').val(); //id값이 "id"인 입력란의 값을 저장
+        $.ajax({
+            url:'/auth/idCheck', //Controller에서 요청 받을 주소
+            type:'post', //POST 방식으로 전달
+            data:{id:id},
+            success:function(cnt){ //컨트롤러에서 넘어온 cnt값을 받는다 
+                if(cnt == 0){ //cnt가 1이 아니면(=0일 경우) -> 사용 가능한 아이디 
+                    $('.id_ok').css("display","inline-block"); 
+                    $('.id_already').css("display", "none");
+                } else { // cnt가 1일 경우 -> 이미 존재하는 아이디
+                    $('.id_already').css("display","inline-block");
+                    $('.id_ok').css("display", "none");
+                    alert("아이디를 다시 입력해주세요");
+                    $('#id').val('');
+                }
+            },
+            error:function(){
+                alert("에러입니다");
+            }
+        });
+        };
+
 
 
 
@@ -371,12 +396,12 @@ function mailck() {
   if (emailVal.match(regExp) != null) {
 
     $(".mailmsg").hide();
-    return;
+    return 1;
   }
   else {
     $(".mailmsg").show();
 
-    return;
+    return 2;
   }
 };
 
@@ -387,7 +412,7 @@ function mailck() {
 			userid: $("#userid").val(),
 			name: $("#name").val(),
 			password: $("#pwd").val(),
-			email: $("#email").val(),
+			email: $("#useremail").val(),
 			phone: $("#phone").val()
 		};
 		//console.log(data); 자바스크립트 오브젝트
@@ -482,19 +507,82 @@ function test1() {
     }
 }
  
-$("#mail_ck").click(function(){
+ 
+ 
+
+$(".send_mail").click(function() {
+	
+	if(mailck()==1){
+	var email=$("#email").val()
+	var count=180;
+	var display=$("#timer");
+   $.ajax({
+			type : 'GET',
+			url : '/auth/mailConfirm?email='+email, // GET방식이라 Url 뒤에 email을 뭍힐수있다.
+			
+      success : function(data){
+         alert("해당 이메일로 인증번호 발송이 완료되었습니다. \n 확인부탁드립니다.")
+         $(".send_mail").css('display','none');
+         $(".send_mail").text('재인증');
+         startTimer(count, display);
+         chkEmailConfirm(data,mailck);
+      }
+      
+   })
+   }
+   else{
+	return}
+})
+
+	// 이메일 인증번호 체크 함수
+	function chkEmailConfirm(data){
+		
+		$("#ck_mail").on("keyup", function(){
+			
+			if(mailck()==1){
+			if (data != $("#ck_mail").val()) { //
+				$("#mail-check-span").text('잘못된 인증 번호입니다.');
+				emconfirmchk = false;
+				
+			} else {
+				emconfirmchk = true;
+				$("#mail-check-span").css('color','rgba(0, 128, 0, 0.5)');
+				$("#mail-check-span").text('인증 완료 되었습니다.');
+				$("#ck_mail").attr("readonly",true);
+				$("#email").attr("readonly",true);
+				$(".send_mail").attr("disabled",true);
+				$("#useremail").val=$("#email").val;
+				}
+			}
+			else return;
+		})
+	}
+	
+var timer = null;
+var isRunning = false;
+
     
-    var email = $("#email").val();        // 입력한 이메일
-    
-    $.ajax({
-        
-        type:"GET",
-        url:"mailCheck?email=" + email
-                
-    });
-    
-});
-    
-    
+function startTimer(count, display) {  
+  var minutes, seconds;
+  timer = setInterval(function () {
+    minutes = parseInt(count / 60, 10);
+    seconds = parseInt(count % 60, 10);
+	console.log('timer');
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+
+    display.html(minutes + "분 " + seconds+"초");
+
+    // 타이머 끝
+    if (--count < 0) {
+      clearInterval(timer);
+      display.html("시간 초과");
+      $(".send_mail").css('display','inline');
+      isRunning = false;
+    }
+  }, 1000);
+  isRunning = true;
+}
+
 
  
