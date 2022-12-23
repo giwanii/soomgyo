@@ -16,7 +16,7 @@
             </div>
             <div class="related_video_big-box"> <!--동영상이 들어갈 부분 큰 박스-->
                 <div class="video-box">
-                    <div class="youtube"></div>
+                    <div class="youtube"><img src="https://img.youtube.com/vi/bKPIcoou9N8/0.jpg" width="100%"></div>
                     <div class="youbube-title">
                         <p>제목</p>
                     </div>

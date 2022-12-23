@@ -16,25 +16,7 @@ spring:
     view:
       prefix: /WEB-INF/views/
       suffix: .jsp
-#  mail:
-#    host: smtp.naver.com #smtp 서버 주소
-#    port: 465 # 메일 인증서버 포트
-#    username: elrmekekrmek
-#    password: K!!s!542
-#    properties:
-#      mail:
-#        smtp:
-#          starttls:
-#            enable: true
-##            required: true
-#          auth: true
-##          connectiontimeout: 5000
-##          timeout: 5000
-##          writetimeout: 5000
-#          ssl:
-#            trust: smtp.naver.com
-#            enable: true #반드시 필요 -> SSL 필요로 되어있으면 
-#            protocols: TLSv1.2
+
         
   jpa:
     open-in-view: true

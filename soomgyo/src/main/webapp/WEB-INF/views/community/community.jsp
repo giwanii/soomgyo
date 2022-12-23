@@ -92,7 +92,6 @@
         </ul>
         </c:forEach>
       </div>
-    
     </div>
   </section>
  <script type="text/javascript" src="/JS/community.js"></script>

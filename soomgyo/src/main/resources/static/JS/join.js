@@ -1,6 +1,5 @@
 function allck(){
 	var result=1;
-	console.log('실행중')
 	if ($("#name").val() == "") {
 		$(".blankname").css("display","inline");
 		$(".redname").css("display","none");
@@ -18,7 +17,6 @@ function allck(){
 	
 	}
 	for (var i=0; i<$("#name").val().length; i++)  { 
-	
 	    var chk = $("#name").val().substring(i,i+1); 
 	
 	    if(chk.match(/[0-9]/)) { 
@@ -57,12 +55,13 @@ function allck(){
 	    }
 	
 	}
+	
     var id=$("#userid").val();
-    //특수문자가 있는지 확인
-    var spe = id.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
-    // 한글이 있는지 확인
-    var korean = id.search(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/gi); 
 
+    //특수문자가 있는지 확인
+    var spe = id.match(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
+    let eng = id.match(/[A-Z]/g);
+    var korean = id.match(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/gi);
     if ((id.length < 5) || (id.length > 20)) {
  
       $(".idLength").show();
@@ -81,7 +80,7 @@ function allck(){
       $("#userid").focus();
 	  result=0;
     }
-    if (spe > 0 || korean > 0) {
+    if (spe || korean || eng) {
       $(".idLength").show();
       $(".idOverlap").hide();
       $(".idtrue").hide();
@@ -89,14 +88,30 @@ function allck(){
       $("#userid").focus();
 	  result=0;
     }
-     
+     $.ajax({
+		url : "/auth/idCheck.do/"+$("#userid").val(),
+		type : "post",
+		dataType : 'json',
+		success : function(result){
+			if(result){
+				$(".idOverlap").show();
+				$(".idtrue").hide();
+				$(".idLength").hide();
+			      $(".idBlank").hide();
+			      result=0;
+				
+			} 
+		},
+		error : function(){
+			
+		}
+	})
+    
         let pw = $("#pwd").val();
-        let pw2 =$("#pwd_check").val();
         let number = pw.search(/[0-9]/g);
         let english = pw.search(/[a-z]/ig);
         let spece = pw.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
-        let reg = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
-
+       
         if (pw.length < 8 || pw.length > 20) {
             $(".pwdmsg").show();
             $(".pwdblank").hide();
@@ -107,7 +122,6 @@ function allck(){
             $(".bluelock").hide();
             $("#pwd").focus();
 	  		result=0;
-
         } else if (pw.search(/\s/) != -1) {
             $(".pwdblank").show();
             $(".pwdmsg").hide();
@@ -118,7 +132,6 @@ function allck(){
             $(".bluelock").hide();
             $("#pwd").focus();
 	  		result=0;
-
         } else if (number < 0 || english < 0 || spece < 0) {
              $(".pwdmix").show();
              $(".pwdmsg").hide();
@@ -128,9 +141,7 @@ function allck(){
              $(".redlock").show();
             $(".bluelock").hide();
            $("#pwd").focus();
-	  		result=0;
-
-        } 
+	  		result=0;}
           else if (/(\w)\1\1\1/.test(pw)) {
             $(".pwdsame").show();
              $(".pwdid").hide();
@@ -141,62 +152,31 @@ function allck(){
             $(".bluelock").hide();
            $("#pwd").focus();
 	  		result=0;
+	  		}
 
-        
-        } 
-
-  // 이메일 검증 스크립트 작성
-  var emailVal = $("#email").val();
-
-  var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-  // 검증에 사용할 정규식 변수 regExp에 저장
-
-  if (emailVal.match(regExp) != null) {
+        console.log('이메일')
+  	if($('#useremail').val()==""){
+	result=0;
+    }
+    if($('#reid').val()==""){
+	result=0;
+    }
     
-  }
-  if($("#useremail").val==null){
-	alert('이메일 인증을 해주세요!')
-	result=0;
-  }
-  else {
-    $(".mailmsg").show();
-    $("#email").focus();
-	result=0;
-  }
+    
+	console.log(result)
 	if(result==0){
 		
 		return;
 	}
 	else{
 		save();
-		return;
 	}
+   
 }
+	
 
 
-
-function checkId(){
-        var id = $('#userid').val(); //id값이 "id"인 입력란의 값을 저장
-        $.ajax({
-            url:'/auth/idCheck', //Controller에서 요청 받을 주소
-            type:'post', //POST 방식으로 전달
-            data:{id:id},
-            success:function(cnt){ //컨트롤러에서 넘어온 cnt값을 받는다 
-                if(cnt == 0){ //cnt가 1이 아니면(=0일 경우) -> 사용 가능한 아이디 
-                    $('.id_ok').css("display","inline-block"); 
-                    $('.id_already').css("display", "none");
-                } else { // cnt가 1일 경우 -> 이미 존재하는 아이디
-                    $('.id_already').css("display","inline-block");
-                    $('.id_ok').css("display", "none");
-                    alert("아이디를 다시 입력해주세요");
-                    $('#id').val('');
-                }
-            },
-            error:function(){
-                alert("에러입니다");
-            }
-        });
-        };
+	
 
 
 
@@ -261,42 +241,81 @@ function nameck(){
 };
 
 
-function idck(str) {
-    var id=str;
-    //특수문자가 있는지 확인
-    var spe = id.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
-    // 한글이 있는지 확인
-    var korean = id.search(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/gi); 
+	
+	
+		
+		 
 
+	
+
+function idck() {
+	
+if($("#userid").val()!=""){
+	var id=$("#userid").val();
+for(let i=0; i<=1; i++){
+ 	
+ 	console.log(id)
+    //특수문자가 있는지 확인
+    var spe = id.match(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
+    let english = id.match(/[A-Z]/g);
+    // 한글이 있는지 확인
+    var korean = id.match(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/gi);
+    console.log(english) 
     if ((id.length < 5) || (id.length > 20)) {
  
       $(".idLength").show();
       $(".idOverlap").hide();
       $(".idtrue").hide();
       $(".idBlank").hide();
-      
-      return false;
+      break;
+ 
     }
     if (id.match( /[\s]/g)) {
       $(".idLength").hide();
       $(".idOverlap").hide();
       $(".idtrue").hide();
       $(".idBlank").show();
-      return false;
+      break;
+    
     }
-    if (spe > 0 || korean > 0) {
+    if (spe || korean || english) {
       $(".idLength").show();
       $(".idOverlap").hide();
       $(".idtrue").hide();
       $(".idBlank").hide();
-      return false;
+      break;
+ 
     }
-    
-	  $(".idLength").hide();
-      $(".idOverlap").hide();
-      $(".idtrue").show();
-      $(".idBlank").hide();
-    return;
+    $.ajax({
+		url : "/auth/idCheck.do/"+$("#userid").val(),
+		type : "post",
+		dataType : 'json',
+		success : function(result){
+			if(result){
+				$(".idOverlap").show();
+				$(".idtrue").hide();
+				$(".idLength").hide();
+			      $(".idBlank").hide();
+				
+			} else{
+				$(".idOverlap").hide();
+				 $(".idLength").hide();
+			      $(".idOverlap").hide();
+			      $(".idtrue").show();
+			      $(".idBlank").hide();
+			      $('input[name=reid]').attr('value',$("#userid").val());
+			     
+				
+			} 
+		},
+		error : function(){
+			alert("서버요청실패");
+		}
+	})
+	 
+ 
+}
+}
 };
 
 function pwck() {
@@ -306,7 +325,7 @@ function pwck() {
         let number = pw.search(/[0-9]/g);
         let english = pw.search(/[a-z]/ig);
         let spece = pw.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
-        let reg = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+        
 
         if (pw.length < 8 || pw.length > 20) {
             $(".pwdmsg").show();
@@ -394,27 +413,82 @@ function mailck() {
   // 검증에 사용할 정규식 변수 regExp에 저장
 
   if (emailVal.match(regExp) != null) {
-
-    $(".mailmsg").hide();
-    return 1;
+	$.ajax({
+		url : "/auth/emailCheck.do/"+$("#email").val(),
+		type : "post",
+		dataType : 'json',
+		success : function(result){
+			if(result){
+				$('.mailOverlap').show();
+				$(".mailmsg").hide();
+				return true;
+				
+			} else{
+				  $(".mailmsg").hide();
+				  $('.mailOverlap').hide();
+				  $("#useremail").attr("value",emailVal);
+    			return false;
+				
+			} 
+		},
+		error : function(){
+			alert("서버요청실패");
+		}
+	})
   }
   else {
     $(".mailmsg").show();
+    $('.mailOverlap').hide();
 
-    return 2;
+    return false;
   }
 };
 
 
 	function save(){
 		//alert('user의 save함수 호출됨');
+		
+		
+		let data={
+			userid: $("#reid").val(),
+			name: $("#name").val(),
+			password: $("#pwd").val(),
+			email: $("#useremail").val(),
+			phone: $("#phone").val(),
+			category: sub
+			
+		};
+		let role=$("#role").val();
+		
+		$.ajax({ 
+			type:"POST",
+			url:"/auth/joinProc/"+role,
+			data:JSON.stringify(data), 
+			contentType:"application/json; charset=utf-8",
+			dataType:"json" 
+		}).done(function(resp){
+			alert("회원가입이 완료되었습니다.");
+			location.href="/";
+	
+		}).fail(function(error){
+			alert(JSON.stringify(error));
+	
+		});
+	
+	}
+		function save2(){
+		//alert('user의 save함수 호출됨');
 		let data={
 			userid: $("#userid").val(),
+			adr1: $("#adr1").val(),
+			adr2: $("#adr2").val(),
+			category: sub,
 			name: $("#name").val(),
 			password: $("#pwd").val(),
 			email: $("#useremail").val(),
 			phone: $("#phone").val()
 		};
+		let role=$("#role").val();
 		//console.log(data); 자바스크립트 오브젝트
 		//console.log(JSON.stringfy(data)) json 오브젝트
 		//ajax호출시 디폴트가 비동기 호출
@@ -423,7 +497,7 @@ function mailck() {
 			//회원가입 수행 요청 
 			//(100초라 가정한다면 도중에 done이나 fail 실행 )
 			type:"POST",
-			url:"/auth/joinProc",
+			url:"/auth/joinProc/"+role,
 			data:JSON.stringify(data), //http body 데이터
 			contentType:"application/json; charset=utf-8",
 			dataType:"json" //자동으로 변환해주기 때문에 생략 가능
@@ -439,11 +513,13 @@ function mailck() {
 		//ajax통신을 이용해서 3개의 데이터를 json으로 변경하여 insert요청!!
 	}
 	
+var test=[];
+var sub;
 function nextJoin() {
   
   var java = document.getElementById("JAVA") 
   var Cc = document.getElementById("Cc") 
-  var Clag = document.getElementById("Clag") 
+  var Clag = document.getElementById("JavaScript") 
   var Python= document.getElementById("Python") 
   var Oracle = document.getElementById("Oracle") 
   if(!(java.checked || Cc.checked || Clag.checked|| Python.checked|| Oracle.checked )){
@@ -453,6 +529,14 @@ function nextJoin() {
   else{
 	$("#container1").hide();
 	$("#container2").show();
+	$("input[name=subject]:checked").each(function() {
+	  test.push ($(this).val());
+		sub=test.join();  
+
+	  
+	})
+
+	
 	}
 	
 }
@@ -511,27 +595,33 @@ function test1() {
  
 
 $(".send_mail").click(function() {
-	
-	if(mailck()==1){
+	console.log('실행중')
+	console.log(mailck())
 	var email=$("#email").val()
-	var count=180;
+	if($("#useremail").val()==email){
+
+	var count=30;
 	var display=$("#timer");
    $.ajax({
 			type : 'GET',
 			url : '/auth/mailConfirm?email='+email, // GET방식이라 Url 뒤에 email을 뭍힐수있다.
 			
       success : function(data){
+		console.log('실행중22')
+		startTimer(count, display);
          alert("해당 이메일로 인증번호 발송이 완료되었습니다. \n 확인부탁드립니다.")
          $(".send_mail").css('display','none');
          $(".send_mail").text('재인증');
-         startTimer(count, display);
          chkEmailConfirm(data,mailck);
-      }
+      },
+      error : function(){
+			alert("서버요청실패");
+		}
       
    })
    }
    else{
-	return}
+	alert('이메일이 올바르지 않습니다.')}
 })
 
 	// 이메일 인증번호 체크 함수
@@ -551,18 +641,20 @@ $(".send_mail").click(function() {
 				$("#ck_mail").attr("readonly",true);
 				$("#email").attr("readonly",true);
 				$(".send_mail").attr("disabled",true);
-				$("#useremail").val=$("#email").val;
+				$('input[name=useremail]').attr('value',$("#email").val());
+				isRunning = false;
+				$(".send_mail").css('display','none');
+				$("#timer").css('display','none');
 				}
 			}
-			else return;
 		})
 	}
-	
 var timer = null;
 var isRunning = false;
 
     
 function startTimer(count, display) {  
+
   var minutes, seconds;
   timer = setInterval(function () {
     minutes = parseInt(count / 60, 10);
@@ -575,11 +667,15 @@ function startTimer(count, display) {
 
     // 타이머 끝
     if (--count < 0) {
+	 isRunning = false;}
+	 if(isRunning){}
+	 else{
       clearInterval(timer);
       display.html("시간 초과");
-      $(".send_mail").css('display','inline');
-      isRunning = false;
-    }
+      if($('#useremail').val()==""){$(".send_mail").css('display','inline');}
+      }
+     
+    
   }, 1000);
   isRunning = true;
 }
