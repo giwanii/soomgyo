@@ -16,7 +16,10 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.OrderBy;
 import org.springframework.data.annotation.CreatedDate;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -40,8 +43,10 @@ public class Community {
 	@Id //기본키
 	 @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="COMMUNITY_SEQ_GENERATOR")
 	private int id;
+	
 	@Column(nullable=false, length=100)
 	private String title;
+	
 	@Lob
 	//대용량 데이터
 	private String content;
@@ -53,11 +58,12 @@ public class Community {
 	@JoinColumn(name="userId")
 	private Users users; //자바는 오브젝트를 저장할 수 있지만 DB는 오브젝트를 저장할 수 없기에 
 	                     //외래키를 사용한다.
-
+	
+	@JsonIgnoreProperties({"community"})
 	@OneToMany (mappedBy="community", fetch = FetchType.EAGER)
 	//mappedBy는 연관관계의 주인이 아니라, DB에 컬럼을 만들지 않는다는 의미
 	//하나의 게시글에는 여러개 댓글 작성
-	private List<Reply> reply;
+	private List<Reply> replyList;
 	
 	
 	@CreationTimestamp
@@ -65,5 +71,6 @@ public class Community {
 	
 	@Column(nullable=false, length=100)
 	private String category;
+	
 }
 

@@ -68,5 +68,13 @@ input::-webkit-search-results-button,
 input::-webkit-search-results-decoration {
   display: none;
 }
+textarea {
+	resize: none;
+	outline: none;
+}
+button {
+	cursor: pointer;
+}
+
 
 

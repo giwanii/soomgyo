@@ -110,6 +110,11 @@ let index = {
 		$("#btn-delete").on("click",()=>{
 			this.deleteById();
 		});
+		$("#btn-update").on("click",()=>{
+			if(this.SelectCheck()){
+				this.update();
+			}
+		});
 	},
 	
 	SelectCheck(){
@@ -121,20 +126,27 @@ let index = {
 		}
 		return true;
 	},
-	save: function(){
-		let data={
-			category: $("#category").val(),
-			title: $("#title").val(),
-			content: $("#content").val()
-		};
+	save: function(){	
+		let formData = new FormData();
+		let inputFile=$("input[name='file']");
+		let files = inputFile[0].files;
+		console.log(files);
+		formData.append("file", files)
+		formData.append("category",$('#category').val());
+		formData.append("title",$('#title').val());
+		formData.append("content",$('#content').val());
 		$.ajax({
 			type:"POST",
+			enctype:'multipart/form-data',
 			url:"/api/board",
-			data:JSON.stringify(data),
-			contentType:"application/json; charset=utf-8",
+			data:formData,
+			processData:false,
+		    contentType:false,
+		    cache:false,
 			dataType:"json"
 		}).done(function(resp){
 			location.href="/auth/community";
+			
 		}).fail(function(error){
 			alert(JSON.stringify(error));
 		});
@@ -148,6 +160,27 @@ let index = {
 			url:"/api/board/"+id,
 			dataType:"json"
 		}).done(function(resp){
+			location.href="/auth/community";
+		}).fail(function(error){
+			alert(JSON.stringify(error));
+		});
+	},
+	update: function(){
+		let id=$("#id").val();
+		let data={
+			category: $("#category").val(),
+			title: $("#title").val(),
+			content: $("#content").val()
+		};
+		console.log("수정");
+		$.ajax({
+			type:"PUT",
+			url:"/api/board/"+id,
+			data:JSON.stringify(data),
+			contentType:"application/json; charset=utf-8",
+			dataType:"json"
+		}).done(function(resp){
+			alert("수정이 완료되었습니다");
 			location.href="/auth/community";
 		}).fail(function(error){
 			alert(JSON.stringify(error));

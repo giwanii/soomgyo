@@ -39,6 +39,7 @@
         .reply{
             border-top: 1px solid #eee;
             padding-top: 20px;
+            padding-bottom: 30px;
             display: flex;
             justify-content: space-between;
         }
@@ -81,10 +82,53 @@
 
             float: right;
         }
+        
+        
+        .comment{
+        	width: 100%;
+        	height: 100px;
+        	border-top: 1px solid #eee;
+        }
+        .reply_name{
+        	width: 100%;
+     		height: 20%;
+     		line-height: 30px;
+        }
+        .reply_name>p{
+        	font-size: 15px;
+
+        }
+        .reply_content{
+        	width: 100%;
+			height: 60%;
+			line-height:60px;
+        }
+        .reply_content>P{
+        	font-size: 20px;
+        }
+        .reply_content>textarea{
+        	width: 100%;
+        	display: none;
+        	margin-top: 10px;
+        }
+        #mo_finish_btn{
+			display: none;
+		        
+        }
+        .reply_time{
+        	width: 100%;
+			height: 20%;
+        	display: flex;
+        	justify-content: space-between;
+        }
+        .reply_time>p{
+			font-size: 15px;
+        }
+        
 
     @media all and (max-width:760px){
         #container{
-            width: 90%;
+            width: 20%;
             margin: 0 auto;
         }
     

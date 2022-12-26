@@ -1,16 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../layout/link.jsp" %>
- <link rel="stylesheet" href="/css/community.css">
- <style>
- 	.middle_box:last-child{
- 	background-color: #c3abd0;
- 	}
- 	.middle_box:last-child>a{
- 	color: white;
- 	}
-	
- </style>
+<link rel="stylesheet" href="/css/community.css">
+<style>
+	.middle_box:last-child{
+	background-color: #c3abd0;
+	}
+	.middle_box:last-child>a{
+	color: white;
+	}
+
+</style>
 <%@ include file="../layout/header.jsp" %>
   <div id="container">
     <div id="comm_header">
@@ -74,28 +74,29 @@
       </div>
      
  	 <div class="comm_board comm_board1">
- 	 <c:forEach var="commu" items="${community}">
-        <ul class="comm_board_ul">
-          <a href="/auth/community/${commu.id}">
-            <li class="comm_board_box">
-              <div class="comm_board_text">
-                <p class="comm_category">${commu.category}</p>
-                <p class="comm_title">${commu.title}</p>
-                <p class="comm_content"></p>
-                <p class="comm_comment"><img src="/img/comment.png" alt="댓글"> 0</p>
-              </div>
-              <div class="comm_board_img" style="border: 1px solid black;">
-                <img src="">
-              </div>
-            </li>
-          </a>
-        </ul>
+	 	<c:forEach var="commu" items="${community}">
+	        <ul class="comm_board_ul">
+	          <a href="/auth/community/${commu.id}">
+	            <li class="comm_board_box">
+	              <div class="comm_board_text">
+	                <p class="comm_category">${commu.category}</p>
+	                <p class="comm_title">${commu.title}</p>
+	                <p class="comm_content"></p>
+	                <p class="comm_comment"><img src="/img/comment.png" alt="댓글">0</p>
+	              </div>
+	              <div class="comm_board_img" style="border: 1px solid black;">
+	                <img src="">
+	              </div>
+	            </li>
+	          </a>
+	        </ul>
         </c:forEach>
       </div>
-    
+  
     </div>
   </section>
- <script type="text/javascript" src="/JS/community.js"></script>
+
+<script type="text/javascript" src="/JS/community.js"></script>
 </body>
 
 </html>

@@ -55,7 +55,7 @@
 	<div class="title">
 		<p>게시물 작성</p>
 	</div>
-	<form name="CommuSaveForm" >
+	<form name="CommuSaveForm" id="saveForm">
 		<div class=form-group>
 		<label for="category">Category </label><br>
 			<select class="category" id="category" name="category">
@@ -76,7 +76,7 @@
 		</div>
 		<div class="form-group">
 			<label for="file">File</label><br>
-			<input type="file" class="form-control"  id="file" multiple="multiple">
+			<input type="file" name="file" class="form-control"  id="file" multiple="multiple">
 		</div>
 		
 	</form>

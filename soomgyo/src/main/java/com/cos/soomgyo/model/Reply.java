@@ -33,15 +33,23 @@ public class Reply {
 	@Id//기본키
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="REPLY_SEQ_GENERATOR")
 	private int id;
+	
 	@Column(nullable=false, length=200)
 	private String content;
+	
 	@ManyToOne //여러개의 답변은 하나의 게시글에 존재
 	@JoinColumn(name="communityId")
 	private Community community;
+	
 	@ManyToOne
 	@JoinColumn(name="userId")
 	private Users users;
+	
 	@CreationTimestamp 
 	private Timestamp createDate;
-
+	
+	public void save(Community community, Users user) {
+		this.community=community;
+		this.users=user;
+	}
 }
