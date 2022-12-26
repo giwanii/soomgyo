@@ -5,13 +5,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cos.soomgyo.model.Users;
+import com.cos.soomgyo.repository.UserRepositroy;
 import com.cos.soomgyo.service.RegisterMail;
+import com.cos.soomgyo.service.UserService;
 
 
 
@@ -21,6 +24,7 @@ import com.cos.soomgyo.service.RegisterMail;
 
 @Controller
 public class UserController {
+	
 	@GetMapping("/auth/login")
 	public String loginForm(@RequestParam(value = "error", required = false) String error, 
 				@RequestParam(value = "exception", required = false) String exception,
@@ -57,11 +61,14 @@ public class UserController {
 	@GetMapping("auth/mailConfirm")
 	@ResponseBody
 	String mailConfirm(String email) throws Exception {
-	  System.out.println("왜안됌?");
 	   String code = registerMail.sendSimpleMessage(email);
 	   System.out.println("인증코드 : " + code);
 	   return code;
 	}
+
+	
+	
+	
 
 	
 }

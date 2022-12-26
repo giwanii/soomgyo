@@ -16,8 +16,17 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<org.springframework-version>4.3.4.RELEASE</org.springframework-version>
-		
+		  <project.youtube.version>v3-rev8-1.12.0-beta</project.youtube.version>
+	    <project.http.version>1.12.0-beta</project.http.version>
+	    <project.oauth.version>1.12.0-beta</project.oauth.version>
+	    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+	 <repositories>
+		    <repository>
+		      <id>google-api-services</id>
+		      <url>http://google-api-client-libraries.appspot.com/mavenrepo</url>
+		    </repository>
+		  </repositories>
 	<dependencies>
 		<!-- 추가 라이브러리 시작 -->
 		
@@ -134,24 +143,42 @@
 		</dependency>
         
         
-      <!-- mail library -->
-<dependency>
-    <groupId>javax.mail</groupId>
-    <artifactId>mail</artifactId>
-    <version>1.4.7</version>
-</dependency>
-
-<!-- mail 서포트 -->
-<dependency>
-    <groupId>org.springframework</groupId>
-    <artifactId>spring-context-support</artifactId>
-    <version>${org.springframework-version}</version>
-</dependency>
-
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-mail</artifactId>
-</dependency>
+		      <!-- mail library -->
+		<dependency>
+		    <groupId>javax.mail</groupId>
+		    <artifactId>mail</artifactId>
+		    <version>1.4.7</version>
+		</dependency>
+		
+		<!-- mail 서포트 -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-context-support</artifactId>
+		    <version>${org.springframework-version}</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
+		
+		    <!-- YouTube Data V3 support -->
+		<dependency>
+	      <groupId>com.google.apis</groupId>
+	      <artifactId>google-api-services-youtube</artifactId>
+	      <version>${project.youtube.version}</version>
+	    </dependency>
+	
+	    <dependency>
+	      <groupId>com.google.http-client</groupId>
+	      <artifactId>google-http-client-jackson2</artifactId>
+	      <version>${project.http.version}</version>
+	    </dependency>
+	    <dependency>
+	      <groupId>com.google.oauth-client</groupId>
+	      <artifactId>google-oauth-client-jetty</artifactId>
+	      <version>${project.oauth.version}</version>
+	    </dependency>
 
 	</dependencies>
 

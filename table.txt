@@ -14,7 +14,7 @@ lesson table
 stuid(F) teaid(F) id(P) 
 
 youtube table
-title thumnail video id(P)
+title thumnail videourl id(P)
 
 MyVideo table
 stuid(F) youtubeId(F) id(P)
@@ -24,7 +24,8 @@ https://velog.io/@jay/software-architecture-chat
 
 이미지 https://25gstory.tistory.com/87
 
-
+AIzaSyC__XjgtHRF3Qpq15asUfYKOwMWx9K99BA
+ https://img.youtube.com/vi/ +id값+/0.jpg
 
 
 

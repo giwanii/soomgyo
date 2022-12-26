@@ -9,7 +9,7 @@ body{
 h1{
     color: #c3abd0;
     font-size: 48px;
-    letter-spacing: 5px; /* 글자 사이 간격*/
+    letter-spacing: 5px; /* 湲��옄 �궗�씠 媛꾧꺽*/
     text-align: center;
     padding-bottom: 30px;
 }
@@ -65,7 +65,7 @@ input[type=submit]{
 }
 
 
-/*체크박스 css*/
+/*泥댄겕諛뺤뒪 css*/
 input[type='checkbox'] {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -177,7 +177,7 @@ input[type='checkbox'] {
 	width: 17%;
 	text-align: center;
 }
-/* pc버전 */
+/* pc踰꾩쟾 */
 @media all and (min-width:1024px) {
     #container{
         width: 80%;
@@ -203,7 +203,7 @@ input[type='checkbox'] {
 
 }
 
-/* 모바일버전 */
+/* 紐⑤컮�씪踰꾩쟾 */
 @media all and (max-width:1023px) {
     #container{
         width: 100%;
