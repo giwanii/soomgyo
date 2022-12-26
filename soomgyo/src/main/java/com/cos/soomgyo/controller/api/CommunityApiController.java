@@ -19,7 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.cos.soomgyo.config.auth.PrincipalDetail;
 import com.cos.soomgyo.dto.ResponseDto;
 import com.cos.soomgyo.model.Community;
-import com.cos.soomgyo.model.Files;
+//import com.cos.soomgyo.model.Files;
 import com.cos.soomgyo.service.CommunityService;
 
 @RestController
@@ -27,27 +27,27 @@ public class CommunityApiController {
 	@Autowired
 	private CommunityService communityService;
 	
-	@PostMapping("/api/board")
-	public ResponseDto<Integer> save(@RequestPart MultipartFile files, @RequestBody Community community, @AuthenticationPrincipal PrincipalDetail principal) throws Exception{
-		 Files file = new Files();
-		 String sourFileName = files.getOriginalFilename();
-		 String sourFileNameExtension = FilenameUtils.getExtension(sourFileName).toLowerCase();
-		 File destinationFile;
-	     String destinationFileName;
-	     String fileUrl = "C:\\image\\";
-	     do { 
- 			destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + sourFileNameExtension; 
- 			destinationFile = new File(fileUrl + destinationFileName); 
-		 } while (destinationFile.exists());
-	     destinationFile.getParentFile().mkdirs();
-	     files.transferTo(destinationFile);
-	     file.setFilename(destinationFileName);
-	     file.setFileOriName(sourFileName);
-	     file.setFileurl(fileUrl);
-	     
-	     communityService.글쓰기(community,principal.getUser(),files);
-	     return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
-	}
+//	@PostMapping("/api/board")
+//	public ResponseDto<Integer> save(@RequestPart MultipartFile files, @RequestBody Community community, @AuthenticationPrincipal PrincipalDetail principal) throws Exception{
+//		 Files file = new Files();
+//		 String sourFileName = files.getOriginalFilename();
+//		 String sourFileNameExtension = FilenameUtils.getExtension(sourFileName).toLowerCase();
+//		 File destinationFile;
+//	     String destinationFileName;
+//	     String fileUrl = "C:\\image\\";
+//	     do { 
+// 			destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + sourFileNameExtension; 
+// 			destinationFile = new File(fileUrl + destinationFileName); 
+//		 } while (destinationFile.exists());
+//	     destinationFile.getParentFile().mkdirs();
+//	     files.transferTo(destinationFile);
+//	     file.setFilename(destinationFileName);
+//	     file.setFileOriName(sourFileName);
+//	     file.setFileurl(fileUrl);
+//	     
+//	     communityService.글쓰기(community,principal.getUser(),files);
+//	     return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
+//	}
 	@DeleteMapping("/api/board/{id}")
 	public ResponseDto<Integer> deleteById(@PathVariable int id){
 		communityService.글삭제하기(id);

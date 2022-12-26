@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.cos.soomgyo.model.Community;
-import com.cos.soomgyo.model.Files;
+//import com.cos.soomgyo.model.Files;
 import com.cos.soomgyo.model.Users;
 import com.cos.soomgyo.repository.CommunityRepository;
 
@@ -17,18 +17,18 @@ public class CommunityService {
 	@Autowired
 	private CommunityRepository communityRepository;
 	
-	@Transactional
-	public void 글쓰기(Community community, Users user, Files files) {
-		community.setCount(0);
-		community.setUsers(user);
-		
-		Files f = new Files();
-		f.setFilename(files.getFilename());
-		f.setFileOriName(files.getFileOriName());
-		f.setFileurl(files.getFileurl());
-		
-		communityRepository.save(community);
-	}
+//	@Transactional
+//	public void 글쓰기(Community community, Users user, Files files) {
+//		community.setCount(0);
+//		community.setUsers(user);
+//		
+//		Files f = new Files();
+//		f.setFilename(files.getFilename());
+//		f.setFileOriName(files.getFileOriName());
+//		f.setFileurl(files.getFileurl());
+//		
+//		communityRepository.save(community);
+//	}
 	@Transactional(readOnly = true)
 	public List<Community> 글목록(){
 		return communityRepository.findAll();

@@ -19,9 +19,10 @@
             <c:forEach var="youtube" items="${youtube}">
         		 <!--동영상이 들어갈 부분 큰 박스-->
                 	<div class="video-box">
-                		<a href="#">
+                		<a href="/video/${youtube.id}">
 	                    <div class="youtube"><img src="${youtube.thumbnail}"></div>
-	                    <div class="youbube-title"><p class="ptag">${youtube.title}</p></div>
+	                    <div class="youbube-title">
+	                    ${youtube.title}</div>
 	                    </a>
                 	</div>
             	
@@ -72,54 +73,20 @@
                     </div>
                 </div>
                 <div class="board-box">
-                    <div class="board-detail-box">
-                        <div class="category">
-                            <p>공유</p>
-                        </div>
-                        <div class="content-box">
-                            <div class="title">
-                                <p>2023년 정처기 일정 나왔네요!!</p>
-                                <br>
-                                <p>13시간전</p>
-                            </div>                           
-                        </div>
-                    </div>
-                    <div class="board-detail-box">
-                        <div class="category">
-                            <p>공유</p>
-                        </div>
-                        <div class="content-box">
-                            <div class="title">
-                                <p>2023년 정처기 일정 나왔네요!!</p>
-                                <br>
-                                <p>13시간전</p>
-                            </div>                           
-                        </div>
-                    </div>
-                    <div class="board-detail-box">
-                        <div class="category">
-                            <p>함께</p>
-                        </div>
-                        <div class="content-box">
-                            <div class="title">
-                                <p>자바 공부 같이 할 스터디원 구합니다</p>
-                                <br>
-                                <p>13시간전</p>
-                            </div>                           
-                        </div>
-                    </div>
-                    <div class="board-detail-box">
-                        <div class="category">
-                            <p>공유</p>
-                        </div>
-                        <div class="content-box">
-                            <div class="title">
-                                <p>2023년 정처기 일정 나왔네요!!</p>
-                                <br>
-                                <p>13시간전</p>
-                            </div>                           
-                        </div>
-                    </div>
+                	<c:forEach var="community" items="${community}">
+	                    <div class="board-detail-box">
+	                        <div class="category">
+	                            <p>${community.category}</p>
+	                        </div>
+	                        <div class="content-box">
+	                            <div class="title">
+	                                <p>${community.title}</p>
+	                                <br>
+	                                <p><fmt:formatDate pattern = "dd HH:mm" value="${community.createDate}"/></p>
+	                            </div>                           
+	                        </div>
+	                    </div>
+                    </c:forEach>
                 </div>
             </div>
 

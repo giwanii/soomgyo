@@ -12,26 +12,26 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-<<<<<<< HEAD
+
 import com.cos.soomgyo.model.Community;
 import com.cos.soomgyo.service.CommunityService;
-import com.cos.soomgyo.service.ReplyService;
-=======
+//import com.cos.soomgyo.service.ReplyService;
+
 import com.cos.soomgyo.model.Youtube;
 import com.cos.soomgyo.service.CommunityService;
 import com.cos.soomgyo.service.YoutubeService;
->>>>>>> ac28e3c5f945d119ac018eedb4c53d6226bff009
+
 
 @Controller
 public class CommunityController {
 	@Autowired
 	private CommunityService communityService;
 	@Autowired
-<<<<<<< HEAD
-	private ReplyService replyService;
-=======
+
+//	private ReplyService replyService;
+
 	private YoutubeService youtubeService; 
->>>>>>> ac28e3c5f945d119ac018eedb4c53d6226bff009
+
 	
 	@GetMapping({"","/"})
 	public String index(Model model){
@@ -48,12 +48,18 @@ public class CommunityController {
 		return "community/community";
 	}
 	
-	@GetMapping("/auth/community/{id}")
-	public String findById(@PathVariable int id, Model model) {
-		model.addAttribute("community", communityService.글상세보기조회수(id));
-		model.addAttribute("reply", replyService.replycount(id));
-		return "community/CommunityDetail";
+	@GetMapping("/video/{id}")
+	public String detailvideo(@PathVariable int id, Model model) {
+		model.addAttribute("youtube", youtubeService.동영상상세보기(id));
+		return "board/VideoDetail";
 	}
+	
+//	@GetMapping("/auth/community/{id}")
+//	public String findById(@PathVariable int id, Model model) {
+//		model.addAttribute("community", communityService.글상세보기조회수(id));
+//		model.addAttribute("reply", replyService.replycount(id));
+//		return "community/CommunityDetail";
+//	}
 	//게시글 수정하기
 	@GetMapping("/community/{id}/updateForm")
 	public String updateForm(@PathVariable int id, Model model) {
