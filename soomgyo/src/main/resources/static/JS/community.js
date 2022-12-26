@@ -128,13 +128,7 @@ let index = {
 	},
 	save: function(){	
 		let formData = new FormData();
-		let inputFile=$("input[name='file']");
-		let files = inputFile[0].files;
-		console.log(files);
-		formData.append("file", files)
-		formData.append("category",$('#category').val());
-		formData.append("title",$('#title').val());
-		formData.append("content",$('#content').val());
+		
 		$.ajax({
 			type:"POST",
 			enctype:'multipart/form-data',

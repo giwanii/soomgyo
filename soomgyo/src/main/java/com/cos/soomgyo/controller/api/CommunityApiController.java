@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,16 +23,20 @@ import com.cos.soomgyo.dto.ResponseDto;
 import com.cos.soomgyo.model.Community;
 import com.cos.soomgyo.model.Files;
 import com.cos.soomgyo.service.CommunityService;
+import com.cos.soomgyo.service.FileService;
 
 @RestController
 public class CommunityApiController {
 	@Autowired
 	private CommunityService communityService;
+	@Autowired
+	private FileService fileService;
 	
-	@PostMapping("/api/board")
-	public ResponseDto<Integer> save(@RequestPart MultipartFile files, @RequestBody Community community, @AuthenticationPrincipal PrincipalDetail principal) throws Exception{
-		 Files file = new Files();
-		 String sourFileName = files.getOriginalFilename();
+	@RequestMapping(value="/api/board", method= {RequestMethod.POST})
+//	@PostMapping("/api/board")
+	public ResponseDto<Integer> save(Community community, MultipartFile file, @AuthenticationPrincipal PrincipalDetail principal) throws Exception{
+		System.out.println("api/board"+community.getTitle()+", " + file); 
+		String sourFileName = file.getOriginalFilename();
 		 String sourFileNameExtension = FilenameUtils.getExtension(sourFileName).toLowerCase();
 		 File destinationFile;
 	     String destinationFileName;
@@ -40,12 +46,12 @@ public class CommunityApiController {
  			destinationFile = new File(fileUrl + destinationFileName); 
 		 } while (destinationFile.exists());
 	     destinationFile.getParentFile().mkdirs();
-	     files.transferTo(destinationFile);
-	     file.setFilename(destinationFileName);
-	     file.setFileOriName(sourFileName);
-	     file.setFileurl(fileUrl);
+	     file.transferTo(destinationFile);
+	     community.setFilename(destinationFileName);
+	     community.setFileOriName(sourFileName);
+	     community.setFileurl(fileUrl);
 	     
-	     communityService.글쓰기(community,principal.getUser(),files);
+	     communityService.글쓰기(community,principal.getUser());
 	     return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
 	}
 	@DeleteMapping("/api/board/{id}")

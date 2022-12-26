@@ -12,26 +12,26 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-<<<<<<< HEAD
+
 import com.cos.soomgyo.model.Community;
 import com.cos.soomgyo.service.CommunityService;
 import com.cos.soomgyo.service.ReplyService;
-=======
+
 import com.cos.soomgyo.model.Youtube;
 import com.cos.soomgyo.service.CommunityService;
 import com.cos.soomgyo.service.YoutubeService;
->>>>>>> ac28e3c5f945d119ac018eedb4c53d6226bff009
+
 
 @Controller
 public class CommunityController {
 	@Autowired
 	private CommunityService communityService;
 	@Autowired
-<<<<<<< HEAD
+
 	private ReplyService replyService;
-=======
+
 	private YoutubeService youtubeService; 
->>>>>>> ac28e3c5f945d119ac018eedb4c53d6226bff009
+
 	
 	@GetMapping({"","/"})
 	public String index(Model model){

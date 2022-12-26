@@ -55,7 +55,7 @@
 	<div class="title">
 		<p>게시물 작성</p>
 	</div>
-	<form name="CommuSaveForm" id="saveForm">
+	<form name="CommuSaveForm" action="/api/board" method="POST" id="saveForm" enctype="multipart/form-data">
 		<div class=form-group>
 		<label for="category">Category </label><br>
 			<select class="category" id="category" name="category">
@@ -67,22 +67,22 @@
 		</div>
 		<div class="form-group">
 			<label for="title">Title</label><br>
-			<input type="text" class="form-control" placeholder="Enter title" id="title">
+			<input type="text" class="form-control" placeholder="Enter title" name="title" id="title">
 		</div>
 		
 		<div class="form-group">
 			<label for="content">Content:</label><br>
-			<textarea class="form-control summernote" id="content"></textarea>
+			<textarea class="form-control summernote" name="content" id="content"></textarea>
 		</div>
 		<div class="form-group">
 			<label for="file">File</label><br>
 			<input type="file" name="file" class="form-control"  id="file" multiple="multiple">
 		</div>
-		
-	</form>
-	<div id="btn_div">
-		<button id="btn-save">저장</button>
-	</div>
+			<div id="btn_div">
+				<button>저장</button>
+			</div>
+
+		</form>
 	</div>
 </div>
 <br/>

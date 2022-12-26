@@ -72,5 +72,10 @@ public class Community {
 	@Column(nullable=false, length=100)
 	private String category;
 	
+	private String filename;
+	private String fileOriName;
+	private String fileurl;
+	
+	
 }
 
