@@ -21,7 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.cos.soomgyo.config.auth.PrincipalDetail;
 import com.cos.soomgyo.dto.ResponseDto;
 import com.cos.soomgyo.model.Community;
-import com.cos.soomgyo.model.Files;
+//import com.cos.soomgyo.model.Files;
 import com.cos.soomgyo.service.CommunityService;
 import com.cos.soomgyo.service.FileService;
 
@@ -32,6 +32,7 @@ public class CommunityApiController {
 	@Autowired
 	private FileService fileService;
 	
+
 	@RequestMapping(value="/api/board", method= {RequestMethod.POST})
 //	@PostMapping("/api/board")
 	public ResponseDto<Integer> save(Community community, MultipartFile file, @AuthenticationPrincipal PrincipalDetail principal) throws Exception{
@@ -54,6 +55,7 @@ public class CommunityApiController {
 	     communityService.글쓰기(community,principal.getUser());
 	     return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
 	}
+
 	@DeleteMapping("/api/board/{id}")
 	public ResponseDto<Integer> deleteById(@PathVariable int id){
 		communityService.글삭제하기(id);

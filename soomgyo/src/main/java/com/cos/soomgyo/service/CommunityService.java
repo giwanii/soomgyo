@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.cos.soomgyo.model.Community;
-import com.cos.soomgyo.model.Files;
+//import com.cos.soomgyo.model.Files;
 import com.cos.soomgyo.model.Users;
 import com.cos.soomgyo.repository.CommunityRepository;
 import com.cos.soomgyo.repository.FilesRepository;
@@ -25,6 +25,8 @@ public class CommunityService {
 		community.setUsers(user);
 		communityRepository.save(community);
 	}
+
+
 	@Transactional(readOnly = true)
 	public List<Community> 글목록(){
 		return communityRepository.findAll();

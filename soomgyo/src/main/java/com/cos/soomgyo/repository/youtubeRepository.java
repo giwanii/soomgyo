@@ -13,7 +13,7 @@ import com.cos.soomgyo.model.Youtube;
 public interface youtubeRepository extends JpaRepository<Youtube,Integer>{
 	Optional<Youtube> findByCategory(String category);
 	
-
+	
 
 
 	

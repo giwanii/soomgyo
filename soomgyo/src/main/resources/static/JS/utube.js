@@ -11,7 +11,7 @@ $.ajax({
 		success : function(data) {
 			for(var i=0; i<20; i++){
 				let save={
-				videoUrl: "https://www.youtube.com/watch?v="+data.items[i].id.videoId,
+				videoUrl: "https://www.youtube.com/embed/"+data.items[i].id.videoId,
 				title: data.items[i].snippet.title,
 				thumbnail: "https://img.youtube.com/vi/"+data.items[i].id.videoId+"/0.jpg",
 				category: "JAVA"
@@ -48,7 +48,7 @@ $.ajax({
 		success : function(data) {
 			for(var i=0; i<20; i++){
 				let save={
-				videoUrl: "https://www.youtube.com/watch?v="+data.items[i].id.videoId,
+				videoUrl: "https://www.youtube.com/embed/"+data.items[i].id.videoId,
 				title: data.items[i].snippet.title,
 				thumbnail: "https://img.youtube.com/vi/"+data.items[i].id.videoId+"/0.jpg",
 				category: "Cc"
@@ -85,7 +85,7 @@ $.ajax({
 		success : function(data) {
 			for(var i=0; i<20; i++){
 				let save={
-				videoUrl: "https://www.youtube.com/watch?v="+data.items[i].id.videoId,
+				videoUrl: "https://www.youtube.com/embed/"+data.items[i].id.videoId,
 				title: data.items[i].snippet.title,
 				thumbnail: "https://img.youtube.com/vi/"+data.items[i].id.videoId+"/0.jpg",
 				category: "JavaScript"
@@ -117,12 +117,12 @@ $.ajax({
 $.ajax({
 		type : "GET",
 		dataType : "json",
-		url : "https://www.googleapis.com/youtube/v3/search?q=오라클&key=AIzaSyC__XjgtHRF3Qpq15asUfYKOwMWx9K99BA&part=id,snippet&type=video&maxResults=20",
+		url : "https://www.googleapis.com/youtube/v3/search?q=오라클 강의&key=AIzaSyC__XjgtHRF3Qpq15asUfYKOwMWx9K99BA&part=id,snippet&type=video&maxResults=20",
 		contentType: 'application/json',
 		success : function(data) {
 			for(var i=0; i<20; i++){
 				let save={
-				videoUrl: "https://www.youtube.com/watch?v="+data.items[i].id.videoId,
+				videoUrl: "https://www.youtube.com/embed/"+data.items[i].id.videoId,
 				title: data.items[i].snippet.title,
 				thumbnail: "https://img.youtube.com/vi/"+data.items[i].id.videoId+"/0.jpg",
 				category: "Oracle"
@@ -159,7 +159,7 @@ $.ajax({
 		success : function(data) {
 			for(var i=0; i<20; i++){
 				let save={
-				videoUrl: "https://www.youtube.com/watch?v="+data.items[i].id.videoId,
+				videoUrl: "https://www.youtube.com/embed/"+data.items[i].id.videoId,
 				title: data.items[i].snippet.title,
 				thumbnail: "https://img.youtube.com/vi/"+data.items[i].id.videoId+"/0.jpg",
 				category: "Python"

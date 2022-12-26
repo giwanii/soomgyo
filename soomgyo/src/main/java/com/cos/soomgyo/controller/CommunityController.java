@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.cos.soomgyo.model.Community;
 import com.cos.soomgyo.service.CommunityService;
-import com.cos.soomgyo.service.ReplyService;
 
+import com.cos.soomgyo.service.ReplyService;
 import com.cos.soomgyo.model.Youtube;
 import com.cos.soomgyo.service.CommunityService;
 import com.cos.soomgyo.service.YoutubeService;
@@ -27,7 +27,6 @@ public class CommunityController {
 	@Autowired
 	private CommunityService communityService;
 	@Autowired
-
 	private ReplyService replyService;
 
 	private YoutubeService youtubeService; 
@@ -46,6 +45,12 @@ public class CommunityController {
 	public String community(Model model) {
 		model.addAttribute("community", communityService.글목록());
 		return "community/community";
+	}
+	
+	@GetMapping("/video/{id}")
+	public String detailvideo(@PathVariable int id, Model model) {
+		model.addAttribute("youtube", youtubeService.동영상상세보기(id));
+		return "board/VideoDetail";
 	}
 	
 	@GetMapping("/auth/community/{id}")
