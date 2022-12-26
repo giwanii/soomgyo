@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
  pageEncoding="UTF-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
  <%@ include file="layout/link.jsp" %>
  <link rel="stylesheet" href="/css/index.css">
 <%@ include file="layout/header.jsp" %>
@@ -14,44 +15,18 @@
             <div class="related_video-font">    <!--"관련동영상"이라고 써있는 글씨 박스-->
                 <a href="#"><h3>관련 동영상</h3></a>
             </div>
-            <div class="related_video_big-box"> <!--동영상이 들어갈 부분 큰 박스-->
-                <div class="video-box">
-                    <div class="youtube"><img src="https://img.youtube.com/vi/bKPIcoou9N8/0.jpg" width="100%"></div>
-                    <div class="youbube-title">
-                        <p>제목</p>
-                    </div>
-                </div>
-                <div class="video-box">
-                    <div class="youtube"></div>
-                    <div class="youbube-title">
-                        <p>제목</p>
-                    </div>
-                </div>
-                <div class="video-box">
-                    <div class="youtube"></div>
-                    <div class="youbube-title">
-                        <p>제목</p>
-                    </div>
-                </div>
-                <div class="video-box">
-                    <div class="youtube"></div>
-                    <div class="youbube-title">
-                        <p>제목</p>
-                    </div>
-                </div>
-                <div class="video-box">
-                    <div class="youtube"></div>
-                    <div class="youbube-title">
-                        <p>제목</p>
-                    </div>
-                </div>
-                <div class="video-box">
-                    <div class="youtube"></div>
-                    <div class="youbube-title">
-                        <p>제목</p>
-                    </div>
-                </div>
-            </div>
+            <div class="related_video_big-box">
+            <c:forEach var="youtube" items="${youtube}">
+        		 <!--동영상이 들어갈 부분 큰 박스-->
+                	<div class="video-box">
+                		<a href="#">
+	                    <div class="youtube"><img src="${youtube.thumbnail}"></div>
+	                    <div class="youbube-title"><p class="ptag">${youtube.title}</p></div>
+	                    </a>
+                	</div>
+            	
+           </c:forEach>
+           </div>
         </div>        
     </div>
     <div id="container2">

@@ -1,6 +1,5 @@
 package com.cos.soomgyo.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,9 +12,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Table(name="youtube")
+@Table(name="myvideo")
 @SequenceGenerator(
-			name="YOUTUBE_SEQ_GENERATOR"
+			name="MYVIDEO_SEQ_GENERATOR"
 			,sequenceName = "USERS_SEQ"
 			,initialValue = 1
 			,allocationSize = 1
@@ -26,22 +25,11 @@ import lombok.NoArgsConstructor;
 @Builder
 @Entity
 
-public class Youtube {
+public class Myvideo {
 	
-	@Id //기본키
-	 @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="YOUTUBE_SEQ_GENERATOR")
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="MYVIDEO_SEQ_GENERATOR")
 	private int id;
 	
-	@Column(nullable=false, length=500)
-	private String title;
-	
-	@Column(nullable=false)
-	private String thumbnail;
-	
-	@Column(nullable=false)
-	private String videoUrl;
-	
-	@Column(nullable=false, length=50)
-	private String category;
 	
 }

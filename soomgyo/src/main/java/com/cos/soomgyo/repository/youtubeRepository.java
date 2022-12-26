@@ -4,14 +4,18 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-
 import com.cos.soomgyo.model.Youtube;
+
+
 
 
 
 public interface youtubeRepository extends JpaRepository<Youtube,Integer>{
 	Optional<Youtube> findByCategory(String category);
-
 	
 
+
+
+	
+	
 }
