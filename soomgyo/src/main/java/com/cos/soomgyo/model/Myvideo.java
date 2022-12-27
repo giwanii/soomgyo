@@ -13,7 +13,6 @@ import javax.persistence.Table;
 import org.hibernate.annotations.ColumnDefault;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -27,7 +26,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
+
 @Entity
 
 public class Myvideo {
@@ -43,11 +42,11 @@ public class Myvideo {
     @ManyToOne
     @JoinColumn(name = "YoutubeID")
     private Youtube youtube;
+
+    @ColumnDefault("0")
+    private int Videolikes;
     
-    @ColumnDefault("false")
-    private String likeVideo;
-    
-    private String memo;
+    private String memo ;
     
     
 }
