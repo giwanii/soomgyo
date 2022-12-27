@@ -84,6 +84,7 @@
 	                                <p>${community.title}</p>
 	                                <br>
 	                                <p><fmt:formatDate pattern = "MM/dd HH:mm" value="${community.createDate}"/></p>
+
 	                            </div>                           
 	                        </div>
 	                    </div>

@@ -7,9 +7,6 @@ import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,11 +18,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.cos.soomgyo.config.auth.PrincipalDetail;
 import com.cos.soomgyo.model.Community;
-import com.cos.soomgyo.service.CommunityService;
-
-import com.cos.soomgyo.service.ReplyService;
 import com.cos.soomgyo.model.Youtube;
 import com.cos.soomgyo.service.CommunityService;
+import com.cos.soomgyo.service.ReplyService;
 import com.cos.soomgyo.service.YoutubeService;
 
 

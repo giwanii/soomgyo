@@ -13,14 +13,12 @@ import com.cos.soomgyo.model.Community;
 //import com.cos.soomgyo.model.Files;
 import com.cos.soomgyo.model.Users;
 import com.cos.soomgyo.repository.CommunityRepository;
-import com.cos.soomgyo.repository.FilesRepository;
 
 @Service
 public class CommunityService {
 	@Autowired
 	private CommunityRepository communityRepository;
-	@Autowired
-	private FilesRepository filesRepository;
+
 	
 	@Transactional
 	public void 글쓰기(Community community, Users user) {
