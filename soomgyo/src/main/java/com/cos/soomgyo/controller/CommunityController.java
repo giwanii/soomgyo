@@ -51,7 +51,8 @@ public class CommunityController {
 		Page<Youtube> firstPage = youtubeService.관련동영상();
 		List<Youtube> pageContetns=firstPage.getContent();
 		model.addAttribute("youtube", pageContetns );
-		model.addAttribute("community", communityService.글목록());
+		model.addAttribute("community1", communityService.글목록(0));
+		model.addAttribute("community2", communityService.글목록(1));
 		return "index";
 		
 	}
@@ -96,7 +97,8 @@ public class CommunityController {
 	}
 	@GetMapping("/auth/community")
 	public String community(Model model) {
-		model.addAttribute("community", communityService.글목록());
+		model.addAttribute("community1", communityService.글목록(0));
+		model.addAttribute("community2", communityService.글목록(1));
 		return "community/community";
 	}
 	

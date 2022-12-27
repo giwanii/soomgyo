@@ -1,5 +1,6 @@
 package com.cos.soomgyo.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,7 +20,7 @@ import lombok.NoArgsConstructor;
 @Table(name="myvideo")
 @SequenceGenerator(
 			name="MYVIDEO_SEQ_GENERATOR"
-			,sequenceName = "USERS_SEQ"
+			,sequenceName = "MYVIDEO_SEQ"
 			,initialValue = 1
 			,allocationSize = 1
 		)
@@ -36,15 +37,17 @@ public class Myvideo {
 	private int id;
 	
 	@ManyToOne
-    @JoinColumn(name = "User_ID")
+    @JoinColumn(name = "UserID")
     private Users users;
 
     @ManyToOne
-    @JoinColumn(name = "Youtube_ID")
+    @JoinColumn(name = "YoutubeID")
     private Youtube youtube;
     
     @ColumnDefault("false")
-    private String like;
+    private String likeVideo;
+    
+    private String memo;
     
     
 }

@@ -73,12 +73,7 @@
                     </div>
                 </div>
                 <div class="board-box">
-<<<<<<< HEAD
-                	<c:forEach var="community" items="${community}" begin="0" end="3">
-=======
-                	<c:forEach var="community" items="${community.content}">
-                	<c:if test="${!(community.category eq '공지사항')}">
->>>>>>> 2448a8f25e2d51588043f0689ef6b36b30a3abaa
+                	<c:forEach var="community" items="${community1}" begin="0" end="3">
 	                    <div class="board-detail-box">
 	                        <div class="category">
 	                            <p>${community.category}</p>
@@ -88,14 +83,9 @@
 	                                <p>${community.title}</p>
 	                                <br>
 	                                <p><fmt:formatDate pattern = "MM/dd HH:mm" value="${community.createDate}"/></p>
-<<<<<<< HEAD
-=======
-
->>>>>>> 2448a8f25e2d51588043f0689ef6b36b30a3abaa
 	                            </div>                           
 	                        </div>
 	                    </div>
-	                </c:if>
                     </c:forEach>
                 </div>
             </div>
@@ -109,8 +99,7 @@
                     </div>
                 </div>
                 <div class="board-box">
-              <c:forEach var="community" items="${community.content}">
-              	<c:if test="${community.category eq '공지사항'}">
+              <c:forEach var="community" items="${community2}" begin="0" end="3">
                    <div class="board-detail-box">
                       <div class="order">
                         <p>sdasdasd</p>
@@ -122,7 +111,6 @@
                           </div>                           
                         </div>
                     </div>
-                    </c:if>
               		</c:forEach>
                 </div>
             </div>

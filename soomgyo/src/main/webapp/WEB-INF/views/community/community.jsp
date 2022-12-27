@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../layout/link.jsp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" href="/css/community.css">
 <style>
 	.middle_box:last-child{
@@ -74,7 +75,7 @@
       </div>
      
  	 <div class="comm_board comm_board1">
-	 	<c:forEach var="commu" items="${community}">
+	 	<c:forEach var="commu" items="${community1}">
 	        <ul class="comm_board_ul">
 	          <a href="/auth/community/${commu.id}">
 	            <li class="comm_board_box">
@@ -92,7 +93,89 @@
 	        </ul>
         </c:forEach>
       </div>
+      <div class="comm_board comm_board2" style="display:none;">
+      	<c:forEach var="commu" items="${community1}">
+      		<c:if test="${commu.category eq '공유해요'}">
+	        <ul class="comm_board_ul">
+	          <a href="/auth/community/${commu.id}">
+	            <li class="comm_board_box">
+	              <div class="comm_board_text">
+	                <p class="comm_category">${commu.category}</p>
+	                <p class="comm_title">${commu.title}</p>
+	                <p class="comm_content"></p>
+	                <p class="comm_comment"><img src="/img/comment.png" alt="댓글">0</p>
+	              </div>
+	              <div class="comm_board_img">
+	              	<img src="/auth/images?filename=${commu.filename}">
+	              </div>
+	            </li>
+	          </a>
+	        </ul>
+	        </c:if>
+        </c:forEach>
+      </div>
+      <div class="comm_board comm_board3" style="display:none;">
+      	<c:forEach var="commu" items="${community1}">
+      		<c:if test="${commu.category eq '질문해요'}">
+	        <ul class="comm_board_ul">
+	          <a href="/auth/community/${commu.id}">
+	            <li class="comm_board_box">
+	              <div class="comm_board_text">
+	                <p class="comm_category">${commu.category}</p>
+	                <p class="comm_title">${commu.title}</p>
+	                <p class="comm_content"></p>
+	                <p class="comm_comment"><img src="/img/comment.png" alt="댓글">0</p>
+	              </div>
+	              <div class="comm_board_img">
+	              	<img src="/auth/images?filename=${commu.filename}">
+	              </div>
+	            </li>
+	          </a>
+	        </ul>
+	        </c:if>
+        </c:forEach>
+      </div>
+      <div class="comm_board comm_board4" style="display:none;">
+      	<c:forEach var="commu" items="${community1}">
+      		<c:if test="${commu.category eq '공부해요'}">
+	        <ul class="comm_board_ul">
+	          <a href="/auth/community/${commu.id}">
+	            <li class="comm_board_box">
+	              <div class="comm_board_text">
+	                <p class="comm_category">${commu.category}</p>
+	                <p class="comm_title">${commu.title}</p>
+	                <p class="comm_content"></p>
+	                <p class="comm_comment"><img src="/img/comment.png" alt="댓글">0</p>
+	              </div>
+	              <div class="comm_board_img">
+	              	<img src="/auth/images?filename=${commu.filename}">
+	              </div>
+	            </li>
+	          </a>
+	        </ul>
+	        </c:if>
+        </c:forEach>
+      </div>
+      <div class="comm_board comm_board5" style="display: none;">
 
+      	  <c:forEach var="community" items="${community2}">
+	        <ul class="comm_board_ul">
+	          <a href="/auth/community/${community.id}">
+	            <li class="comm_board_box">
+	              <div class="comm_board_text">
+	                <p class="comm_category">${community.category}</p>
+	                <p class="comm_title">${community.title}</p>
+	                <p class="comm_content"></p>
+	                <p class="comm_comment"><img src="/img/comment.png" alt="댓글">0</p>
+	              </div>
+	              <div class="comm_board_img">
+	              	<img src="/auth/images?filename=${community.filename}">
+	              </div>
+	            </li>
+	          </a>
+	        </ul>
+        </c:forEach>
+      </div>
     </div>
   </section>
 
