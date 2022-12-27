@@ -40,16 +40,16 @@
         <a href="/auth/searchid">아이디 찾기</a>
         <a href="/auth/searchpwd">비밀번호 찾기</a>
         <a href="/auth/join">회원가입</a>
-          
-        </div>
-	
-    </div>
-</body>
-<script type="text/javascript" src="/JS/utube.js"></script> 
-</html>
         <input type="text" id="uid">
         <button onclick="search1()" value="검색">검색</button>
         <button onclick="search2()" value="검색">검색</button>
         <button onclick="search3()" value="검색">검색</button>
         <button onclick="search4()" value="검색">검색</button>
         <button onclick="search5()" value="검색">검색</button>
+        </div>
+	
+    </div>
+</body>
+<script type="text/javascript" src="/JS/utube.js"></script> 
+</html>
+        

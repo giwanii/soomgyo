@@ -1,18 +1,25 @@
 package com.cos.soomgyo.controller;
 
+import java.io.File;
 import java.util.List;
 
+import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
-
+import com.cos.soomgyo.config.auth.PrincipalDetail;
 import com.cos.soomgyo.model.Community;
 import com.cos.soomgyo.service.CommunityService;
 
@@ -40,6 +47,28 @@ public class CommunityController {
 		model.addAttribute("community", communityService.글목록());
 		return "index";
 		
+	}
+	@RequestMapping(value="/auth/community", method= {RequestMethod.POST})
+//	@PostMapping("/api/board")
+	public String save(Community community, MultipartFile file, @AuthenticationPrincipal PrincipalDetail principal) throws Exception{
+		System.out.println("api/board"+community.getTitle()+", " + file); 
+		String sourFileName = file.getOriginalFilename();
+		 String sourFileNameExtension = FilenameUtils.getExtension(sourFileName).toLowerCase();
+		 File destinationFile;
+	     String destinationFileName;
+	     String fileUrl = "C:\\image\\";
+	     do { 
+ 			destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + sourFileNameExtension; 
+ 			destinationFile = new File(fileUrl + destinationFileName); 
+		 } while (destinationFile.exists());
+	     destinationFile.getParentFile().mkdirs();
+	     file.transferTo(destinationFile);
+	     community.setFilename(destinationFileName);
+	     community.setFileOriName(sourFileName);
+	     community.setFileurl(fileUrl);
+	     
+	     communityService.글쓰기(community,principal.getUser());
+	     return "/community/community";
 	}
 	@GetMapping("/auth/community")
 	public String community(Model model) {

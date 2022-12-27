@@ -29,32 +29,6 @@ import com.cos.soomgyo.service.FileService;
 public class CommunityApiController {
 	@Autowired
 	private CommunityService communityService;
-	@Autowired
-	private FileService fileService;
-	
-
-	@RequestMapping(value="/api/board", method= {RequestMethod.POST})
-//	@PostMapping("/api/board")
-	public ResponseDto<Integer> save(Community community, MultipartFile file, @AuthenticationPrincipal PrincipalDetail principal) throws Exception{
-		System.out.println("api/board"+community.getTitle()+", " + file); 
-		String sourFileName = file.getOriginalFilename();
-		 String sourFileNameExtension = FilenameUtils.getExtension(sourFileName).toLowerCase();
-		 File destinationFile;
-	     String destinationFileName;
-	     String fileUrl = "C:\\image\\";
-	     do { 
- 			destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + sourFileNameExtension; 
- 			destinationFile = new File(fileUrl + destinationFileName); 
-		 } while (destinationFile.exists());
-	     destinationFile.getParentFile().mkdirs();
-	     file.transferTo(destinationFile);
-	     community.setFilename(destinationFileName);
-	     community.setFileOriName(sourFileName);
-	     community.setFileurl(fileUrl);
-	     
-	     communityService.글쓰기(community,principal.getUser());
-	     return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
-	}
 
 	@DeleteMapping("/api/board/{id}")
 	public ResponseDto<Integer> deleteById(@PathVariable int id){
