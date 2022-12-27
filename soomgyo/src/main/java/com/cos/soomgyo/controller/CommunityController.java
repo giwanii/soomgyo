@@ -35,7 +35,7 @@ public class CommunityController {
 	private CommunityService communityService;
 	@Autowired
 	private ReplyService replyService;
-
+	@Autowired
 	private YoutubeService youtubeService; 
 
 	
@@ -48,15 +48,13 @@ public class CommunityController {
 		return "index";
 		
 	}
-	@RequestMapping(value="/auth/community", method= {RequestMethod.POST})
-//	@PostMapping("/api/board")
+	@RequestMapping(value="/community", method= {RequestMethod.POST})
 	public String save(Community community, MultipartFile file, @AuthenticationPrincipal PrincipalDetail principal) throws Exception{
-		System.out.println("api/board"+community.getTitle()+", " + file); 
-		String sourFileName = file.getOriginalFilename();
+		 String sourFileName = file.getOriginalFilename();
 		 String sourFileNameExtension = FilenameUtils.getExtension(sourFileName).toLowerCase();
 		 File destinationFile;
 	     String destinationFileName;
-	     String fileUrl = "C:\\image\\";
+	     String fileUrl = "C:\\images\\";
 	     do { 
  			destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + sourFileNameExtension; 
  			destinationFile = new File(fileUrl + destinationFileName); 
@@ -68,7 +66,7 @@ public class CommunityController {
 	     community.setFileurl(fileUrl);
 	     
 	     communityService.글쓰기(community,principal.getUser());
-	     return "/community/community";
+	     return "community/community";
 	}
 	@GetMapping("/auth/community")
 	public String community(Model model) {

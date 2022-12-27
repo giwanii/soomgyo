@@ -55,7 +55,7 @@
 	<div class="title">
 		<p>게시물 작성</p>
 	</div>
-	<form name="CommuSaveForm" action="/auth/community" method="POST" id="saveForm" enctype="multipart/form-data">
+	<form name="CommuSaveForm" action="/community" method="POST" id="saveForm" enctype="multipart/form-data">
 		<div class=form-group>
 		<label for="category">Category </label><br>
 			<select class="category" id="category" name="category">
