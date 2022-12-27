@@ -49,7 +49,8 @@
         </div>
 	
     </div>
-</body>
+
 <script type="text/javascript" src="/JS/utube.js"></script> 
-</html>
+<%@ include file="../layout/footer" %>
+
         

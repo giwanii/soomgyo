@@ -91,4 +91,5 @@
 <br/>
 
 <script type="text/javascript" src="/JS/community.js"></script>
+<%@ include file="../layout/footer" %>
     
