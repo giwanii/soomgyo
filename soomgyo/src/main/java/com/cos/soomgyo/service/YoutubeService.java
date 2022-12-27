@@ -31,7 +31,6 @@ public class YoutubeService {
 	}
 
 	public Youtube 동영상상세보기(int id) {
-		
 		return youtuberepository.findById(id)
 				.orElseThrow(()->{
 					return new IllegalArgumentException("영상 상세보기 실패 : 아이디 찾을수없음");

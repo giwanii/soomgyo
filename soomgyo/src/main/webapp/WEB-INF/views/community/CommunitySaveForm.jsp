@@ -55,7 +55,10 @@
 	<div class="title">
 		<p>게시물 작성</p>
 	</div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2448a8f25e2d51588043f0689ef6b36b30a3abaa
 	<form name="CommuSaveForm" action="/community" method="post" id="saveForm" enctype="multipart/form-data">
 		<div class=form-group>
 		<label for="category">Category </label><br>

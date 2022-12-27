@@ -13,10 +13,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Page;
+
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -55,7 +57,7 @@ public class CommunityController {
 	}
 	@RequestMapping(value="/community", method= {RequestMethod.POST})
 //	@PostMapping("/api/board")
-	public String save(Community community, MultipartFile file, @AuthenticationPrincipal PrincipalDetail principal) throws Exception{	
+	public String save(Community community, MultipartFile file, @AuthenticationPrincipal PrincipalDetail principal) throws Exception{
 		System.out.println("api/board"+community.getTitle()+", " + file); 
 		String sourFileName = file.getOriginalFilename();
 		 String sourFileNameExtension = FilenameUtils.getExtension(sourFileName).toLowerCase();
@@ -90,7 +92,7 @@ public class CommunityController {
 			e.printStackTrace();
 		}
 		return new ResponseEntity<Resource>(resource, header, HttpStatus.OK);
-		
+
 	}
 	@GetMapping("/auth/community")
 	public String community(Model model) {
