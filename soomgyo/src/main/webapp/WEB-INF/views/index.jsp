@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
  pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
  <%@ include file="layout/link.jsp" %>
  <link rel="stylesheet" href="/css/index.css">
 <%@ include file="layout/header.jsp" %>
@@ -73,7 +74,7 @@
                     </div>
                 </div>
                 <div class="board-box">
-                	<c:forEach var="community" items="${community}">
+                	<c:forEach var="community" items="${community}" begin="0" end="3">
 	                    <div class="board-detail-box">
 	                        <div class="category">
 	                            <p>${community.category}</p>
@@ -82,7 +83,7 @@
 	                            <div class="title">
 	                                <p>${community.title}</p>
 	                                <br>
-	                                <p><fmt:formatDate pattern = "dd HH:mm" value="${community.createDate}"/></p>
+	                                <p><fmt:formatDate pattern = "MM/dd HH:mm" value="${community.createDate}"/></p>
 	                            </div>                           
 	                        </div>
 	                    </div>
@@ -152,5 +153,4 @@
             </div>
         </div>
     </div>
-</body>
-</html>
+<%@ include file="layout/footer.jsp" %>

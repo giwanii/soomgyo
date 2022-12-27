@@ -1,15 +1,22 @@
 package com.cos.soomgyo.controller;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
+import org.springframework.data.repository.query.Param;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,11 +28,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.cos.soomgyo.config.auth.PrincipalDetail;
 import com.cos.soomgyo.model.Community;
-import com.cos.soomgyo.service.CommunityService;
-
-import com.cos.soomgyo.service.ReplyService;
 import com.cos.soomgyo.model.Youtube;
 import com.cos.soomgyo.service.CommunityService;
+import com.cos.soomgyo.service.ReplyService;
 import com.cos.soomgyo.service.YoutubeService;
 
 
@@ -49,8 +54,10 @@ public class CommunityController {
 		
 	}
 	@RequestMapping(value="/community", method= {RequestMethod.POST})
-	public String save(Community community, MultipartFile file, @AuthenticationPrincipal PrincipalDetail principal) throws Exception{
-		 String sourFileName = file.getOriginalFilename();
+//	@PostMapping("/api/board")
+	public String save(Community community, MultipartFile file, @AuthenticationPrincipal PrincipalDetail principal) throws Exception{	
+		System.out.println("api/board"+community.getTitle()+", " + file); 
+		String sourFileName = file.getOriginalFilename();
 		 String sourFileNameExtension = FilenameUtils.getExtension(sourFileName).toLowerCase();
 		 File destinationFile;
 	     String destinationFileName;
@@ -64,9 +71,26 @@ public class CommunityController {
 	     community.setFilename(destinationFileName);
 	     community.setFileOriName(sourFileName);
 	     community.setFileurl(fileUrl);
-	     
 	     communityService.글쓰기(community,principal.getUser());
-	     return "community/community";
+	     return "redirect:/auth/community";
+	}
+	@GetMapping(value="/auth/images")
+	public ResponseEntity<Resource> display(@Param("filename") String filename){
+		String path="C:\\images\\";
+		Resource resource = new FileSystemResource(path+filename);
+		if(!resource.exists()) {
+			return new ResponseEntity<Resource>(HttpStatus.NOT_FOUND);
+		}
+		HttpHeaders header = new HttpHeaders();
+		Path filePath = null;
+		try {
+			filePath=Paths.get(path+filename);
+			header.add("Content-Type", Files.probeContentType(filePath));
+		}catch(IOException e){
+			e.printStackTrace();
+		}
+		return new ResponseEntity<Resource>(resource, header, HttpStatus.OK);
+		
 	}
 	@GetMapping("/auth/community")
 	public String community(Model model) {

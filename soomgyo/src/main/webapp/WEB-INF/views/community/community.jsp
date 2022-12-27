@@ -84,8 +84,8 @@
 	                <p class="comm_content"></p>
 	                <p class="comm_comment"><img src="/img/comment.png" alt="댓글">0</p>
 	              </div>
-	              <div class="comm_board_img" style="border: 1px solid black;">
-	                <img src="">
+	              <div class="comm_board_img">
+	              	<img src="/auth/images?filename=${commu.filename}">
 	              </div>
 	            </li>
 	          </a>
@@ -97,6 +97,4 @@
   </section>
 
 <script type="text/javascript" src="/JS/community.js"></script>
-</body>
-
-</html>
+<%@ include file="../layout/footer.jsp" %>

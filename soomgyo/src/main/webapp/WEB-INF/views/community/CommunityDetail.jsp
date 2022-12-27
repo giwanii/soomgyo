@@ -30,7 +30,10 @@
         
         <div class="content">
         	<div class="content_uses">
-            	<p>${community.content}</p>
+           		<p>${community.content}</p>
+            	<div class="commu_content_imgbox">
+            		<img src="/auth/images?filename=${community.filename}">
+            	</div>
             </div>
             <div class="comment_img">
                 

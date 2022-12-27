@@ -107,6 +107,10 @@
         height: 80px;
        
       }
+      .comm_board_img>img{
+      	width: 100%;
+      	height: 100%;
+      }
       .comm_board_box{
         display: flex;
       }
