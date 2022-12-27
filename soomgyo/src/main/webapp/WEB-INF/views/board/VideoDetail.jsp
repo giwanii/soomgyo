@@ -57,7 +57,6 @@
                     <span class="title">Memo</span>
                     <input type="button" id="save_memo" name="save_memo" value="저장">
                 </li>
-    
                 <li>
                     <textarea name="memo" id="memo" style="width: 99%; height: 300px; border-radius: 5px; font-size: 1.3rem;"placeholder="메모 하고 싶으면 여기다가~"></textarea>
                 </li>

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="link.jsp" %>
 <link rel="stylesheet" href="/css/footer.css">
+
 
 <div id="footer_container">
     <div class="footer_logo">

@@ -97,4 +97,4 @@
   </section>
 
 <script type="text/javascript" src="/JS/community.js"></script>
-<%@ include file="../layout/footer" %>
+<%@ include file="../layout/footer.jsp" %>

@@ -51,6 +51,6 @@
     </div>
 
 <script type="text/javascript" src="/JS/utube.js"></script> 
-<%@ include file="../layout/footer" %>
+<%@ include file="../layout/footer.jsp" %>
 
         

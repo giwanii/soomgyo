@@ -62,7 +62,6 @@
                 </div>
             </div>
         </div>
-
         <div id="final">    <!--커뮤니티 공지사항 큰 박스-->
             <div class="community-box"> <!--커뮤니티 박스-->
                 <div class="community-font-box">
@@ -74,7 +73,8 @@
                     </div>
                 </div>
                 <div class="board-box">
-                	<c:forEach var="community" items="${community}" begin="0" end="3">
+                	<c:forEach var="community" items="${community.content}">
+                	<c:if test="${!(community.category eq '공지사항')}">
 	                    <div class="board-detail-box">
 	                        <div class="category">
 	                            <p>${community.category}</p>
@@ -87,10 +87,10 @@
 	                            </div>                           
 	                        </div>
 	                    </div>
+	                </c:if>
                     </c:forEach>
                 </div>
             </div>
-
             <div class="notice-box"> <!--공지사항 박스-->
                 <div class="notice-font-box">
                     <div class="notice-font">
@@ -101,56 +101,23 @@
                     </div>
                 </div>
                 <div class="board-box">
-                    <div class="board-detail-box">
-                        <div class="order">
-                            <p>1</p>
-                        </div>
-                        <div class="content-box">
-                            <div class="title">
-                                <p>숨교 서비스가 오픈했습니다!</p>
-                                <br>
-                                <p>2022.12.09</p>
-                            </div>                           
-                        </div>
-                    </div>
-                    <div class="board-detail-box">
-                        <div class="order">
-                            <p>2</p>
-                        </div>
-                        <div class="content-box">
-                            <div class="title">
-                                <p>숨교 서비스가 오픈했습니다!</p>
-                                <br>
-                                <p>2022.12.09</p>
-                            </div>                           
+              <c:forEach var="community" items="${community.content}">
+              	<c:if test="${community.category eq '공지사항'}">
+                   <div class="board-detail-box">
+                      <div class="order">
+                        <p>sdasdasd</p>
+                      </div>
+                      <div class="content-box">
+                         <div class="title">
+                            <p>${community.title}</p>
+                            <br>
+                          </div>                           
                         </div>
                     </div>
-                    <div class="board-detail-box">
-                        <div class="order">
-                            <p>3</p>
-                        </div>
-                        <div class="content-box">
-                            <div class="title">
-                                <p>숨교 서비스가 오픈했습니다!</p>
-                                <br>
-                                <p>2022.12.09</p>
-                            </div>                           
-                        </div>
-                    </div>
-                    <div class="board-detail-box">
-                        <div class="order">
-                            <p>4</p>
-                        </div>
-                        <div class="content-box">
-                            <div class="title">
-                                <p>숨교 서비스가 오픈했습니다!</p>
-                                <br>
-                                <p>2022.12.09</p>
-                            </div>                           
-                        </div>
-                    </div>
+                    </c:if>
+              		</c:forEach>
                 </div>
             </div>
         </div>
     </div>
-<%@ include file="layout/footer" %>
+<%@ include file="layout/footer.jsp" %>

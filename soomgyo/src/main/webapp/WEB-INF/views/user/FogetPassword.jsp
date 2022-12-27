@@ -83,4 +83,4 @@
     </div>
 
 <script type="text/javascript" src="/JS/fogetPwd.js"></script> 
-<%@ include file="../layout/footer" %>
+<%@ include file="../layout/footer.jsp" %>
