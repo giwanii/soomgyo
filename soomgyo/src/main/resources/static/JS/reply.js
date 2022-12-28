@@ -1,3 +1,8 @@
+
+function cknum(num){
+	alert(num);
+	
+}
 function modify(){
 
 	$("#re_name").hide();

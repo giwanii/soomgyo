@@ -79,7 +79,8 @@
 			       		</div>
 			       		<div class="reply_time_box">
 			       		<c:if test="${reply.users.id==principal.user.id}">
-			        		<button class="mo_btn" id="mo_btn" value="${reply.id}" onclick="modify()">수정</button>
+			        		<button class="mo_btn" id="mo_btn${status.index}" value="${reply.id}" onclick="cknum(this.id)">수정</button>
+			        		
 			        		<button id="de_btn" onclick="replyDelete(${community.id},${reply.id})">삭제</button>
 			        		<button id="mo_finish_btn" onclick="final_modify(${community.id},${reply.id})">수정완료</button>
 			        	</c:if>
