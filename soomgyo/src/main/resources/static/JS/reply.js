@@ -1,4 +1,5 @@
 function modify(){
+	
 	$("#re_name").hide();
 	$("#mo_btn").hide();
 	$("#de_btn").hide();

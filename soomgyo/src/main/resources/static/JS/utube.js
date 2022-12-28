@@ -6,7 +6,7 @@ function search1(){
 $.ajax({
 		type : "GET",
 		dataType : "json",
-		url : "https://www.googleapis.com/youtube/v3/search?q=자바&key=AIzaSyC__XjgtHRF3Qpq15asUfYKOwMWx9K99BA&part=id,snippet&type=video&maxResults=20",
+		url : "https://www.googleapis.com/youtube/v3/search?q=자바강의&key=AIzaSyC__XjgtHRF3Qpq15asUfYKOwMWx9K99BA&part=id,snippet&type=video&maxResults=20",
 		contentType: 'application/json',
 		success : function(data) {
 			for(var i=0; i<20; i++){
@@ -43,7 +43,7 @@ $.ajax({
 $.ajax({
 		type : "GET",
 		dataType : "json",
-		url : "https://www.googleapis.com/youtube/v3/search?q=C언어&key=AIzaSyC__XjgtHRF3Qpq15asUfYKOwMWx9K99BA&part=id,snippet&type=video&maxResults=20",
+		url : "https://www.googleapis.com/youtube/v3/search?q=C언어강의&key=AIzaSyC__XjgtHRF3Qpq15asUfYKOwMWx9K99BA&part=id,snippet&type=video&maxResults=20",
 		contentType: 'application/json',
 		success : function(data) {
 			for(var i=0; i<20; i++){
@@ -80,7 +80,7 @@ $.ajax({
 $.ajax({
 		type : "GET",
 		dataType : "json",
-		url : "https://www.googleapis.com/youtube/v3/search?q=자바스크립트&key=AIzaSyC__XjgtHRF3Qpq15asUfYKOwMWx9K99BA&part=id,snippet&type=video&maxResults=20",
+		url : "https://www.googleapis.com/youtube/v3/search?q=자바스크립트강의&key=AIzaSyC__XjgtHRF3Qpq15asUfYKOwMWx9K99BA&part=id,snippet&type=video&maxResults=20",
 		contentType: 'application/json',
 		success : function(data) {
 			for(var i=0; i<20; i++){
@@ -154,7 +154,7 @@ $.ajax({
 $.ajax({
 		type : "GET",
 		dataType : "json",
-		url : "https://www.googleapis.com/youtube/v3/search?q=파이썬&key=AIzaSyC__XjgtHRF3Qpq15asUfYKOwMWx9K99BA&part=id,snippet&type=video&maxResults=20",
+		url : "https://www.googleapis.com/youtube/v3/search?q=파이썬 강의&key=AIzaSyC__XjgtHRF3Qpq15asUfYKOwMWx9K99BA&part=id,snippet&type=video&maxResults=20",
 		contentType: 'application/json',
 		success : function(data) {
 			for(var i=0; i<20; i++){
@@ -186,3 +186,57 @@ $.ajax({
 		error : function(xhr, status, error) {} 
 	});
 	}
+	
+	function savememo(){
+		console.log('ㄴㅁㅇㄻ')
+		let userid=$("#userid").val();
+		let youtube=$("#youtubeid").val();
+		let memo = $("#memo").val();
+		let data= {
+			memo: memo
+		}
+		
+		$.ajax({ 
+			type:"POST",
+			url:"/ckmemo/"+youtube,
+			data:JSON.stringify(data), 
+			contentType:"application/json; charset=utf-8",
+			dataType:"json" 
+		}).done(function(resp){
+		
+				
+				$.ajax({ 
+					type:"PUT",
+					url:"/updatememo/"+youtube,
+					data:JSON.stringify(data), 
+					contentType:"application/json; charset=utf-8",
+					dataType:"json" 
+				}).done(function(resp){
+					alert('메모저장이 완료되었습니다.');
+			
+				}).fail(function(error){
+					alert(JSON.stringify(error));
+	
+		});
+			
+	
+		}).fail(function(error){
+				
+		
+				$.ajax({ 
+					type:"POST",
+					url:"/savememo/"+youtube,
+					data:JSON.stringify(data), 
+					contentType:"application/json; charset=utf-8",
+					dataType:"json" 
+				}).done(function(resp){
+					alert('메모저장이 완료되었습니다.');
+				
+				}).fail(function(error){
+					alert(JSON.stringify(error));
+			
+		});
+	
+		});
+		}
+	

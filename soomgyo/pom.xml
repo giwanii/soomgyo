@@ -179,7 +179,7 @@
 	      <artifactId>google-oauth-client-jetty</artifactId>
 	      <version>${project.oauth.version}</version>
 	    </dependency>
-
+	
 	</dependencies>
 
 	<build>

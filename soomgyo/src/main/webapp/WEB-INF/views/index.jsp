@@ -20,13 +20,12 @@
             <c:forEach var="youtube" items="${youtube}">
         		 <!--동영상이 들어갈 부분 큰 박스-->
                 	<div class="video-box">
-                		<a href="/video/${youtube.id}">
+                	<a href="/video/${youtube.id}">
 	                    <div class="youtube"><img src="${youtube.thumbnail}"></div>
 	                    <div class="youbube-title">
 	                    ${youtube.title}</div>
 	                    </a>
                 	</div>
-            	
            </c:forEach>
            </div>
         </div>        

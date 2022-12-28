@@ -30,7 +30,7 @@ public class CommunityService {
 
 	@Transactional(readOnly = true)
 	public List<Community> 글목록(int notice){
-		return communityRepository.findByNotice(notice);
+		return communityRepository.findByNoticeOrderByCreateDateDesc(notice);
 	}
 
 	@Transactional(readOnly = true)

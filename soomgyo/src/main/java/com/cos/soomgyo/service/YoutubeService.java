@@ -1,6 +1,7 @@
 package com.cos.soomgyo.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -10,7 +11,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.cos.soomgyo.model.Community;
+import com.cos.soomgyo.model.Myvideo;
+import com.cos.soomgyo.model.Users;
 import com.cos.soomgyo.model.Youtube;
+import com.cos.soomgyo.repository.MyVideoRepository;
 import com.cos.soomgyo.repository.youtubeRepository;
 
 @Service
@@ -18,6 +22,8 @@ public class YoutubeService {
 	
 	@Autowired
 	youtubeRepository youtuberepository;
+	@Autowired
+	MyVideoRepository myVideoRepository;
 	
 	public void 영상저장(Youtube youtube){
 		
@@ -30,11 +36,29 @@ public class YoutubeService {
 		return youtuberepository.findAll(firstPageableWithTwoElements);
 	}
 
-	public Youtube 동영상상세보기(int id) {
-		return youtuberepository.findById(id)
+	public Youtube 동영상상세보기(Youtube youtube) {
+		return youtuberepository.findById(youtube.getId())
 				.orElseThrow(()->{
 					return new IllegalArgumentException("영상 상세보기 실패 : 아이디 찾을수없음");
 				});
 	}
+	public void 메모저장(Myvideo myvideo,Users users, Youtube youtube) {
+		System.out.println("메모저장");
+		myvideo.setUsers(users);
+		myvideo.setYoutube(youtube);
+		myVideoRepository.save(myvideo);
+		
+	}
+	public List<Myvideo> 메모보기(Users user){
+			return myVideoRepository.findByUsers(user);
+	}
+	@Transactional
+	public void 메모수정(Myvideo myvideo,Users user,Youtube youtube) {
+		Myvideo mv = myVideoRepository.findByUsersAndYoutube(user,youtube).orElseThrow(()->{
+			return new IllegalArgumentException("메모저장 실패 아이디 못찾음");
+		});
+		mv.setMemo(myvideo.getMemo());
+	}
+
 }
 

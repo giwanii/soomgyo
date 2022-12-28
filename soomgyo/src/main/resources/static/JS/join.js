@@ -598,6 +598,8 @@ $(".send_mail").click(function() {
 	console.log('실행중')
 	console.log(mailck())
 	var email=$("#email").val()
+	if(email==""){alert('메일을 입력해주세영')}
+	else{
 	if($("#useremail").val()==email){
 
 	var count=30;
@@ -622,6 +624,7 @@ $(".send_mail").click(function() {
    }
    else{
 	alert('이메일이 올바르지 않습니다.')}
+	}
 })
 
 	// 이메일 인증번호 체크 함수
