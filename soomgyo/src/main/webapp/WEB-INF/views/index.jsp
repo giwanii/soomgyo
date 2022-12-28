@@ -73,7 +73,7 @@
                     </div>
                 </div>
                 <div class="board-box">
-                	<c:forEach var="community" items="${community1}" begin="0" end="3">
+                	<c:forEach var="community" items="${community1.content}">
 	                    <div class="board-detail-box">
 	                        <div class="category">
 	                            <p>${community.category}</p>
@@ -99,7 +99,7 @@
                     </div>
                 </div>
                 <div class="board-box">
-              <c:forEach var="community" items="${community2}" begin="0" end="3">
+              <c:forEach var="community" items="${community2.content}">
                    <div class="board-detail-box">
                       <div class="order">
                         <p>sdasdasd</p>

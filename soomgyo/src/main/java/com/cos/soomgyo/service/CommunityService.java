@@ -29,8 +29,8 @@ public class CommunityService {
 
 
 	@Transactional(readOnly = true)
-	public List<Community> 글목록(int notice){
-		return communityRepository.findByNotice(notice);
+	public Page<Community> 글목록(int notice, Pageable pageable){
+		return communityRepository.findByNotice(notice,pageable);
 	}
 
 	@Transactional(readOnly = true)

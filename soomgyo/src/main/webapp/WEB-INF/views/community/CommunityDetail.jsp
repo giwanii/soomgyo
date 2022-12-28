@@ -31,9 +31,18 @@
         <div class="content">
         	<div class="content_uses">
            		<p>${community.content}</p>
-            	<div class="commu_content_imgbox">
-            		<img src="/auth/images?filename=${community.filename}">
-            	</div>
+           		<c:choose>
+           			<c:when test="${community.fileOriName == null}">
+		            	<div class="commu_content_imgbox" style="display: none;">
+		            		<img src="/auth/images?filename=${community.filename}">
+		            	</div>
+	            	</c:when>
+	            	<c:otherwise>
+	            		<div class="commu_content_imgbox">
+		            		<img src="/auth/images?filename=${community.filename}">
+		            	</div>
+	            	</c:otherwise>
+            	</c:choose>
             </div>
             <div class="comment_img">
                 
@@ -52,7 +61,7 @@
             <input type="text" placeholder="댓글을 입력해주세요!" id="comment"name="comment">
             <button id="reply-btn-save" class="btn_comment">등록</button>
         </div>
-        	<c:forEach var="reply" items="${community.replyList}">
+        	<c:forEach var="reply" items="${community.replyList}" varStatus="status">
 		       <div class="comment">
 			       	<div class="reply_name">
 			       		<p>${reply.users.name}</p>
@@ -70,7 +79,7 @@
 			       		</div>
 			       		<div class="reply_time_box">
 			       		<c:if test="${reply.users.id==principal.user.id}">
-			        		<button class="mo_btn" id="mo_btn" value="${reply.id}" onclick="modify(this)">수정</button>
+			        		<button class="mo_btn" id="mo_btn" value="${reply.id}" onclick="modify()">수정</button>
 			        		<button id="de_btn" onclick="replyDelete(${community.id},${reply.id})">삭제</button>
 			        		<button id="mo_finish_btn" onclick="final_modify(${community.id},${reply.id})">수정완료</button>
 			        	</c:if>

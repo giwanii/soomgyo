@@ -1,9 +1,12 @@
 function modify(){
+
+
 	$("#re_name").hide();
 	$("#mo_btn").hide();
 	$("#de_btn").hide();
 	$("#mo_finish_btn").show();
 	$("#re_modify_box").show();
+
 }
 
 function final_modify(communityId,replyid){

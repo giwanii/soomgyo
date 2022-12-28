@@ -2,6 +2,8 @@ package com.cos.soomgyo.model;
 
 import java.sql.Timestamp;
 import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -60,7 +62,7 @@ public class Community {
 	                     //외래키를 사용한다.
 	
 	@JsonIgnoreProperties({"community"})
-	@OneToMany (mappedBy="community", fetch = FetchType.EAGER)
+	@OneToMany (mappedBy="community", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
 	//mappedBy는 연관관계의 주인이 아니라, DB에 컬럼을 만들지 않는다는 의미
 	//하나의 게시글에는 여러개 댓글 작성
 	private List<Reply> replyList;

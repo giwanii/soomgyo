@@ -32,7 +32,7 @@
 	                <c:otherwise>
 	                	<ul>
 	                        <li><a href="/logout">로그아웃</a></li>
-	                        <li><a href="/auth/join">마이 페이지</a></li>
+	                        <li><a href="/mypage">마이 페이지</a></li>
 	                    </ul>
 	                </c:otherwise>
                 </c:choose>

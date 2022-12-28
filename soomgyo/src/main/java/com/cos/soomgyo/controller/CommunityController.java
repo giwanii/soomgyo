@@ -13,12 +13,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Page;
-
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.query.Param;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,6 +37,9 @@ import com.cos.soomgyo.service.ReplyService;
 import com.cos.soomgyo.service.YoutubeService;
 
 
+
+
+
 @Controller
 public class CommunityController {
 	@Autowired
@@ -47,12 +51,13 @@ public class CommunityController {
 
 	
 	@GetMapping({"","/"})
-	public String index(Model model){
+	public String index(Model model,@PageableDefault(size=4, sort = "id", 
+			direction = Sort.Direction.DESC)Pageable pageable){
 		Page<Youtube> firstPage = youtubeService.관련동영상();
 		List<Youtube> pageContetns=firstPage.getContent();
 		model.addAttribute("youtube", pageContetns );
-		model.addAttribute("community1", communityService.글목록(0));
-		model.addAttribute("community2", communityService.글목록(1));
+		model.addAttribute("community1", communityService.글목록(0,pageable));
+		model.addAttribute("community2", communityService.글목록(1,pageable));
 		return "index";
 		
 	}
@@ -95,10 +100,12 @@ public class CommunityController {
 		return new ResponseEntity<Resource>(resource, header, HttpStatus.OK);
 
 	}
+	
 	@GetMapping("/auth/community")
-	public String community(Model model) {
-		model.addAttribute("community1", communityService.글목록(0));
-		model.addAttribute("community2", communityService.글목록(1));
+	public String community(Model model,@PageableDefault(size=10, sort = "id", 
+			direction = Sort.Direction.DESC)Pageable pageable) {
+		model.addAttribute("community1", communityService.글목록(0,pageable));
+		model.addAttribute("community2", communityService.글목록(1,pageable));
 		return "community/community";
 	}
 	

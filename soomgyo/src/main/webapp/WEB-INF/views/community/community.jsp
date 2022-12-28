@@ -3,6 +3,7 @@
 <%@ include file="../layout/link.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" href="/css/community.css">
+
 <style>
 	.middle_box:last-child{
 	background-color: #c3abd0;
@@ -75,7 +76,7 @@
       </div>
      
  	 <div class="comm_board comm_board1">
-	 	<c:forEach var="commu" items="${community1}">
+	 	<c:forEach var="commu" items="${community1.content}">
 	        <ul class="comm_board_ul">
 	          <a href="/auth/community/${commu.id}">
 	            <li class="comm_board_box">
@@ -85,16 +86,25 @@
 	                <p class="comm_content"></p>
 	                <p class="comm_comment"><img src="/img/comment.png" alt="댓글">0</p>
 	              </div>
-	              <div class="comm_board_img">
-	              	<img src="/auth/images?filename=${commu.filename}">
-	              </div>
+	              <c:choose>
+	              	<c:when test="${commu.fileOriName == null}">
+		                <div class="comm_board_img" style="display: none;">
+		              		<img src="/auth/images?filename=${commu.filename}">
+		              	</div>
+		            </c:when>
+		            <c:otherwise>
+		            	<div class="comm_board_img">
+		              		<img src="/auth/images?filename=${commu.filename}">
+		                </div>
+		            </c:otherwise>
+	              </c:choose>
 	            </li>
 	          </a>
 	        </ul>
         </c:forEach>
       </div>
       <div class="comm_board comm_board2" style="display:none;">
-      	<c:forEach var="commu" items="${community1}">
+      	<c:forEach var="commu" items="${community1.content}">
       		<c:if test="${commu.category eq '공유해요'}">
 	        <ul class="comm_board_ul">
 	          <a href="/auth/community/${commu.id}">
@@ -105,9 +115,18 @@
 	                <p class="comm_content"></p>
 	                <p class="comm_comment"><img src="/img/comment.png" alt="댓글">0</p>
 	              </div>
-	              <div class="comm_board_img">
-	              	<img src="/auth/images?filename=${commu.filename}">
-	              </div>
+	              <c:choose>
+	              	<c:when test="${commu.fileOriName == null}">
+		                <div class="comm_board_img" style="display: none;">
+		              		<img src="/auth/images?filename=${commu.filename}">
+		              	</div>
+		            </c:when>
+		            <c:otherwise>
+		            	<div class="comm_board_img">
+		              		<img src="/auth/images?filename=${commu.filename}">
+		                </div>
+		            </c:otherwise>
+	              </c:choose>
 	            </li>
 	          </a>
 	        </ul>
@@ -115,7 +134,7 @@
         </c:forEach>
       </div>
       <div class="comm_board comm_board3" style="display:none;">
-      	<c:forEach var="commu" items="${community1}">
+      	<c:forEach var="commu" items="${community1.content}">
       		<c:if test="${commu.category eq '질문해요'}">
 	        <ul class="comm_board_ul">
 	          <a href="/auth/community/${commu.id}">
@@ -126,9 +145,18 @@
 	                <p class="comm_content"></p>
 	                <p class="comm_comment"><img src="/img/comment.png" alt="댓글">0</p>
 	              </div>
-	              <div class="comm_board_img">
-	              	<img src="/auth/images?filename=${commu.filename}">
-	              </div>
+	              <c:choose>
+	              	<c:when test="${commu.fileOriName == null}">
+		                <div class="comm_board_img" style="display: none;">
+		              		<img src="/auth/images?filename=${commu.filename}">
+		              	</div>
+		            </c:when>
+		            <c:otherwise>
+		            	<div class="comm_board_img">
+		              		<img src="/auth/images?filename=${commu.filename}">
+		                </div>
+		            </c:otherwise>
+	              </c:choose>
 	            </li>
 	          </a>
 	        </ul>
@@ -136,7 +164,7 @@
         </c:forEach>
       </div>
       <div class="comm_board comm_board4" style="display:none;">
-      	<c:forEach var="commu" items="${community1}">
+      	<c:forEach var="commu" items="${community1.content}">
       		<c:if test="${commu.category eq '공부해요'}">
 	        <ul class="comm_board_ul">
 	          <a href="/auth/community/${commu.id}">
@@ -147,9 +175,18 @@
 	                <p class="comm_content"></p>
 	                <p class="comm_comment"><img src="/img/comment.png" alt="댓글">0</p>
 	              </div>
-	              <div class="comm_board_img">
-	              	<img src="/auth/images?filename=${commu.filename}">
-	              </div>
+	              <c:choose>
+	              	<c:when test="${commu.fileOriName == null}">
+		                <div class="comm_board_img" style="display: none;">
+		              		<img src="/auth/images?filename=${commu.filename}">
+		              	</div>
+		            </c:when>
+		            <c:otherwise>
+		            	<div class="comm_board_img">
+		              		<img src="/auth/images?filename=${commu.filename}">
+		                </div>
+		            </c:otherwise>
+	              </c:choose>
 	            </li>
 	          </a>
 	        </ul>
@@ -158,7 +195,7 @@
       </div>
       <div class="comm_board comm_board5" style="display: none;">
 
-      	  <c:forEach var="community" items="${community2}">
+      	  <c:forEach var="community" items="${community2.content}">
 	        <ul class="comm_board_ul">
 	          <a href="/auth/community/${community.id}">
 	            <li class="comm_board_box">
@@ -168,16 +205,35 @@
 	                <p class="comm_content"></p>
 	                <p class="comm_comment"><img src="/img/comment.png" alt="댓글">0</p>
 	              </div>
-	              <div class="comm_board_img">
-	              	<img src="/auth/images?filename=${community.filename}">
-	              </div>
+	              <c:choose>
+	              	<c:when test="${community.fileOriName == null}">
+		                <div class="comm_board_img" style="display: none;">
+		              		<img src="/auth/images?filename=${community.filename}">
+		              	</div>
+		            </c:when>
+		            <c:otherwise>
+		            	<div class="comm_board_img">
+		              		<img src="/auth/images?filename=${community.filename}">
+		                </div>
+		            </c:otherwise>
+	              </c:choose>
 	            </li>
 	          </a>
 	        </ul>
         </c:forEach>
       </div>
+      
     </div>
+  
   </section>
-
+	  <div class="commu_page">
+	      <ul class="pagination">
+			  <li class="page-item disabled"><a class="page-link" href="#"><</a></li>
+			  <li class="page-item"><a class="page-link" href="#">1</a></li>
+			  <li class="page-item"><a class="page-link" href="#">2</a></li>
+			  <li class="page-item"><a class="page-link" href="#">3</a></li>
+			  <li class="page-item"><a class="page-link" href="#">></a></li>
+		  </ul>
+		</div>
 <script type="text/javascript" src="/JS/community.js"></script>
 <%@ include file="../layout/footer.jsp" %>
