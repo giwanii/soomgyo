@@ -48,7 +48,7 @@ public class CommunityController {
 	private ReplyService replyService;
 	@Autowired
 	private YoutubeService youtubeService; 
-
+	
 	
 	@GetMapping({"","/"})
 	public String index(Model model,@PageableDefault(size=4, sort = "id", 
@@ -56,6 +56,7 @@ public class CommunityController {
 		Page<Youtube> firstPage = youtubeService.관련동영상();
 		List<Youtube> pageContetns=firstPage.getContent();
 		model.addAttribute("youtube", pageContetns );
+
 		model.addAttribute("community1", communityService.글목록(0,pageable));
 		model.addAttribute("community2", communityService.글목록(1,pageable));
 		return "index";
@@ -109,9 +110,11 @@ public class CommunityController {
 		return "community/community";
 	}
 	
-	@GetMapping("/video/{id}")
-	public String detailvideo(@PathVariable int id, Model model) {
-		model.addAttribute("youtube", youtubeService.동영상상세보기(id));
+	@GetMapping("/video/{youtube}")
+	public String detailvideo(@PathVariable Youtube youtube, Model model,@AuthenticationPrincipal PrincipalDetail principal) {
+		model.addAttribute("youtube", youtubeService.동영상상세보기(youtube));
+		model.addAttribute("myvideo", youtubeService.메모보기(principal.getUser()));
+
 		return "board/VideoDetail";
 	}
 	

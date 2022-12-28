@@ -1,10 +1,14 @@
 package com.cos.soomgyo.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -16,7 +20,7 @@ import lombok.NoArgsConstructor;
 @Table(name="youtube")
 @SequenceGenerator(
 			name="YOUTUBE_SEQ_GENERATOR"
-			,sequenceName = "USERS_SEQ"
+			,sequenceName = "YOUTUBE_SEQ"
 			,initialValue = 1
 			,allocationSize = 1
 		)
@@ -43,5 +47,8 @@ public class Youtube {
 	
 	@Column(nullable=false, length=50)
 	private String category;
+	
+
+	
 	
 }

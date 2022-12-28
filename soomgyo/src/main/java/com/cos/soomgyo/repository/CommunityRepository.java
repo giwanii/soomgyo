@@ -1,7 +1,6 @@
 package com.cos.soomgyo.repository;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -11,6 +10,6 @@ import org.springframework.data.jpa.repository.Query;
 import com.cos.soomgyo.model.Community;
 
 public interface CommunityRepository extends JpaRepository<Community, Integer>{
-	Page<Community> findByNotice(int notice, Pageable pageable);
 
+	Page<Community> findByNotice(int notice, Pageable pageable);
 }

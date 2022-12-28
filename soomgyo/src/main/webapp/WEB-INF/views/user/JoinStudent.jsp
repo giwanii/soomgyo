@@ -74,7 +74,7 @@
             <!--비밀번호-->
             <div class="join_input">
                 <label for="pwd">비밀번호</label><br>
-                <input type="password" name="pwd" size="20" placeholder="비밀번호를 입력해 주세요" id="pwd" onkeyup="pwck()" maxlength="16" ><br>
+                <input type="password" name="pwd" size="20" placeholder="비밀번호를 입력해 주세요" id="pwd" onkeyup="pwck()" onblur="pwdcheck()"maxlength="16" ><br>
                 <img alt="lock" src="/img/bluelock.png" class="lock bluelock">
                 <img alt="lock" src="/img/redlock.png" class="lock redlock">
             </div>
