@@ -1,17 +1,20 @@
-function modify(){
 
-	$("#re_name").hide();
-	$("#mo_btn").hide();
-	$("#de_btn").hide();
-	$("#mo_finish_btn").show();
-	$("#re_modify_box").show();
-
+function cknum(num){
+	$("#re_name"+num).hide();
+	$("#"+num).hide();
+	$("#de_btn"+num).hide();
+	$("#mo_finish_btn"+num).show();
+	$("#re_modify_box"+num).show();
+	
 }
 
-function final_modify(communityId,replyid){
-	console.log("수정완료");
+
+function final_modify(communityId,replyid,id){
+	console.log(id)
+	var number = $('#'+id).attr('class');
+	console.log(number)
 	let data={
-			content: $("#re_modify_box").val()
+			content: $("#re_modify_box"+number).val()
 		}
 		console.log(data.content);
 	$.ajax({
@@ -21,8 +24,9 @@ function final_modify(communityId,replyid){
 		contentType:"application/json; charset=utf-8",
 		dataType:"json"
 	}).done(function(resp){
-		alert("댓글수정이 완료되었습니다");
 		location.href="";
+		alert("댓글수정이 완료되었습니다");
+
 	}).fail(function(error){
 		alert(JSON.stringify(error));
 	});
@@ -36,6 +40,7 @@ function replyDelete(communityId,replyid){
 		dataType:"json"
 	}).done(function(resp){
 		location.href="";
+		alert("댓글이 삭제되었습니다");
 	}).fail(function(error){
 		alert(JSON.stringify(error));
 	});

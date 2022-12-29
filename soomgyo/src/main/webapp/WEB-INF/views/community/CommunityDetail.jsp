@@ -69,8 +69,8 @@
 			       	</div>
 			       	
 			       	<div class="reply_content">
-			       		<p id="re_name">${reply.content}</p>	
-			       		<textarea id="re_modify_box">${reply.content}</textarea>
+			       		<p id="re_name${status.index}">${reply.content}</p>	
+			       		<textarea id="re_modify_box${status.index}">${reply.content}</textarea>
 			       	</div>
 			       	
 			       	<div class="reply_time">
@@ -78,11 +78,11 @@
 			       			<p><fmt:formatDate pattern = "MM/dd HH:mm" value="${reply.createDate}"/></p>
 			       		</div>
 			       		<div class="reply_time_box">
-			       		<c:if test="${reply.users.id==principal.user.id}">
-			        		<button class="mo_btn" id="mo_btn" value="${reply.id}" onclick="modify()">수정</button>
-			        		<button id="de_btn" onclick="replyDelete(${community.id},${reply.id})">삭제</button>
-			        		<button id="mo_finish_btn" onclick="final_modify(${community.id},${reply.id})">수정완료</button>
-			        	</c:if>
+				       		<c:if test="${reply.users.id==principal.user.id}">
+				        		<button class="mo_btn" id="${status.index}" value="${reply.id}" onclick="cknum(this.id)">수정</button>
+				        		<button class="de_btn" id="de_btn${status.index}" onclick="replyDelete(${community.id},${reply.id})">삭제</button>
+				        		<button class="${status.index}" id="mo_finish_btn${status.index}" onclick="final_modify(${community.id},${reply.id},this.id)" style="display:none;">수정완료</button>
+				        	</c:if>
 			       		</div>
 			       	</div>
 		       </div>

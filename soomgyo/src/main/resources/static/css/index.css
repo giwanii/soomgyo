@@ -6,7 +6,7 @@
 .banner_img>img{
     width: 100%;
 }
-/*愿��젴�룞�쁺�긽 �떆�옉*/
+/*�꽴占쏙옙�졃占쎈짗占쎌겫占쎄맒 占쎈뻻占쎌삂*/
 #container {
     width: 80%;
     padding-top: 30px;
@@ -55,9 +55,7 @@ text-overflow: ellipsis;
     width: 100%;
     height: 100%;
 }
-.youbube-title{
-	
-}
+
 .youbube-title img{
 	width: 30px;
 	height:30px;
@@ -77,7 +75,7 @@ width: 100%;
 	width: 100%;
 	height: 100%;
 }
-/*愿묎퀬*/
+/*�꽴臾롰��*/
 #container2{
     width: 100%;
     margin-top:100px;
@@ -90,7 +88,7 @@ width: 100%;
     width: 100%;
     margin-top:100px;
 }
-/*媛뺤궗李얘린遺��꽣 �떆�옉*/
+/*揶쏅벡沅쀯㎕�뼐由곈겫占쏙옙苑� 占쎈뻻占쎌삂*/
 #container3 {
     width: 80%;
     padding-top: 10px;
@@ -132,7 +130,7 @@ width: 100%;
     margin-top: 8px;
 }
 
-/* 而ㅻ�ㅻ땲�떚*/
+/* �뚣끇占썬끇�빍占쎈뼒*/
 .community-font-box{
     width: 100%;
     height: 15%;
@@ -190,7 +188,7 @@ width: 100%;
     margin-top: 35px;
     text-align: center;
 }
-/* pc踰꾩쟾 */
+/* pc甕곌쑴�읈 */
 @media all and (min-width:760px){
     #final {
         width: 100%;
@@ -210,7 +208,7 @@ width: 100%;
         border-radius: 10px;
     }
 }
-/* 紐⑤컮�씪踰꾩쟾 */
+/* 筌뤴뫀而�占쎌뵬甕곌쑴�읈 */
 @media all and (max-width:759px){
 	#banner_image_cotainer{
 
