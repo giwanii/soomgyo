@@ -62,8 +62,8 @@ public class CommunityController {
 		return "index";
 		
 	}
+	//게시글 이미지 저장
 	@RequestMapping(value="/community", method= {RequestMethod.POST})
-//	@PostMapping("/api/board")
 	public String save(Community community, MultipartFile file, @AuthenticationPrincipal PrincipalDetail principal) throws Exception{
 		System.out.println("api/board"+community.getTitle()+", " + file); 
 		String sourFileName = file.getOriginalFilename();
@@ -83,6 +83,29 @@ public class CommunityController {
 	     communityService.글쓰기(community,principal.getUser());
 	     return "redirect:/auth/community";
 	}
+	//게시글 이미지 수정
+	@RequestMapping(value="/communityupdate/{id}", method= {RequestMethod.POST})
+	public String update(Community community, MultipartFile file, @AuthenticationPrincipal PrincipalDetail principal) throws Exception{
+		System.out.println("글수정하기 controller"+community.getTitle()+","+community.getCategory()+","+community.getId());
+		String sourFileName = file.getOriginalFilename();
+		 String sourFileNameExtension = FilenameUtils.getExtension(sourFileName).toLowerCase();
+		 File destinationFile;
+	     String destinationFileName;
+	     String fileUrl = "C:\\images\\";
+	     do { 
+ 			destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + sourFileNameExtension; 
+ 			destinationFile = new File(fileUrl + destinationFileName); 
+		 } while (destinationFile.exists());
+	     destinationFile.getParentFile().mkdirs();
+	     file.transferTo(destinationFile);
+	     community.setFilename(destinationFileName);
+	     community.setFileOriName(sourFileName);
+	     community.setFileurl(fileUrl);
+	     System.out.println("실행");
+	     communityService.글수정하기(community, principal.getUser(),file,community.getId());
+	     return "redirect:/auth/community";
+	}
+	//이미지경로설정
 	@GetMapping(value="/auth/images")
 	public ResponseEntity<Resource> display(@Param("filename") String filename){
 		String path="C:\\images\\";
@@ -101,7 +124,7 @@ public class CommunityController {
 		return new ResponseEntity<Resource>(resource, header, HttpStatus.OK);
 
 	}
-	
+	//커뮤니티 메인 목록 뿌려주고 페이지네이션
 	@GetMapping("/auth/community")
 	public String community(Model model,@PageableDefault(size=10, sort = "id", 
 			direction = Sort.Direction.DESC)Pageable pageable) {

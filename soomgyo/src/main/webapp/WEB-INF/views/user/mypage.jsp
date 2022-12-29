@@ -128,18 +128,44 @@
                             <div class="join_input">
                                 <label for="pwd_check">비밀번호 확인</label><br>
                                 <input type="password" name="pwd_check" size="20" placeholder="비밀번호를 다시 한번 입력해 주세요"><br>
-                            </div>
-                            <!--탈퇴하기-->
-                            <div class="join_input">
-                                <input type="submit" value="탈퇴하기" onclick="return delete_confirm()">
-                            </div>
-                            <script></script>
+                            </div>                           
                         </form>
+                        <!--탈퇴하기-->
+                        <div class="join_input">
+                            <input type="submit" value="탈퇴하기" onclick="user_delete()">
+                        </div>
                   </div>
                 </div>
 
                 <div id="tab4" class="cont">
-                    등록
+                    <div class="teacher_upload">
+                        <!--제목-->
+                        <div class="T_upload_input">
+                            <label for="title">제목</label>
+                            <input type="text" name="title">
+                        </div>
+                        <!--본인 소개-->
+                        <div class="T_upload_input">
+                            <label for="introduce">본인 소개</label><br><br>
+                            <textarea cols="75" rows="10"></textarea>
+                            <p>본인 소개를 최대한 상세하게 적어주세요.</p>
+                        </div>
+                        <!--수업 정보-->
+                        <div class="T_upload_input">
+                            <label for="class_info">수업 정보</label><br><br>
+                            <textarea cols="75" rows="10" name="introduce" required wrap="hard" autofocus></textarea>
+                            <p>수업 방식과 관련 내용을 상세하게 적어주세요.</p>
+                        </div>
+                        <!--첨부파일-->
+                        <div class="T_upload_input">
+                            <label for="addfile">첨부 파일</label><br><br>
+                            <input type="file" id="addfile" multiple required> 
+                        </div>
+                        <!--제출하기 버튼-->
+                        <div class="T_upload_btn">
+                            <button>제출하기</button>
+                        </div>
+                    </div>
                 </div>
               </div>
             </div>

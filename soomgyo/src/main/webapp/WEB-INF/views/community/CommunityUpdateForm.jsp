@@ -55,9 +55,9 @@
       </div>
 	<div class="board_box">
 	<div class="title">
-		<p>게시물 작성</p>
+		<p>게시물 수정</p>
 	</div>
-	<form name="CommuSaveForm" >
+	<form name="CommuSaveForm" action="/communityupdate/${community.id}" method="POST" id="saveForm" enctype="multipart/form-data" >
 		<div class=form-group>
 		<label for="category">Category </label><br>
 			<select class="category" id="category" name="category">
@@ -70,7 +70,7 @@
 		</div>
 		<div class="form-group">
 			<label for="title">Title</label><br>
-			<input type="text" value="${community.title}" class="form-control" id="title">
+			<input type="text" name="title" value="${community.title}" class="form-control" id="title">
 		</div>
 		
 		<div class="form-group">
@@ -79,13 +79,13 @@
 		</div>
 		<div class="form-group">
 			<label for="file">File</label><br>
-			<input type="file" class="form-control"  id="file" multiple="multiple">
+			<input type="file" name="file" class="form-control"  id="file" multiple="multiple">
 		</div>
-		
+		<div id="btn_div">
+			<button id="btn-update">수정</button>
+		</div>
 	</form>
-	<div id="btn_div">
-		<button id="btn-update">수정</button>
-	</div>
+	
 	</div>
 </div>
 <br/>

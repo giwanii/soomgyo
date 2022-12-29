@@ -108,7 +108,9 @@ let index = {
 			}
 		});
 		$("#btn-delete").on("click",()=>{
-			this.deleteById();
+			if(confirm("게시물을 삭제하시겠습니까?")){
+				this.deleteById();	
+			}
 		});
 		$("#btn-update").on("click",()=>{
 			if(this.SelectCheck()){
@@ -159,6 +161,7 @@ let index = {
 			alert(JSON.stringify(error));
 		});
 	},
+	/*
 	update: function(){
 		let id=$("#id").val();
 		let data={
@@ -180,5 +183,6 @@ let index = {
 			alert(JSON.stringify(error));
 		});
 	},
+	*/
 }
 index.init();

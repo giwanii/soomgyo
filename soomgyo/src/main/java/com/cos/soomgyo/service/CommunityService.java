@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.cos.soomgyo.model.Community;
 //import com.cos.soomgyo.model.Files;
@@ -62,12 +63,17 @@ public class CommunityService {
 		communityRepository.deleteById(id);
 	}
 	@Transactional
-	public void 글수정하기(int id, Community requestCommunity) {
+	public void 글수정하기(Community requestCommunity, Users user, MultipartFile file, int id) {
+		System.out.println("글수정하기 service"+requestCommunity.getTitle()+","+requestCommunity.getCategory()+","+requestCommunity.getId()+","+id);
 		Community commu = communityRepository.findById(id).orElseThrow(()->{
+			System.out.println("실행");
 			return new IllegalArgumentException("글 상세보기 실패 : 아이디 찾을수없음");
 		});
 		commu.setCategory(requestCommunity.getCategory());
 		commu.setTitle(requestCommunity.getTitle());
 		commu.setContent(requestCommunity.getContent());
+		commu.setFileOriName(requestCommunity.getFileOriName());
+		commu.setFilename(requestCommunity.getFilename());
+		commu.setFileurl(requestCommunity.getFileurl());
 	}
 }

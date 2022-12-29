@@ -35,9 +35,11 @@ public class CommunityApiController {
 		communityService.글삭제하기(id);
 		return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
 	}
+	/*
 	@PutMapping("/api/board/{id}")
 	public ResponseDto<Integer> update(@PathVariable int id, @RequestBody Community community){
 		communityService.글수정하기(id,community);
 		return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
 	}
+	*/
 }

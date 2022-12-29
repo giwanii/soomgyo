@@ -228,11 +228,25 @@
   </section>
 	  <div class="commu_page">
 	      <ul class="pagination">
-			  <li class="page-item disabled"><a class="page-link" href="#"><</a></li>
-			  <li class="page-item"><a class="page-link" href="#">1</a></li>
-			  <li class="page-item"><a class="page-link" href="#">2</a></li>
-			  <li class="page-item"><a class="page-link" href="#">3</a></li>
-			  <li class="page-item"><a class="page-link" href="#">></a></li>
+	      	<c:choose>
+	      		<c:when test="${community.first}">
+			  		<li class="page-item disabled"><a class="page-link" href="?page=${community.number-1}"><</a></li>
+			  	</c:when>
+			  	<c:otherwise>
+			  		<li class="page-item"><a class="page-link" href="?page=${community.number-1}"><</a></li>
+			  	</c:otherwise>
+			</c:choose>
+			  <li class="page-item"><a class="page-link" href="/auth/community">1</a></li>
+			  <li class="page-item"><a class="page-link" href="/auth/community?page=1">2</a></li>
+			  <li class="page-item"><a class="page-link" href="/auth/community?page=2">3</a></li>
+			  <c:choose>
+	      		<c:when test="${community.last}">
+			  		<li class="page-item disabled"><a class="page-link" href="?page=${community.number+1}">></a></li>
+			  	</c:when>
+			  	<c:otherwise>
+			  		<li class="page-item"><a class="page-link" href="?page=${community.number+1}">></a></li>
+			  	</c:otherwise>
+			</c:choose>
 		  </ul>
 		</div>
 <script type="text/javascript" src="/JS/community.js"></script>

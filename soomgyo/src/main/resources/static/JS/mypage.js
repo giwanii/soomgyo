@@ -21,3 +21,17 @@ for(var i = 0; i < tabList.length; i++){
     document.querySelector(activeCont).style.display = 'block';
   });
 }
+
+function user_delete(){
+	console.log("삭제");
+	$.ajax({
+		type:"DELETE",
+		url:"api/board/userdelete",
+		dataType:"json"
+	}).done(function(resp){
+		alert("탈퇴가 완료되었습니다");
+		location.href="";
+	}).fail(function(error){
+		alert(JSON.stringify(error));
+	});
+}

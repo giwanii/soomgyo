@@ -137,7 +137,22 @@
         position: sticky;
         top: 0;
        }
-
+       .commu_page{
+         	margin-top: 50px;
+         	height: 50px;
+         }
+       .pagination{
+       	display: flex;
+       	justify-content: center;
+       }
+       .page-item{
+       	width: 50px;
+       	height: 100%;
+       	text-align: center;
+       }
+		.page-link{
+			font-size: 20px;
+		}
        @media all and (max-width:1050px) {
         #comm_main{
           flex-direction: column;
@@ -194,9 +209,6 @@
           position: sticky;
           top: 0;
           background-color: white;
-         }
-         .commu_page{
-         	text-align: center;
          }
   		
        }
