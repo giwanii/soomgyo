@@ -45,5 +45,10 @@ public class YoutubeApiController {
 			youtubeService.메모수정(myvideo,principal.getUser(),youtube);
 			return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
 		}
+		@PostMapping("/likeVideo")
+		public ResponseDto<Integer> likeVideo (Myvideo myvideo,@AuthenticationPrincipal PrincipalDetail principal, @RequestBody Youtube youtube) {
+			youtubeService.관심확인(myvideo,principal.getUser(),youtube);
+			return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
+		}
 
 }

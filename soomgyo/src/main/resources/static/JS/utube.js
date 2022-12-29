@@ -239,4 +239,26 @@ $.ajax({
 	
 		});
 		}
+		
+		function like(uid){
+			var youtubeid=$("."+uid).val();
+		let data={
+			youtube: youtubeid,
+		};
+		
+		$.ajax({ 
+			type:"POST",
+			url:"/likeVideo",
+			data:JSON.stringify(data), 
+			contentType:"application/json; charset=utf-8",
+			dataType:"json" 
+		}).done(function(resp){
+			console.log(resp);
+	
+		}).fail(function(error){
+			console.log(error)
+	
+		});
+	
+	}
 	

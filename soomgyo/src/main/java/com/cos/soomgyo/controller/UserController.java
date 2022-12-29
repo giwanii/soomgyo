@@ -79,13 +79,11 @@ public class UserController {
 	}
 	
 	@GetMapping("/videoCategory")
-	public String videocategory(Model model,@PageableDefault(size=4, sort = "id", 
-			direction = Sort.Direction.DESC)Pageable pageable,@AuthenticationPrincipal PrincipalDetail principal ){
-		Page<Youtube> firstPage = youtubeService.관련동영상();
-		List<Youtube> pageContetns=firstPage.getContent();
-		model.addAttribute("youtube", pageContetns );
+	public String videocategory(Model model,@AuthenticationPrincipal PrincipalDetail principal){
+		model.addAttribute("youtube",youtubeService.모든동영상());
 		Users user =principal.getUser();
 		model.addAttribute("category",user.getCategory());
+		model.addAttribute("myvideo", youtubeService.메모보기(user));
 		return "board/VideoCategory";
 	}
 	

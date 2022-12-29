@@ -2,8 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../layout/link.jsp" %>
 <link rel="stylesheet" href="/css/Teacherfind.css">
+<link rel="stylesheet" href="/css/swiper.css">
 <!-- Link Swiper's CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
+
 <%@ include file="../layout/header.jsp" %>
 <div id="T_find_main_container">
     <div class="pc_slide_big_box">
