@@ -101,6 +101,7 @@ public class CommunityController {
 	     community.setFileOriName(sourFileName);
 	     community.setFileurl(fileUrl);
 	     System.out.println("실행");
+	     
 	     communityService.글수정하기(community, principal.getUser(),file,community.getId());
 	     return "redirect:/auth/community";
 	}
