@@ -51,10 +51,12 @@
 
 .heartimg {
 	width: 30px;
+	height: 30px;
 	position: absolute;
 	bottom: 40px;
 	right: 46%;
 	cursor: pointer;
+	position: absolute;
 }
 
 .youbube-title {
@@ -67,10 +69,13 @@
 
 	<c:forEach var="category" items="${fn:split(category, ',')}">
 		<c:if test="${category == 'JAVA'}">
-			<div class="pri_T_bold_font">
-				<h2>자바</h2>
-			</div>
 			<div class="pc_slide_big_box">
+				<div class="pri_T_bold_font">
+					<h2>자바</h2>
+					<br> <br>
+					<hr>
+				</div>
+
 				<div class="swiper mySwiper">
 					<div class="swiper-wrapper">
 						<c:forEach var="youtube" items="${youtube}" varStatus="status">
@@ -80,16 +85,21 @@
 										<input type="hidden" class="${status.index}"
 											value="${youtube.id}"> <a href="/video/${youtube.id}">
 											<div class="youtube">
-												<c:forEach var="like" items="${myvideo}">
-												${like.id}
 												<img src="${youtube.thumbnail}">
-												</c:forEach>
 											</div>
 										</a>
 										<div class="youbube-title">${youtube.title}</div>
 										<div class="heartimg">
-											<img alt="heart" src="img/heart.png" class="java"
-												onclick="like(this.id)" id="${status.index}">
+											<c:if test="${youtube.likes == null}">
+												<input type="hidden" id="f${status.index}" value="false">
+												<img alt="heart" src="img/0.png" class="javascript"
+													onclick="like(this.id)" id="${status.index}">
+											</c:if>
+											<c:if test="${!(youtube.likes == null)}">
+												<input type="hidden" id="f${status.index}" value="true">
+												<img alt="heart" src="img/1.png" class="javascript"
+													onclick="like(this.id)" id="${status.index}">
+											</c:if>
 										</div>
 
 									</div>
@@ -104,10 +114,13 @@
 	</c:forEach>
 	<c:forEach var="category" items="${fn:split(category, ',')}">
 		<c:if test="${category == 'JavaScript'}">
-			<div class="pri_T_bold_font">
-				<h2>자바스크립트</h2>
-			</div>
 			<div class="pc_slide_big_box">
+				<div class="pri_T_bold_font">
+					<h2>자바스크립트</h2>
+					<br> <br>
+					<hr>
+
+				</div>
 				<div class="swiper mySwiper">
 					<div class="swiper-wrapper">
 
@@ -123,19 +136,16 @@
 										</a>
 										<div class="youbube-title">${youtube.title}</div>
 										<div class="heartimg">
-											<c:forEach var="like" items="${myvideo}">
-												<c:choose>
-													<c:when test="${like.youtube.id eq youtube.id}">
-														<img alt="heart" src="img/${like.videolikes}.png"
-															class="javascript" onclick="like(this.id)"
-															id="${status.index}">
-													</c:when>
-													<c:otherwise>
-														<img alt="heart" src="img/0.png" class="javascript"
-															onclick="like(this.id)" id="${status.index}">
-													</c:otherwise>
-												</c:choose>
-											</c:forEach>
+											<c:if test="${youtube.likes == null}">
+												<input type="hidden" id="f${status.index}" value="false">
+												<img alt="heart" src="img/0.png" class="javascript"
+													onclick="like(this.id)" id="${status.index}">
+											</c:if>
+											<c:if test="${!(youtube.likes == null)}">
+												<input type="hidden" id="f${status.index}" value="true">
+												<img alt="heart" src="img/1.png" class="javascript"
+													onclick="like(this.id)" id="${status.index}">
+											</c:if>
 										</div>
 									</div>
 								</div>
@@ -143,16 +153,20 @@
 						</c:forEach>
 					</div>
 					<div class="swiper-pagination"></div>
+
 				</div>
 			</div>
 		</c:if>
 	</c:forEach>
 	<c:forEach var="category" items="${fn:split(category, ',')}">
 		<c:if test="${category == 'C'}">
-			<div class="pri_T_bold_font">
-				<h2>C언어</h2>
-			</div>
 			<div class="pc_slide_big_box">
+				<div class="pri_T_bold_font">
+					<h2>C언어</h2>
+					<br> <br>
+					<hr>
+				</div>
+
 				<div class="swiper mySwiper">
 					<div class="swiper-wrapper">
 
@@ -168,8 +182,16 @@
 										</a>
 										<div class="youbube-title">${youtube.title}</div>
 										<div class="heartimg">
-											<img alt="heart" src="img/heart.png" class="c"
-												onclick="like(this.id)" id="${status.index}">
+											<c:if test="${youtube.likes == null}">
+												<input type="hidden" id="f${status.index}" value="false">
+												<img alt="heart" src="img/0.png" class="javascript"
+													onclick="like(this.id)" id="${status.index}">
+											</c:if>
+											<c:if test="${!(youtube.likes == null)}">
+												<input type="hidden" id="f${status.index}" value="true">
+												<img alt="heart" src="img/1.png" class="javascript"
+													onclick="like(this.id)" id="${status.index}">
+											</c:if>
 										</div>
 									</div>
 								</div>
@@ -183,43 +205,57 @@
 	</c:forEach>
 	<c:forEach var="category" items="${fn:split(category, ',')}">
 		<c:if test="${category == 'Python'}">
-			<div class="pri_T_bold_font">
-				<h2>파이썬</h2>
-			</div>
 			<div class="pc_slide_big_box">
-				<div class="swiper mySwiper">
-					<div class="swiper-wrapper">
-						<c:forEach var="youtube" items="${youtube}" varStatus="status">
-							<c:if test="${youtube.category eq 'Python'}">
-								<div class="swiper-slide">
-									<div class="video-box">
-										<input type="hidden" class="${status.index}"
-											value="${youtube.id}"> <a href="/video/${youtube.id}">
-											<div class="youtube">
-												<img src="${youtube.thumbnail}">
+				<div class="pri_T_bold_font">
+					<h2>파이썬</h2>
+					<br> <br>
+					<hr>
+				</div>
+				<div class="pc_slide_big_box">
+					<div class="swiper mySwiper">
+						<div class="swiper-wrapper">
+							<c:forEach var="youtube" items="${youtube}" varStatus="status">
+								<c:if test="${youtube.category eq 'Python'}">
+									<div class="swiper-slide">
+										<div class="video-box">
+											<input type="hidden" class="${status.index}"
+												value="${youtube.id}"> <a
+												href="/video/${youtube.id}">
+												<div class="youtube">
+													<img src="${youtube.thumbnail}">
+												</div>
+											</a>
+											<div class="youbube-title">${youtube.title}</div>
+											<div class="heartimg">
+												<c:if test="${youtube.likes == null}">
+													<input type="hidden" id="f${status.index}" value="false">
+													<img alt="heart" src="img/0.png" class="javascript"
+														onclick="like(this.id)" id="${status.index}">
+												</c:if>
+												<c:if test="${!(youtube.likes == null)}">
+													<input type="hidden" id="f${status.index}" value="true">
+													<img alt="heart" src="img/1.png" class="javascript"
+														onclick="like(this.id)" id="${status.index}">
+												</c:if>
 											</div>
-										</a>
-										<div class="youbube-title">${youtube.title}</div>
-										<div class="heartimg">
-											<img alt="heart" src="img/heart.png" class="python"
-												onclick="like(this.id)" id="${status.index}">
 										</div>
 									</div>
-								</div>
-							</c:if>
-						</c:forEach>
+								</c:if>
+							</c:forEach>
+						</div>
+						<div class="swiper-pagination"></div>
 					</div>
-					<div class="swiper-pagination"></div>
 				</div>
-			</div>
 		</c:if>
 	</c:forEach>
 	<c:forEach var="category" items="${fn:split(category, ',')}">
 		<c:if test="${category == 'Oracle'}">
-			<div class="pri_T_bold_font">
-				<h2>오라클</h2>
-			</div>
 			<div class="pc_slide_big_box">
+				<div class="pri_T_bold_font">
+					<h2>오라클</h2>
+					<br> <br>
+					<hr>
+				</div>
 				<div class="swiper mySwiper">
 					<div class="swiper-wrapper">
 						<c:forEach var="youtube" items="${youtube}" varStatus="status">
@@ -234,8 +270,16 @@
 										</a>
 										<div class="youbube-title">${youtube.title}</div>
 										<div class="heartimg">
-											<img alt="heart" src="img/heart.png" class="oracle"
-												onclick="like(this.id)" id="${status.index}">
+											<c:if test="${youtube.likes == null}">
+												<input type="hidden" id="f${status.index}" value="false">
+												<img alt="heart" src="img/0.png" class="javascript"
+													onclick="like(this.id)" id="${status.index}">
+											</c:if>
+											<c:if test="${!(youtube.likes == null)}">
+												<input type="hidden" id="f${status.index}" value="true">
+												<img alt="heart" src="img/1.png" class="javascript"
+													onclick="like(this.id)" id="${status.index}">
+											</c:if>
 										</div>
 									</div>
 								</div>
@@ -274,96 +318,225 @@
 	</script>
 </div>
 
-<div class="mobile_slide_big_box">
-	<div class="pri_T_bold_font">
-		<h2>프리미엄 강사</h2>
-	</div>
-	<div class="swiper mySwiper2">
-		<div class="swiper-wrapper">
-			<div class="swiper-slide">
-				<div class="primium_T_img"></div>
-				<div class="primium_t_title">
-					<p>제목</p>
+	<c:forEach var="category" items="${fn:split(category, ',')}">
+		<c:if test="${category == 'JAVA'}">
+			<div class="mobile_slide_big_box">
+				<div class="pri_T_bold_font">
+					<h2>자바</h2>
+					<br> <br>
+					<hr>
 				</div>
-				<div class="primium_t_content">
-					<p>내용</p>
-				</div>
-			</div>
-			<div class="swiper-slide">
-				<div class="primium_T_img"></div>
-				<div class="primium_t_title">
-					<p>제목</p>
-				</div>
-				<div class="primium_t_content">
-					<p>내용</p>
-				</div>
-			</div>
-			<div class="swiper-slide">
-				<div class="primium_T_img"></div>
-				<div class="primium_t_title">
-					<p>제목</p>
-				</div>
-				<div class="primium_t_content">
-					<p>내용</p>
-				</div>
-			</div>
-			<div class="swiper-slide">
-				<div class="primium_T_img"></div>
-				<div class="primium_t_title">
-					<p>제목</p>
-				</div>
-				<div class="primium_t_content">
-					<p>내용</p>
-				</div>
-			</div>
-			<div class="swiper-slide">
-				<div class="primium_T_img"></div>
-				<div class="primium_t_title">
-					<p>제목</p>
-				</div>
-				<div class="primium_t_content">
-					<p>내용</p>
+
+				<div class="swiper mySwiper2">
+					<div class="swiper-wrapper">
+						<c:forEach var="youtube" items="${youtube}" varStatus="status">
+							<c:if test="${youtube.category eq 'JAVA'}">
+								<div class="swiper-slide">
+									<div class="video-box">
+										<input type="hidden" class="${status.index}"
+											value="${youtube.id}"> <a href="/video/${youtube.id}">
+											<div class="youtube">
+												<img src="${youtube.thumbnail}">
+											</div>
+										</a>
+										<div class="youbube-title">${youtube.title}</div>
+										<div class="heartimg">
+											<c:if test="${youtube.likes == null}">
+												<input type="hidden" id="f${status.index}" value="false">
+												<img alt="heart" src="img/0.png" class="javascript"
+													onclick="like(this.id)" id="${status.index}">
+											</c:if>
+											<c:if test="${!(youtube.likes == null)}">
+												<input type="hidden" id="f${status.index}" value="true">
+												<img alt="heart" src="img/1.png" class="javascript"
+													onclick="like(this.id)" id="${status.index}">
+											</c:if>
+										</div>
+
+									</div>
+								</div>
+							</c:if>
+						</c:forEach>
+					</div>
+					<div class="swiper-pagination"></div>
 				</div>
 			</div>
-			<div class="swiper-slide">
-				<div class="primium_T_img"></div>
-				<div class="primium_t_title">
-					<p>제목</p>
+		</c:if>
+	</c:forEach>
+	<c:forEach var="category" items="${fn:split(category, ',')}">
+		<c:if test="${category == 'JavaScript'}">
+			<div class="mobile_slide_big_box">
+				<div class="pri_T_bold_font">
+					<h2>자바스크립트</h2>
+					<br> <br>
+					<hr>
+
 				</div>
-				<div class="primium_t_content">
-					<p>내용</p>
+				<div class="swiper mySwiper2">
+					<div class="swiper-wrapper">
+						<c:forEach var="youtube" items="${youtube}" varStatus="status">
+							<c:if test="${youtube.category eq 'JavaScript'}">
+								<div class="swiper-slide">
+									<div class="video-box">
+										<input type="hidden" class="${status.index}"
+											value="${youtube.id}"> <a href="/video/${youtube.id}">
+											<div class="youtube">
+												<img src="${youtube.thumbnail}">
+											</div>
+										</a>
+										<div class="youbube-title">${youtube.title}</div>
+										<div class="heartimg">
+											<c:if test="${youtube.likes == null}">
+												<input type="hidden" id="f${status.index}" value="false">
+												<img alt="heart" src="img/0.png" class="javascript"
+													onclick="like(this.id)" id="${status.index}">
+											</c:if>
+											<c:if test="${!(youtube.likes == null)}">
+												<input type="hidden" id="f${status.index}" value="true">
+												<img alt="heart" src="img/1.png" class="javascript"
+													onclick="like(this.id)" id="${status.index}">
+											</c:if>
+										</div>
+									</div>
+								</div>
+							</c:if>
+						</c:forEach>
+					</div>
+					<div class="swiper-pagination"></div>
+
 				</div>
 			</div>
-			<div class="swiper-slide">
-				<div class="primium_T_img"></div>
-				<div class="primium_t_title">
-					<p>제목</p>
+		</c:if>
+	</c:forEach>
+	<c:forEach var="category" items="${fn:split(category, ',')}">
+		<c:if test="${category == 'C'}">
+			<div class="mobile_slide_big_box">
+				<div class="pri_T_bold_font">
+					<h2>C언어</h2>
+					<br> <br>
+					<hr>
 				</div>
-				<div class="primium_t_content">
-					<p>내용</p>
+				<div class="swiper mySwiper2">
+					<div class="swiper-wrapper">
+						<c:forEach var="youtube" items="${youtube}" varStatus="status">
+							<c:if test="${youtube.category eq 'Cc'}">
+								<div class="swiper-slide">
+									<div class="video-box">
+										<input type="hidden" class="${status.index}"
+											value="${youtube.id}"> <a href="/video/${youtube.id}">
+											<div class="youtube">
+												<img src="${youtube.thumbnail}">
+											</div>
+										</a>
+										<div class="youbube-title">${youtube.title}</div>
+										<div class="heartimg">
+											<c:if test="${youtube.likes == null}">
+												<input type="hidden" id="f${status.index}" value="false">
+												<img alt="heart" src="img/0.png" class="javascript"
+													onclick="like(this.id)" id="${status.index}">
+											</c:if>
+											<c:if test="${!(youtube.likes == null)}">
+												<input type="hidden" id="f${status.index}" value="true">
+												<img alt="heart" src="img/1.png" class="javascript"
+													onclick="like(this.id)" id="${status.index}">
+											</c:if>
+										</div>
+									</div>
+								</div>
+							</c:if>
+						</c:forEach>
+					</div>
+					<div class="swiper-pagination"></div>
 				</div>
 			</div>
-			<div class="swiper-slide">
-				<div class="primium_T_img"></div>
-				<div class="primium_t_title">
-					<p>제목</p>
+		</c:if>
+	</c:forEach>
+	<c:forEach var="category" items="${fn:split(category, ',')}">
+		<c:if test="${category == 'Python'}">
+			<div class="mobile_slide_big_box">
+				<div class="pri_T_bold_font">
+					<h2>파이썬</h2>
+					<br> <br>
+					<hr>
 				</div>
-				<div class="primium_t_content">
-					<p>내용</p>
+				<div class="swiper mySwiper2">
+					<div class="swiper-wrapper">
+						<c:forEach var="youtube" items="${youtube}" varStatus="status">
+							<c:if test="${youtube.category eq 'Python'}">
+								<div class="swiper-slide">
+									<div class="video-box">
+										<input type="hidden" class="${status.index}"
+											value="${youtube.id}"> <a href="/video/${youtube.id}">
+											<div class="youtube">
+												<img src="${youtube.thumbnail}">
+											</div>
+										</a>
+										<div class="youbube-title">${youtube.title}</div>
+										<div class="heartimg">
+											<c:if test="${youtube.likes == null}">
+												<input type="hidden" id="f${status.index}" value="false">
+												<img alt="heart" src="img/0.png" class="javascript"
+													onclick="like(this.id)" id="${status.index}">
+											</c:if>
+											<c:if test="${!(youtube.likes == null)}">
+												<input type="hidden" id="f${status.index}" value="true">
+												<img alt="heart" src="img/1.png" class="javascript"
+													onclick="like(this.id)" id="${status.index}">
+											</c:if>
+										</div>
+									</div>
+								</div>
+							</c:if>
+						</c:forEach>
+					</div>
+					<div class="swiper-pagination"></div>
 				</div>
 			</div>
-			<div class="swiper-slide">
-				<div class="primium_T_img"></div>
-				<div class="primium_t_title">
-					<p>제목</p>
+		</c:if>
+	</c:forEach>
+	<c:forEach var="category" items="${fn:split(category, ',')}">
+		<c:if test="${category == 'Oracle'}">
+			<div class="mobile_slide_big_box">
+				<div class="pri_T_bold_font">
+					<h2>오라클</h2>
+					<br> <br>
+					<hr>
 				</div>
-				<div class="primium_t_content">
-					<p>내용</p>
+				<div class="swiper mySwiper">
+					<div class="swiper-wrapper">
+						<c:forEach var="youtube" items="${youtube}" varStatus="status">
+							<c:if test="${youtube.category eq 'Oracle'}">
+								<div class="swiper-slide">
+									<div class="video-box">
+										<input type="hidden" class="${status.index}"
+											value="${youtube.id}"> <a href="/video/${youtube.id}">
+											<div class="youtube">
+												<img src="${youtube.thumbnail}">
+											</div>
+										</a>
+										<div class="youbube-title">${youtube.title}</div>
+										<div class="heartimg">
+											<c:if test="${youtube.likes == null}">
+												<input type="hidden" id="f${status.index}" value="false">
+												<img alt="heart" src="img/0.png" class="javascript"
+													onclick="like(this.id)" id="${status.index}">
+											</c:if>
+											<c:if test="${!(youtube.likes == null)}">
+												<input type="hidden" id="f${status.index}" value="true">
+												<img alt="heart" src="img/1.png" class="javascript"
+													onclick="like(this.id)" id="${status.index}">
+											</c:if>
+										</div>
+									</div>
+								</div>
+							</c:if>
+						</c:forEach>
+					</div>
+					<div class="swiper-pagination"></div>
 				</div>
 			</div>
-		</div>
-		<div class="swiper-pagination"></div>
-	</div>
+		</c:if>
+	</c:forEach>
 
 	<!-- Swiper JS -->
 	<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
@@ -371,7 +544,7 @@
 	<!-- Initialize Swiper -->
 	<script>
 		var swiper = new Swiper(".mySwiper2", {
-			slidesPerView : 2,
+			slidesPerView : 1,
 			spaceBetween : 30,
 			slidesPerGroup : 3,
 			loop : true,
@@ -386,8 +559,8 @@
 			},
 		});
 	</script>
-</div>
-</div>
+
+
 <%@ include file="../layout/footer.jsp"%>
 <script type="text/javascript" src="/JS/utube.js"></script>
 

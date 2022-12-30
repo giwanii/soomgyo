@@ -204,61 +204,95 @@ $.ajax({
 			dataType:"json" 
 		}).done(function(resp){
 		
-				
-				$.ajax({ 
+				if(resp){
+					$.ajax({ 
 					type:"PUT",
 					url:"/updatememo/"+youtube,
 					data:JSON.stringify(data), 
 					contentType:"application/json; charset=utf-8",
 					dataType:"json" 
-				}).done(function(resp){
-					alert('메모저장이 완료되었습니다.');
-			
-				}).fail(function(error){
-					alert(JSON.stringify(error));
-	
-		});
+					}).done(function(resp){
+						alert('메모저장이 완료되었습니다. 업데이트');
+				
+					}).fail(function(error){
+						alert(JSON.stringify(error));
+		
+					});
+					
+				}
+				else{
+					$.ajax({ 
+						type:"POST",
+						url:"/savememo/"+youtube,
+						data:JSON.stringify(data), 
+						contentType:"application/json; charset=utf-8",
+						dataType:"json" 
+					}).done(function(resp){
+						alert('메모저장이 완료되었습니다. 세이브');
+					
+					}).fail(function(error){
+							alert(JSON.stringify(error));
+						
+					});
+						
+				}
+				
 			
 	
 		}).fail(function(error){
 				
+			alert("실패했습니다.")
 		
-				$.ajax({ 
-					type:"POST",
-					url:"/savememo/"+youtube,
-					data:JSON.stringify(data), 
-					contentType:"application/json; charset=utf-8",
-					dataType:"json" 
-				}).done(function(resp){
-					alert('메모저장이 완료되었습니다.');
-				
-				}).fail(function(error){
-					alert(JSON.stringify(error));
-			
-		});
 	
 		});
 		}
-		
+	
 		function like(uid){
 			var youtubeid=$("."+uid).val();
-		let data={
-			youtube: youtubeid,
-		};
+			let data={
+				youtube: youtubeid
+			}
+			var ck=$("#f"+uid).val();
+			console.log(ck);
+				if(ck != "false"){
+				$("#"+uid).attr("src","/img/0.png")
+				$.ajax({ 
+				type:"DELETE",
+				url:"/deletelike/"+youtubeid,
+				data:JSON.stringify(data), 
+				contentType:"application/json; charset=utf-8",
+				dataType:"json" 
+				}).done(function(resp){
+					
+					$("#f"+uid).attr("value","false")
+					
+			
+				}).fail(function(error){
+					alert(JSON.stringify(error));
+	
+				});
+					
+				}
+				else{
+					$("#"+uid).attr("src","/img/1.png")
+					$.ajax({ 
+						type:"POST",
+						url:"/savelike/"+youtubeid,
+						data:JSON.stringify(data), 
+						contentType:"application/json; charset=utf-8",
+						dataType:"json" 
+					}).done(function(resp){
+						
+						$("#f"+uid).attr("value","true")
+					
+					}).fail(function(error){
+							alert(JSON.stringify(error));
+						
+					});
+						
+				}
+
 		
-		$.ajax({ 
-			type:"POST",
-			url:"/likeVideo",
-			data:JSON.stringify(data), 
-			contentType:"application/json; charset=utf-8",
-			dataType:"json" 
-		}).done(function(resp){
-			console.log(resp);
-	
-		}).fail(function(error){
-			console.log(error)
-	
-		});
-	
+		
 	}
 	

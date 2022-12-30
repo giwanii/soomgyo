@@ -83,7 +83,6 @@ public class UserController {
 		model.addAttribute("youtube",youtubeService.모든동영상());
 		Users user =principal.getUser();
 		model.addAttribute("category",user.getCategory());
-		model.addAttribute("myvideo", youtubeService.메모보기(user));
 		return "board/VideoCategory";
 	}
 	

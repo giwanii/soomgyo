@@ -1,6 +1,7 @@
 package com.cos.soomgyo.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -12,6 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.cos.soomgyo.model.Myvideo;
 import com.cos.soomgyo.model.Users;
 import com.cos.soomgyo.model.Youtube;
+import com.cos.soomgyo.model.likes;
+import com.cos.soomgyo.repository.LikesRepository;
 import com.cos.soomgyo.repository.MyVideoRepository;
 import com.cos.soomgyo.repository.youtubeRepository;
 
@@ -22,6 +25,8 @@ public class YoutubeService {
 	youtubeRepository youtuberepository;
 	@Autowired
 	MyVideoRepository myVideoRepository;
+	@Autowired
+	LikesRepository likesRepository;
 	
 	public void 영상저장(Youtube youtube){
 		
@@ -53,9 +58,10 @@ public class YoutubeService {
 	public List<Myvideo> 메모보기(Users user){
 			return myVideoRepository.findByUsers(user);
 	}
-	public int 좋아요(Users user,Youtube youtube) {
-		return myVideoRepository.videolike(user, youtube);
+	public boolean 메모확인(Users user, Youtube youtube) {
+		return myVideoRepository.existsByUsersAndYoutube(user, youtube);
 	}
+
 	@Transactional
 	public void 메모수정(Myvideo myvideo,Users user,Youtube youtube) {
 		Myvideo mv = myVideoRepository.findByUsersAndYoutube(user,youtube).orElseThrow(()->{
@@ -63,31 +69,21 @@ public class YoutubeService {
 		});
 		mv.setMemo(myvideo.getMemo());
 	}
-	public void 관심확인(Myvideo myvideo,Users user,Youtube youtube) {
-		boolean mv = myVideoRepository.existsByUsersAndYoutube(user,youtube);
-		if(mv) {
-			Myvideo mv1 = myVideoRepository.findByUsersAndYoutube(user,youtube).orElseThrow(()->{
-				return new IllegalArgumentException("아이디 못찾음");
-			});
-			if(mv1.getVideolikes()==0) {
-				mv1.setVideolikes(1);
-			}
-			else {
-				mv1.setVideolikes(0);
-			}
-			
-		}
-		else {
-			myvideo.setUsers(user);
-			myvideo.setYoutube(youtube);
-			myvideo.setVideolikes(1);
-			myVideoRepository.save(myvideo);
-			
-		}
-		
-		
-		
+	public boolean 관심확인(Users user,Youtube youtube) {
+		return likesRepository.existsByUsersAndYoutube(user,youtube);
 	}
 	
+	public void 좋아요(likes like,Users users, Youtube youtube) {
+		like.setLikes("good");
+		like.setUsers(users);
+		like.setYoutube(youtube);
+		likesRepository.save(like);
+		
+	}
+	@Transactional
+	public void 싫어요(Users user, Youtube youtube) {
+		likesRepository.deleteByUsersAndYoutube(user,youtube);
+		
+	}
 }
 

@@ -67,7 +67,7 @@
     height: 100%;
     object-fit: cover;
 }
-/* 일반 선생님 박스*/
+/* �씪諛� �꽑�깮�떂 諛뺤뒪*/
 .normal_big_box{
     width: 100%;
     height: 700px;
@@ -115,9 +115,9 @@
     font-size: 40px;
 }
 
-/* tablet&mobile버전 */
+/* tablet&mobile踰꾩쟾 */
 @media all and (max-width:1050px){
-    /*피씨 슬라이드 안보이게*/
+    /*�뵾�뵪 �뒳�씪�씠�뱶 �븞蹂댁씠寃�*/
     .pc_slide_big_box{
         display: none;
     }
