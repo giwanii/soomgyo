@@ -167,79 +167,22 @@
       </div>
       <!--첫번째 줄-->
       <div class="T_list">
-        <div class="first_T_box">
-          <div class="normal_Teacher_img"></div>
-          <div class="normal_Teacher_contentbox">
-            <div id="normal_title">
-              <p>제목</p>
-            </div>
-            <div id="normal_contents">
-              <p>내용</p>
-            </div>
-          </div>
-        </div>
-        <div class="second_T_box">
-          <div class="normal_Teacher_img"></div>
-          <div class="normal_Teacher_contentbox">
-            <div id="normal_title">
-              <p>제목</p>
-            </div>
-            <div id="normal_contents">
-              <p>내용</p>
-            </div>
-          </div>
-        </div>
+      	<c:forEach var="T" items="${teacher}">
+	        <div class="first_T_box">
+	          <div class="normal_Teacher_img">
+	          	<img src="/auth/Timages?filename=${T.filename}">
+	          </div>
+	          <div class="normal_Teacher_contentbox">
+	            <div id="normal_title">
+	              <p><pre>${T.title}</pre></p>
+	            </div>
+	            <div id="normal_contents">
+	              <p><pre>${T.introduce}</pre></p>
+	            </div>
+	          </div>
+	        </div>
+        </c:forEach>
       </div>  
-      <!--두번째 줄-->
-      <div class="T_list">
-        <div class="first_T_box">
-          <div class="normal_Teacher_img"></div>
-          <div class="normal_Teacher_contentbox">
-            <div id="normal_title">
-              <p>제목</p>
-            </div>
-            <div id="normal_contents">
-              <p>내용</p>
-            </div>
-          </div>
-        </div>
-        <div class="second_T_box">
-          <div class="normal_Teacher_img"></div>
-          <div class="normal_Teacher_contentbox">
-            <div id="normal_title">
-              <p>제목</p>
-            </div>
-            <div id="normal_contents">
-              <p>내용</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!--세번째 줄-->
-      <div class="T_list">
-        <div class="first_T_box">
-          <div class="normal_Teacher_img"></div>
-          <div class="normal_Teacher_contentbox">
-            <div id="normal_title">
-              <p>제목</p>
-            </div>
-            <div id="normal_contents">
-              <p>내용</p>
-            </div>
-          </div>
-        </div>
-        <div class="second_T_box">
-          <div class="normal_Teacher_img"></div>
-          <div class="normal_Teacher_contentbox">
-            <div id="normal_title">
-              <p>제목</p>
-            </div>
-            <div id="normal_contents">
-              <p>내용</p>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 <%@ include file="../layout/footer.jsp" %>

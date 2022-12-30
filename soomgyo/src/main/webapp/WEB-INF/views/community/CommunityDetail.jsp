@@ -30,7 +30,7 @@
         
         <div class="content">
         	<div class="content_uses">
-           		<p>${community.content}</p>
+           		<p><pre>${community.content}</pre></p>
            		<c:choose>
            			<c:when test="${community.fileOriName == null}">
 		            	<div class="commu_content_imgbox" style="display: none;">

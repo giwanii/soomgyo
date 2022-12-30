@@ -60,7 +60,6 @@ public class CommunityController {
 		model.addAttribute("community1", communityService.글목록(0,pageable));
 		model.addAttribute("community2", communityService.글목록(1,pageable));
 		return "index";
-		
 	}
 	//게시글 이미지 저장
 	@RequestMapping(value="/community", method= {RequestMethod.POST})

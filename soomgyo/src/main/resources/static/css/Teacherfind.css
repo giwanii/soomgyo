@@ -74,22 +74,27 @@
     margin-top: 100px;
 }
 .T_list{
-    width: 90%;
+    width: 100%;
     height: 30%;
     display: flex;
     justify-content: space-between;
     margin-top: 30px;
+    flex-wrap: wrap;
 }
-.first_T_box, .second_T_box{
+.first_T_box{
     width: 45%;
     height: 100%;
     display: flex;
+    margin-top: 30px;
 }
 .normal_Teacher_img{
     width: 50%;
     height: 100%;
-    border: 1px solid black;
-    border-radius: 10px;
+}
+.normal_Teacher_img>img{
+	width: 100%;
+	height: 100%;
+	border-radius: 10px;
 }
 .normal_Teacher_contentbox{
     width: 50%;
@@ -98,10 +103,12 @@
 #normal_title{
     width: 100%;
     height: 30%;
+    padding-left: 10px;
 }
 #normal_contents{
     width: 100%;
     height: 70%;
+    padding-left: 10px;
 }
 #normal_title>p, #normal_contents>p{
     margin-top: 30px;

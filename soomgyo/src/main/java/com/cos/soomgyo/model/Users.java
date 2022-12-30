@@ -62,18 +62,12 @@ public class Users {
 		
 		@Enumerated(EnumType.STRING)
 		private RoleType roles; //Enum을 쓰는게 좋다. //도메인 사용해야해서. 
+				
+		//회원정보수정에 들어가는 프로필 사진
+		private String profilefilename;	
+		private String profilefileOriName;
+		private String profilefileurl;
 		
-		@Column(length=100)
-		private String title;
-		
-		@Lob
-		private String content;
-		
-		@Column(length=100)
-		private String Profileimage;
-		
-		@Column(length=100)
-		private String portfolio;
 		
 		@ColumnDefault("0")
 		private int count;
