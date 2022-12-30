@@ -3,6 +3,7 @@ package com.cos.soomgyo.controller.api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -14,6 +15,7 @@ import com.cos.soomgyo.dto.ResponseDto;
 import com.cos.soomgyo.model.Myvideo;
 import com.cos.soomgyo.model.Users;
 import com.cos.soomgyo.model.Youtube;
+import com.cos.soomgyo.model.likes;
 import com.cos.soomgyo.service.YoutubeService;
 
 @RestController
@@ -36,13 +38,28 @@ public class YoutubeApiController {
 
 		}
 		@PostMapping("/ckmemo/{youtube}")
-		public ResponseDto<Integer> ckmemo (@AuthenticationPrincipal PrincipalDetail principal, @PathVariable Youtube youtube) {
-			youtubeService.메모보기(principal.getUser());
-			return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
+		public boolean ckmemo (@AuthenticationPrincipal PrincipalDetail principal, @PathVariable Youtube youtube) {
+			return youtubeService.메모확인(principal.getUser(), youtube);
 		}
 		@PutMapping("/updatememo/{youtube}")
 		public ResponseDto<Integer> updatememo (@RequestBody Myvideo myvideo,@AuthenticationPrincipal PrincipalDetail principal, @PathVariable Youtube youtube) {
 			youtubeService.메모수정(myvideo,principal.getUser(),youtube);
+			return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
+		}
+		@PostMapping("/likeVideo/{youtube}")
+		public boolean likeVideo (@AuthenticationPrincipal PrincipalDetail principal, @PathVariable Youtube youtube) {
+			return youtubeService.관심확인(principal.getUser(),youtube);
+			
+		}
+		@PostMapping("/savelike/{youtube}")
+		public ResponseDto<Integer> likesave(likes like,@AuthenticationPrincipal PrincipalDetail principal, @PathVariable Youtube youtube) {
+			youtubeService.좋아요(like,principal.getUser(),youtube);
+			return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
+
+		}
+		@DeleteMapping("/deletelike/{youtube}")
+		public  ResponseDto<Integer> likedelete(@PathVariable Youtube youtube,@AuthenticationPrincipal PrincipalDetail principal ){
+			youtubeService.싫어요(principal.getUser(),youtube);
 			return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
 		}
 

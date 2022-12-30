@@ -10,10 +10,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.cos.soomgyo.model.Community;
 import com.cos.soomgyo.model.Myvideo;
 import com.cos.soomgyo.model.Users;
 import com.cos.soomgyo.model.Youtube;
+import com.cos.soomgyo.model.likes;
+import com.cos.soomgyo.repository.LikesRepository;
 import com.cos.soomgyo.repository.MyVideoRepository;
 import com.cos.soomgyo.repository.youtubeRepository;
 
@@ -24,6 +25,8 @@ public class YoutubeService {
 	youtubeRepository youtuberepository;
 	@Autowired
 	MyVideoRepository myVideoRepository;
+	@Autowired
+	LikesRepository likesRepository;
 	
 	public void 영상저장(Youtube youtube){
 		
@@ -34,6 +37,9 @@ public class YoutubeService {
 		int num = (int)(Math.random() * 16);
 		Pageable firstPageableWithTwoElements = PageRequest.of(num, 6);
 		return youtuberepository.findAll(firstPageableWithTwoElements);
+	}
+	public List<Youtube> 모든동영상(){
+		return youtuberepository.findAll();
 	}
 
 	public Youtube 동영상상세보기(Youtube youtube) {
@@ -52,6 +58,10 @@ public class YoutubeService {
 	public List<Myvideo> 메모보기(Users user){
 			return myVideoRepository.findByUsers(user);
 	}
+	public boolean 메모확인(Users user, Youtube youtube) {
+		return myVideoRepository.existsByUsersAndYoutube(user, youtube);
+	}
+
 	@Transactional
 	public void 메모수정(Myvideo myvideo,Users user,Youtube youtube) {
 		Myvideo mv = myVideoRepository.findByUsersAndYoutube(user,youtube).orElseThrow(()->{
@@ -59,6 +69,21 @@ public class YoutubeService {
 		});
 		mv.setMemo(myvideo.getMemo());
 	}
-
+	public boolean 관심확인(Users user,Youtube youtube) {
+		return likesRepository.existsByUsersAndYoutube(user,youtube);
+	}
+	
+	public void 좋아요(likes like,Users users, Youtube youtube) {
+		like.setLikes("good");
+		like.setUsers(users);
+		like.setYoutube(youtube);
+		likesRepository.save(like);
+		
+	}
+	@Transactional
+	public void 싫어요(Users user, Youtube youtube) {
+		likesRepository.deleteByUsersAndYoutube(user,youtube);
+		
+	}
 }
 

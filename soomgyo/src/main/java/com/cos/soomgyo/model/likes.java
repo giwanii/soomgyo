@@ -1,25 +1,24 @@
 package com.cos.soomgyo.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.ColumnDefault;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Table(name="myvideo")
+@Table(name="likes")
 @SequenceGenerator(
-			name="MYVIDEO_SEQ_GENERATOR"
-			,sequenceName = "MYVIDEO_SEQ"
+			name="LIKES_SEQ_GENERATOR"
+			,sequenceName = "LIKES_SEQ"
 			,initialValue = 1
 			,allocationSize = 1
 		)
@@ -29,21 +28,19 @@ import lombok.NoArgsConstructor;
 
 @Entity
 
-public class Myvideo {
-	
+public class likes {
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="MYVIDEO_SEQ_GENERATOR")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="LIKES_SEQ_GENERATOR")
 	private int id;
 	
 	@ManyToOne
     @JoinColumn(name = "UserID")
     private Users users;
 
-    @ManyToOne
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "YoutubeID")
     private Youtube youtube;
     
-    private String memo ;
-    
+    private String likes ;
     
 }
