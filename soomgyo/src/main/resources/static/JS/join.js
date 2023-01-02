@@ -163,13 +163,188 @@ function allck(){
     }
     
     
-	console.log(result)
+
 	if(result==0){
 		
 		return;
 	}
 	else{
 		save();
+	}
+   
+}
+function allck2(){
+	var result=1;
+	if ($("#name").val() == "") {
+		$(".blankname").css("display","inline");
+		$(".redname").css("display","none");
+		$(".greenname").css("display","none");
+		$("#name").focus();
+		result=0;
+	
+	}
+	if ($("#name").val().length <= 1) {
+		$(".blankname").css("display","inline");
+		$(".redname").css("display","none");
+		$(".greenname").css("display","none");
+		$("#name").focus();
+		result=0;
+	
+	}
+	for (var i=0; i<$("#name").val().length; i++)  { 
+	    var chk = $("#name").val().substring(i,i+1); 
+	
+	    if(chk.match(/[0-9]/)) { 
+	
+	    		$(".blankname").hide();
+				$(".redname").show();
+				$(".greenname").hide();
+				$("#name").focus();
+				result=0;
+	
+	       
+	
+	    }
+	
+	    if(chk.match(/([^가-힣a-zA-Z\x20])/i)){
+	
+    		$(".blankname").hide();
+			$(".redname").show();
+			$(".greenname").hide();
+			$("#name").focus();
+			result=0;
+
+	        
+	
+	    }
+	
+	    if($("#name").val() == " "){
+	
+	    	$(".blankname").hide();
+			$(".redname").show();
+			$(".greenname").hide();
+			$("#name").focus();
+			result=0;
+	        
+	
+	    }
+	
+	}
+	
+    var id=$("#userid").val();
+
+    //특수문자가 있는지 확인
+    var spe = id.match(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
+    let eng = id.match(/[A-Z]/g);
+    var korean = id.match(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/gi);
+    if ((id.length < 5) || (id.length > 20)) {
+ 
+      $(".idLength").show();
+      $(".idOverlap").hide();
+      $(".idtrue").hide();
+      $(".idBlank").hide();
+      $("#userid").focus();
+	  result=0;
+     
+    }
+    if (id.match( /[\s]/g)) {
+      $(".idLength").hide();
+      $(".idOverlap").hide();
+      $(".idtrue").hide();
+      $(".idBlank").show();
+      $("#userid").focus();
+	  result=0;
+    }
+    if (spe || korean || eng) {
+      $(".idLength").show();
+      $(".idOverlap").hide();
+      $(".idtrue").hide();
+      $(".idBlank").hide();
+      $("#userid").focus();
+	  result=0;
+    }
+     $.ajax({
+		url : "/auth/idCheck.do/"+$("#userid").val(),
+		type : "post",
+		dataType : 'json',
+		success : function(result){
+			if(result){
+				$(".idOverlap").show();
+				$(".idtrue").hide();
+				$(".idLength").hide();
+			      $(".idBlank").hide();
+			      result=0;
+				
+			} 
+		},
+		error : function(){
+			
+		}
+	})
+    
+        let pw = $("#pwd").val();
+        let number = pw.search(/[0-9]/g);
+        let english = pw.search(/[a-z]/ig);
+        let spece = pw.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
+       
+        if (pw.length < 8 || pw.length > 20) {
+            $(".pwdmsg").show();
+            $(".pwdblank").hide();
+            $(".pwdmix").hide();
+            $(".pwdsame").hide();
+            $(".pwdid").hide();
+            $(".redlock").show();
+            $(".bluelock").hide();
+            $("#pwd").focus();
+	  		result=0;
+        } else if (pw.search(/\s/) != -1) {
+            $(".pwdblank").show();
+            $(".pwdmsg").hide();
+            $(".pwdmix").hide();
+            $(".pwdsame").hide();
+            $(".pwdid").hide();
+            $(".redlock").show();
+            $(".bluelock").hide();
+            $("#pwd").focus();
+	  		result=0;
+        } else if (number < 0 || english < 0 || spece < 0) {
+             $(".pwdmix").show();
+             $(".pwdmsg").hide();
+             $(".pwdblank").hide();
+             $(".pwdsame").hide();
+             $(".pwdid").hide();
+             $(".redlock").show();
+            $(".bluelock").hide();
+           $("#pwd").focus();
+	  		result=0;}
+          else if (/(\w)\1\1\1/.test(pw)) {
+            $(".pwdsame").show();
+             $(".pwdid").hide();
+             $(".pwdmix").hide();
+             $(".pwdmsg").hide();
+             $(".pwdblank").hide();
+             $(".redlock").show();
+            $(".bluelock").hide();
+           $("#pwd").focus();
+	  		result=0;
+	  		}
+
+        console.log('이메일')
+  	if($('#useremail').val()==""){
+	result=0;
+    }
+    if($('#reid').val()==""){
+	result=0;
+    }
+    
+    
+
+	if(result==0){
+		
+		return;
+	}
+	else{
+		save2();
 	}
    
 }
@@ -426,7 +601,7 @@ function mailck() {
 			} else{
 				  $(".mailmsg").hide();
 				  $('.mailOverlap').hide();
-				  $("#useremail").attr("value",emailVal);
+
     			return false;
 				
 			} 
@@ -595,13 +770,10 @@ function test1() {
  
 
 $(".send_mail").click(function() {
-	console.log('실행중')
-	console.log(mailck())
+
 	var email=$("#email").val()
 	if(email==""){alert('메일을 입력해주세영')}
 	else{
-	if($("#useremail").val()==email){
-
 	var count=30;
 	var display=$("#timer");
    $.ajax({
@@ -614,25 +786,25 @@ $(".send_mail").click(function() {
          alert("해당 이메일로 인증번호 발송이 완료되었습니다. \n 확인부탁드립니다.")
          $(".send_mail").css('display','none');
          $(".send_mail").text('재인증');
-         chkEmailConfirm(data,mailck);
+         $("#ck_mail").attr('readonly',false);
+         chkEmailConfirm(data);
       },
       error : function(){
 			alert("서버요청실패");
 		}
       
    })
-   }
-   else{
-	alert('이메일이 올바르지 않습니다.')}
+   
+
 	}
 })
 
 	// 이메일 인증번호 체크 함수
-	function chkEmailConfirm(data){
-		
+	function chkEmailConfirm(data,mailck){
+
 		$("#ck_mail").on("keyup", function(){
 			
-			if(mailck()==1){
+	
 			if (data != $("#ck_mail").val()) { //
 				$("#mail-check-span").text('잘못된 인증 번호입니다.');
 				emconfirmchk = false;
@@ -649,7 +821,7 @@ $(".send_mail").click(function() {
 				$(".send_mail").css('display','none');
 				$("#timer").css('display','none');
 				}
-			}
+			
 		})
 	}
 var timer = null;
@@ -675,7 +847,13 @@ function startTimer(count, display) {
 	 else{
       clearInterval(timer);
       display.html("시간 초과");
-      if($('#useremail').val()==""){$(".send_mail").css('display','inline');}
+      var ck= $('#useremail').val();
+      $("#ck_mail").attr('readonly',true);
+      if(ck=="")
+      {$(".send_mail").css('display','inline');}
+      else{
+	$(".send_mail").css('display','inline');
+}
       }
      
     
