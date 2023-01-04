@@ -131,3 +131,18 @@ function modify(){
   }
   alert("회원정보수정이 완료되었습니다!")
 }
+
+function user_delete(){
+	var id=$("#userid").val();
+	console.log("탈퇴");
+	$.ajax({
+		type:"DELETE",
+		url:"/api/info/"+id,
+		dataType:"json"
+	}).done(function(resp){
+			alert("이용해주셔서 감사합니다");
+			location.href="";
+	}).fail(function(error){
+			alert(JSON.stringify(error));
+	});
+}

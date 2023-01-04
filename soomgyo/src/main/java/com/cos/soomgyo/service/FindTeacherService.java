@@ -6,7 +6,6 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.cos.soomgyo.model.FindTeacher;
 import com.cos.soomgyo.model.Users;
@@ -26,4 +25,13 @@ public class FindTeacherService {
 	public List<FindTeacher> 글목록(){
 		return findTeacherRepository.findAll();
 	}
+	@Transactional
+	public FindTeacher 글상세보기(int id) {
+		return findTeacherRepository.findById(id)
+				.orElseThrow(()->{
+					return new IllegalArgumentException("글 상세보기 실패 : 아이디 찾을수없음");
+				});
+	}
+	
+	
 }

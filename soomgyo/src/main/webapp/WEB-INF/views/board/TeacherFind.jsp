@@ -166,9 +166,10 @@
       <div class="find_teacher_big_font">
         <h2>강사 찾기</h2>
       </div>
-      <!--첫번째 줄-->
+   
       <div class="T_list">
       	<c:forEach var="T" items="${teacher}">
+      	<a href="/auth/FindTeacher/${T.id}">
 	        <div class="first_T_box">
 	          <div class="normal_Teacher_img">
 	          	<img src="/auth/Timages?filename=${T.filename}">
@@ -182,7 +183,9 @@
 	            </div>
 	          </div>
 	        </div>
+	        </a>
         </c:forEach>
+        
       </div>  
     </div>
   </div>

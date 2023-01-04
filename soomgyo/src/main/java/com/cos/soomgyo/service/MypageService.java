@@ -37,5 +37,9 @@ public class MypageService {
 			persistance.setProfilefileurl(user.getProfilefileurl());
 		}
 	}
-
+	
+	@Transactional
+	public void 회원탈퇴(int id) {
+		userRepositroy.deleteById(id);
+	}
 }

@@ -6,6 +6,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +22,12 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
@@ -29,20 +35,46 @@ import org.springframework.web.multipart.MultipartFile;
 import com.cos.soomgyo.config.auth.PrincipalDetail;
 import com.cos.soomgyo.model.Users;
 import com.cos.soomgyo.service.MypageService;
+import com.cos.soomgyo.service.UserService;
 
 @Controller
 public class MypageController {
 	@Autowired
 	private MypageService mypageService;
-	
+	@Autowired
+	private UserService userService;
+	@Autowired
+	private BCryptPasswordEncoder encodeer;
 	@Autowired
     private AuthenticationManager authenticationManager;
+	@Autowired
+    private PasswordEncoder passwordEncoder;
 	
 	
 	@GetMapping("/mypage")
 	public String index() {
 		return "user/mypage";
 	}
+	//회원탈퇴
+	@RequestMapping(value="/member/delete/{id}", method= {RequestMethod.POST})
+	public String deleteInfo(@PathVariable int id, HttpServletRequest request, Model model) {
+		String RawRePwd = request.getParameter("password");	//폼에서 입력한 name=password를 받아와 RePwd에 저장
+		String RawRePwdCk = request.getParameter("pwd_check");
+		String encPassword = encodeer.encode(RawRePwd);
+		Users user=userService.findUser(id);
+		if(RawRePwd.equals(RawRePwdCk)) {	// 폼에서 입력한 RePwd와 RePwdCk가 같으면
+			if(passwordEncoder.matches(RawRePwd, user.getPassword()) ) {	//RePwd와 user테이블에 있는 비밀번호가 같으면
+				System.out.println("DB비밀번호 맞음"+user.getPassword());
+				mypageService.회원탈퇴(id);		//서비스의 회원탈퇴를 호출함
+				model.addAttribute("msg", "이용해주셔서 감사합니다");
+				return "redirect:/logout";
+			}
+			model.addAttribute("msg2", "등록된 비밀번호와 일치하지 않습니다.");
+			return "user/mypage";
+		}
+		return "user/mypage";	//메인 페이지로 이동
+	}
+	
 	
 	//회원정보 수정(프로필 사진 이미지 저장)
 	@RequestMapping(value="/InfoModify", method= {RequestMethod.POST})
@@ -89,4 +121,5 @@ public class MypageController {
 			return new ResponseEntity<Resource>(resource, header, HttpStatus.OK);
 
 		}
+			
 }

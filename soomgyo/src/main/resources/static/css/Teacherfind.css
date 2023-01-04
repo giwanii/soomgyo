@@ -67,6 +67,7 @@
     height: 100%;
     object-fit: cover;
 }
+
 /* �씪諛� �꽑�깮�떂 諛뺤뒪*/
 .normal_big_box{
     width: 100%;
@@ -78,11 +79,16 @@
     height: 30%;
     display: flex;
     justify-content: space-between;
-    margin-top: 30px;
     flex-wrap: wrap;
 }
+.T_list>a{
+	display: inline-block;
+	width: 50%;
+	height: 100%;
+	margin-top: 30px;
+}
 .first_T_box{
-    width: 45%;
+    width: 90%;
     height: 100%;
     display: flex;
     margin-top: 30px;
@@ -114,6 +120,8 @@
     margin-top: 30px;
     margin-left: 10px;
 }
+
+
 .find_teacher_big_font{
     color: black;
 }
@@ -122,9 +130,8 @@
     font-size: 40px;
 }
 
-/* tablet&mobile踰꾩쟾 */
+/* tablet&mobile */
 @media all and (max-width:1050px){
-    /*�뵾�뵪 �뒳�씪�씠�뱶 �븞蹂댁씠寃�*/
     .pc_slide_big_box{
         display: none;
     }
@@ -155,11 +162,12 @@
     }
     .first_T_box{
         width: 100%;
-        height: 100%;
+        height: 60%;
         margin-bottom: 30px;
     }
     .second_T_box{
         width: 100%;
         height: 100%;
     }
+   
 }

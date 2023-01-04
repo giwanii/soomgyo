@@ -1,17 +1,24 @@
 package com.cos.soomgyo.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.ColumnDefault;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -68,6 +75,11 @@ public class Users {
 		private String profilefileOriName;
 		private String profilefileurl;
 		
+		@JsonIgnoreProperties({"users"})
+		@OneToMany (mappedBy="users",cascade = CascadeType.REMOVE)
+		//mappedBy는 연관관계의 주인이 아니라, DB에 컬럼을 만들지 않는다는 의미
+		//하나의 게시글에는 여러개 댓글 작성
+		private List<Community> community;
 		
 		@ColumnDefault("0")
 		private int count;

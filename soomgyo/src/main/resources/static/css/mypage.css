@@ -1,6 +1,7 @@
 #container{
     width: 80%;
     margin: 0 auto;
+    position: relative;
 }
 
 .member{
@@ -229,9 +230,10 @@ input[type='checkbox'] {
     height: 100%;
 }
 .teacher_info>p{
-    line-height: 2;
+    line-height: 2.5;
     padding-top: 5px;
-    padding-left: 5px;
+    padding-left: 15px;
+    font-size: 20px;
 }
 /* 탈퇴하기 시작*/
 .delete_info{
@@ -328,12 +330,94 @@ input::file-selector-button{
 	display:none;
 }
 
-/* pc버전 */
-@media all and (min-width:760px){
 
+/* tablet&mobile */
+@media all and (max-width:1050px){
+	#container{
+	    width: 80%;
+	    margin: 0 auto;
+	    position: relative;
+	    padding-bottom: 400px;
+	}
+	.member{
+	    width: 100%;
+	    height: 150px;
+	    display: flex;
+	    margin-top: 30px;
+	}
+	#tab1, #tab2, #tab3, #tab4{
+		width: 100%;
+	    height: 1150px;
+	    display:none;
+	    border-radius: 10px;
+	    background-color:  #ecd3ce43;
+	}
+	
+	.tab_menu .list .btn{
+	    font-family: 'Jua', sans-serif;
+	    font-size: 4vw;
+	}
+	
+	/*회원정보수정 */
+	.member_modify_box{
+	    width: 100%;
+	    height: 1000px;
+	    display: block;
+	    margin: 0 auto;
+	}
+	.join_modify{
+	    width: 90%;
+	    height: 50%;
+	    border-radius: 30px;
+	    margin-top: 45px;
+	    margin: 0 auto;
+	}
+	.sub_checkbox{
+	    width: 90%;
+	    height: 50%;
+	    display: flex;
+	    flex-direction: column;
+	    margin-top: 30px;
+	    margin: 0 auto;
+	}	
+	/* 매칭강사 시작*/
+	.matching_teacher{
+	    width: 80%;
+	    height: 15%;
+	    margin: 0 auto;
+	    display: flex;
+	    padding-top: 30px;
+	}
+	.teacher_img{
+	    width: 30%;
+	    height: 100%;
+	    border: 1px solid black;
+	    border-radius: 10px;
+	}
+	.teacher_info{
+	    width: 70%;
+	    height: 100%;
+	}
+	.teacher_info>p{
+	    line-height: 2.5;
+	    padding-top: 5px;
+	    padding-left: 15px;
+	    font-size: 18px;
+	}
+	/* 탈퇴하기 시작*/
+	.delete_info{
+	    width: 80%;
+	    margin: 0 auto;
+	    padding-top: 50px;
+	}
+	/*강사정보등록*/
+	.teacher_upload{
+    width: 80%;
+    height: 700px;
+    margin: 0 auto;
+    padding-top: 30px;
+}
+	
+	
 }
 
-/* 모바일버전 */
-@media all and (max-width:759px){
-
-}
