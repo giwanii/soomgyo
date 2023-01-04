@@ -131,7 +131,7 @@
             </div>
             <!--가입하기-->
         <div class="join_input">
-                <input type="submit" value="가입하기" onclick="allck();" >
+                <input type="submit" value="가입하기" onclick="allck2();" >
             </div>
         </div>
     </div>

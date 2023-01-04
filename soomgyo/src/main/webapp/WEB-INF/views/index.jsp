@@ -28,8 +28,11 @@
                 	</div>
            </c:forEach>
            </div>
-        </div>        
+        </div>
     </div>
+    <button id="createroom" onclick="createroom()">방생성</button>
+    <input type=text id="userid" value="${principal.user.name}">
+    
     <div id="container2">
         <div id="ad">
             <img src="/img/강사찾기.jpg">
@@ -115,4 +118,5 @@
             </div>
         </div>
     </div>
+        <script type="text/javascript" src="/JS/test.js"></script> 
 <%@ include file="layout/footer.jsp" %>
