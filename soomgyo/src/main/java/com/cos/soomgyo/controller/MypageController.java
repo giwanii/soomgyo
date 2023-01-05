@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.hibernate.internal.build.AllowSysOut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
@@ -33,7 +34,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.cos.soomgyo.config.auth.PrincipalDetail;
+import com.cos.soomgyo.model.RoleType;
 import com.cos.soomgyo.model.Users;
+import com.cos.soomgyo.service.CommunityService;
 import com.cos.soomgyo.service.MypageService;
 import com.cos.soomgyo.service.UserService;
 
@@ -49,10 +52,20 @@ public class MypageController {
     private AuthenticationManager authenticationManager;
 	@Autowired
     private PasswordEncoder passwordEncoder;
+	@Autowired
+	private CommunityService communityService;
 	
 	
 	@GetMapping("/mypage")
-	public String index() {
+	public String index(Model model,@AuthenticationPrincipal PrincipalDetail principal) {
+		
+		
+		if(principal.getUser().getRoles().equals(RoleType.STUDENT)) {
+			model.addAttribute("community",communityService.내글목록(principal.getUser()));
+		}
+		else {
+			model.addAttribute("info",mypageService.강사정보(principal.getUser()));
+		}
 		return "user/mypage";
 	}
 	//회원탈퇴

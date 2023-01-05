@@ -1,5 +1,7 @@
 package com.cos.soomgyo.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.apache.catalina.User;
@@ -9,13 +11,17 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.cos.soomgyo.config.auth.PrincipalDetail;
+import com.cos.soomgyo.model.FindTeacher;
 import com.cos.soomgyo.model.Users;
+import com.cos.soomgyo.repository.FindTeacherRepository;
 import com.cos.soomgyo.repository.UserRepositroy;
 
 @Service
 public class MypageService {
 	@Autowired
 	private UserRepositroy userRepositroy;
+	@Autowired
+	private FindTeacherRepository findteacher;
 	@Autowired
 	private BCryptPasswordEncoder encodeer;
 
@@ -41,5 +47,10 @@ public class MypageService {
 	@Transactional
 	public void 회원탈퇴(int id) {
 		userRepositroy.deleteById(id);
+	}
+	@Transactional
+	public FindTeacher 강사정보(Users user){
+		FindTeacher ft=findteacher.findByUsers(user).orElseThrow();
+		return ft;
 	}
 }

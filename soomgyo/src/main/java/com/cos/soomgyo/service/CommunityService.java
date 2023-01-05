@@ -28,11 +28,15 @@ public class CommunityService {
 		communityRepository.save(community);
 	}
 
-
+	
 	@Transactional(readOnly = true)
 	public Page<Community> 글목록(int notice, Pageable pageable){
 		return communityRepository.findByNotice(notice,pageable);
 	}
+	@Transactional(readOnly = true)
+	public List<Community> 내글목록(Users user){
+		return communityRepository.findByUsers(user);
+		}
 
 	@Transactional(readOnly = true)
 	public Community 글상세보기(int id) {
