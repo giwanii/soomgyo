@@ -33,6 +33,7 @@ import com.cos.soomgyo.config.auth.PrincipalDetail;
 import com.cos.soomgyo.model.Community;
 import com.cos.soomgyo.model.Youtube;
 import com.cos.soomgyo.service.CommunityService;
+import com.cos.soomgyo.service.FindTeacherService;
 import com.cos.soomgyo.service.ReplyService;
 import com.cos.soomgyo.service.YoutubeService;
 
@@ -48,15 +49,17 @@ public class CommunityController {
 	private ReplyService replyService;
 	@Autowired
 	private YoutubeService youtubeService; 
-	
+	@Autowired
+	private FindTeacherService findTeacherService;
 	
 	@GetMapping({"","/"})
 	public String index(Model model,@PageableDefault(size=4, sort = "id", 
 			direction = Sort.Direction.DESC)Pageable pageable){
 		Page<Youtube> firstPage = youtubeService.관련동영상();
 		List<Youtube> pageContetns=firstPage.getContent();
-		model.addAttribute("youtube", pageContetns );
-
+		
+		model.addAttribute("youtube", pageContetns);
+		model.addAttribute("teacher", findTeacherService.글목록(pageable));
 		model.addAttribute("community1", communityService.글목록(0,pageable));
 		model.addAttribute("community2", communityService.글목록(1,pageable));
 		return "index";

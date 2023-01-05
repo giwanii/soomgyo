@@ -156,13 +156,12 @@
 
     .T_list{
         width: 100%;
-        height: 50%;
-        margin-top: 30px;
-        flex-direction: column;
+        height: 200px;
+ 
     }
     .first_T_box{
         width: 100%;
-        height: 60%;
+        height: 100%;
         margin-bottom: 30px;
     }
     .second_T_box{

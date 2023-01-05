@@ -11,7 +11,10 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.query.Param;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,8 +37,9 @@ public class FindTeacherController {
 	private FindTeacherService findTeacherService;
 
 	@GetMapping("auth/FindTeacher")
-	public String FindTeacher(Model model) {
-		model.addAttribute("teacher", findTeacherService.글목록());
+	public String FindTeacher(Model model, @PageableDefault(size=10, sort = "id", 
+			direction = Sort.Direction.DESC)Pageable pageable) {
+		model.addAttribute("teacher", findTeacherService.글목록(pageable));
 		return "board/TeacherFind";
 	}
 

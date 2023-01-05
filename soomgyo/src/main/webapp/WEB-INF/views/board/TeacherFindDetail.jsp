@@ -12,22 +12,7 @@
         <div class="T_profile_text">
           <p>${teacher.users.name}</p>
           <p>과목 : ${teacher.users.category}</p>
-          <p>지역 : ${teacher.users.adr2}</p>
-        </div>
-      </div>
-
-      <div class="second_row_box">
-        <div class="sub_img_box"><img src="/auth/Timages?filename=${teacher.filename}" onclick="window.open(this.src)"></div>
-
-        <div class="sub_img_list">
-          <div class="img_first_row">
-            <div id="images_box"><img src="/auth/Timages?filename=${teacher.filename}" onclick="window.open(this.src)"></div> <!--서브 이미지 들어갈 박스-->
-            <div id="images_box"><img src="/auth/Timages?filename=${teacher.filename}" onclick="window.open(this.src)"></div> <!--서브 이미지 들어갈 박스-->
-          </div>
-          <div class="img_sec_row">
-            <div id="images_box"><img src="/auth/Timages?filename=${teacher.filename}" onclick="window.open(this.src)"></div> <!--서브 이미지 들어갈 박스-->
-            <div id="images_box"><img src="/auth/Timages?filename=${teacher.filename}" onclick="window.open(this.src)"></div> <!--서브 이미지 들어갈 박스-->
-          </div>     
+          <p>지역 : ${teacher.users.adr1}</p>
         </div>
       </div>
 

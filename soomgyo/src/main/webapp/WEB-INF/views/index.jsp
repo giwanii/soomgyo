@@ -30,8 +30,6 @@
            </div>
         </div>
     </div>
-    <button id="createroom" onclick="createroom()">방생성</button>
-    <input type=text id="userid" value="${principal.user.name}">
     
     <div id="container2">
         <div id="ad">
@@ -44,24 +42,20 @@
                 <h3>강사 찾기</h3>
             </div>
             <div class="find_teacher_bog-box">
-                <div class="teacher-box">
-                    <div class="teacher"></div>
-                    <div class="teacher-title">
-                        <p>제목</p>
-                    </div>
-                </div>
-                <div class="teacher-box">
-                    <div class="teacher"></div>
-                    <div class="teacher-title">
-                        <p>제목</p>
-                    </div>
-                </div>
-                <div class="teacher-box">
-                    <div class="teacher"></div>
-                    <div class="teacher-title">
-                        <p>제목</p>
-                    </div>
-                </div>
+                
+                <c:forEach var="teacher" items="${teacher.content}">
+                <a href="/auth/FindTeacher/${teacher.id}">
+	                <div class="teacher-box">
+	                    <div class="teacher">
+	                    	<img src="/auth/Timages?filename=${teacher.filename}">
+	                    </div>
+	                    <div class="teacher-title">
+	                        <p>${teacher.title}</p>
+	                    </div>
+	                </div>
+	                </a>
+                </c:forEach>
+                
             </div>
         </div>
         <div id="final">    <!--커뮤니티 공지사항 큰 박스-->

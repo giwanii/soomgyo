@@ -5,11 +5,11 @@
 }
 .T_main_box{
     width: 100%;
-    height: 500px;
+    height: 300px;
 }
 .first_row_box{
     width: 100%;
-    height: 50%;
+    height: 100%;
     display: flex;
     align-items: center;
 }
@@ -85,6 +85,7 @@
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
+    z-index: 1;
 }
 .count_content{
     width: 50%;
@@ -159,7 +160,7 @@
     }
     .T_main_box{
         width: 100%;
-        height: 500px;
+        height: 300px;
     }
     .T_profile_img{
         width: 30%;

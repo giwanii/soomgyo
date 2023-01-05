@@ -5,6 +5,8 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.cos.soomgyo.model.FindTeacher;
@@ -22,8 +24,8 @@ public class FindTeacherService {
 		findTeacherRepository.save(findTeacher);
 	}
 	@Transactional
-	public List<FindTeacher> 글목록(){
-		return findTeacherRepository.findAll();
+	public Page<FindTeacher> 글목록(Pageable pageable){
+		return findTeacherRepository.findAll(pageable);
 	}
 	@Transactional
 	public FindTeacher 글상세보기(int id) {

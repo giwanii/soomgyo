@@ -168,7 +168,7 @@
       </div>
    
       <div class="T_list">
-      	<c:forEach var="T" items="${teacher}">
+      	<c:forEach var="T" items="${teacher.content}">
       	<a href="/auth/FindTeacher/${T.id}">
 	        <div class="first_T_box">
 	          <div class="normal_Teacher_img">

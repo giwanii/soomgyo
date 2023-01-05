@@ -112,14 +112,22 @@ width: 100%;
     flex-wrap: wrap;
     justify-content: space-between;
 }
+.find_teacher_bog-box>a{
+	display: inline;
+	width: 30%;
+    height: 100%;
+}
 .teacher-box {
-    width: 30%;
+    width: 100%;
     height: 100%;
 }
 .teacher{
     width: 100%;
     height: 90%;
-    border: 1px solid black;
+}
+.teacher>img{
+	width: 100%;
+    height: 90%;
     border-radius: 10px;
 }
 .teacher-title{
