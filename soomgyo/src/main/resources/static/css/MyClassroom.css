@@ -1,6 +1,6 @@
 #myclassContainer{
 	width: 80%;
-	height: 800px;
+	height: 1000px;
 	margin: 0 auto;
 }
 /* 내 강의실 글씨 박스*/
@@ -16,13 +16,15 @@
 }
 /*동영상 들어가는 큰 박스*/
 .video_list{
-	width: 100%;
-	height: 300px;
+	width: 30%;
+    height: 30%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 .first_video_box{
-	width: 50%;
-	height: 100%;
-	border: 1px solid red;
+	width: 100%;
+	height: 90%;
 }
 .first_video_box>a{
 	display: inline-block;
@@ -32,7 +34,6 @@
 .video_thumbnail{
 	width: 90%;
 	height: 90%;
-	border: 1px solid black;
 }
 .video_thumbnail>img{
 	width: 100%;
@@ -41,6 +42,16 @@
 .video_title{
 	width: 90%;
 	height: 10%;
-	border: 1px solid black;
 	overflow: hidden;
+}
+.video_title>p{
+	
+}
+.heartimg{
+	width: 100%;
+	height: 10%;
+}
+.heartimg>img{
+	width: 10%;
+	height: 100%;
 }

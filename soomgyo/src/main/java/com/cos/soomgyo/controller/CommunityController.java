@@ -140,7 +140,6 @@ public class CommunityController {
 	public String detailvideo(@PathVariable Youtube youtube, Model model,@AuthenticationPrincipal PrincipalDetail principal) {
 		model.addAttribute("youtube", youtubeService.동영상상세보기(youtube));
 		model.addAttribute("myvideo", youtubeService.메모보기(principal.getUser()));
-
 		return "board/VideoDetail";
 	}
 	

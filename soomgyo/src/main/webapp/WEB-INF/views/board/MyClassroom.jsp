@@ -16,26 +16,30 @@
 		<h2>내 강의실</h2>
 	</div>
 	
-	<div class="video_list">
+	<div class="video_list">	
 		<c:forEach var="myvideo" items="${myclass.content}" varStatus="status">						
 			<div class="first_video_box">
-				<input type="hidden" class="${status.index}" value="${myvideo.youtube.id}"> 
-					<a href="/video/${myvideoyoutube.id}">
-						<div class="video_thumbnail">
-							<img src="${myvideo.youtube.thumbnail}">
-						</div>
-					</a>
-				<div class="video_title">${myvideo.youtube.title}</div>
-				<div class="heartimg">
+				<a href="/video/${myvideo.youtube.id}">
+				<input type="hidden" class="${status.index}" value="${myvideo.youtube.id}"> 				
+					<div class="video_thumbnail">
+						<img src="${myvideo.youtube.thumbnail}">
+					</div>
+					<div class="video_title">
+						<p>${myvideo.youtube.title}</p>
+					</div>
+						
+				</a>
+			</div>
+			<div class="heartimg">
 					<c:if test="${!(myvideo.likes == null)}">
 						<input type="hidden" id="f${status.index}" value="true">
 						<img alt="heart" src="img/1.png" class="javascript"
 							onclick="like(this.id)" id="${status.index}">
 					</c:if>
-				</div>
 			</div>
-		</c:forEach>
-      </div>		
+			</c:forEach>
+      </div>
+ 		
 </div>
 	
 
