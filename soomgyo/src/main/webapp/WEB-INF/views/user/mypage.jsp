@@ -171,9 +171,10 @@
 
 										</div>
 										<div class="btn">
-											<button class="btn_chat">채팅</button>
-											<button class="btn_o">수락</button>
-											<button class="btn_x">거절</button>
+												<button  class="btn_chat" onclick="location.href='/chat/${lesson.id}'">채팅</button>
+												<button class="btn_o">수락</button>
+												<button class="btn_x">거절</button>
+											
 										</div>
 									</div>
 								</c:if>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <title>Hello WebSocket</title>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
@@ -10,37 +10,23 @@
     <link rel="stylesheet" href="/css/room.css">
 </head>
 <body>
+
 <div id="main-content" class="container">
     <div class="row">   
     	<div class="col-md-12">
           
         </div>   
         <div class="col-md-6">
-                <div class="form-group">
-
+                <div class="form-group">			
                     <input type="text" id="message" class="form-control" placeholder="메시지 내용">
 
-                    <label for="connect">WebSocket connection:</label>
-                    <button id="connect" class="btn btn-default"  onclick="connect()">Connect</button>
-                    <button id="disconnect" class="btn btn-default"  disabled="disabled">Disconnect
-                    </button>
                 </div>
-        </div>
-        <div class="col-md-6">
-                <div class="form-group">
-                    <label for="name">���솕紐�</label>
-                    <input type="text" id="sender" class="form-control" placeholder="Your name here...">
-                </div>
-                <div class="form-group">
-                    <label for="name">�궡�슜</label>
-                    <input type="text" id="message" class="form-control" placeholder="硫붿떆吏� �궡�슜">
-
-                </div>
-                <div class="form-btn">
+                 <div class="form-btn">
                 	<button id="send" class="btn btn-default" onclick="sendChat()">전송</button>
                 </div>
         </div>
-        <input type="text" id="sender">
+
+        <input type="text" id="sender" >
     </div>
 
 </div>
@@ -49,7 +35,7 @@
     
     var roomId = [[${roomId}]];
     var chatList = [[${chatList}]];
-	var sender1= $("#sender").val();
+	
 
 
     function connect() {
@@ -112,7 +98,7 @@
             str += "<div class='alert alert-secondary'>";
             str += "<p>" + message.value + "</p>";
             str += "</div></div>";
-            console.log("확인용"+message);
+            console.log("확인용"+message.value);
             $(".col-md-12").append(str);
         }
 		//받는사람
