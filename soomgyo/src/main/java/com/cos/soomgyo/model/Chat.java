@@ -6,39 +6,49 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 import org.springframework.data.annotation.CreatedDate;
 
-import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Table(name="chat")
+@SequenceGenerator(
+			name="CHAT_SEQ_GENERATOR"
+			,sequenceName = "CHAT_SEQ"
+			,initialValue = 1
+			,allocationSize = 1
+		)
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
-@Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Chat {
 
-    @Id @GeneratedValue
-    @Column(name = "chat_id")
-    private Long id;
+    @Id  @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="CHAT_SEQ_GENERATOR")
+    private int id;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "room_id")
+    @JoinColumn(name = "roomID")
     private Room room;
 
     private String sender;
 
-    @Column(columnDefinition = "TEXT")
+    @Column
     private String message;
 
     @CreatedDate
-    @Column(updatable = false)
+    @Column
     private LocalDateTime sendDate;
-
+    
     @Builder
     public Chat(Room room, String sender, String message) {
         this.room = room;

@@ -1,54 +1,67 @@
 package com.cos.soomgyo.controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.cos.soomgyo.repository.ChatRoomRepository;
+import com.cos.soomgyo.model.Chat;
+import com.cos.soomgyo.model.Room;
+import com.cos.soomgyo.service.ChatService;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j2;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping(value = "/chat")
-@Log4j2
 public class RoomController {
 
-    private final ChatRoomRepository repository;
+    private final ChatService chatService;
 
-    //채팅방 목록 조회
-    @GetMapping(value = "/rooms")
-    public ModelAndView rooms(){
+    /**
+     * 채팅방 참여하기
+     * @param roomId 채팅방 id
+     */
+    @GetMapping("/chat/{roomId}")
+    public String joinRoom(@PathVariable(required = false)  int roomId, Model model) {
+    	//room findbyid ==if(getstudent id ==principal.id)
+        List<Chat> chatList = chatService.findAllChatByRoomId(roomId);
+        System.out.println(chatList);
 
-        log.info("# All Chat Rooms");
-        ModelAndView mv = new ModelAndView("board/Chat");
-
-        mv.addObject("list", repository.findAllRooms());
-
-        return mv;
+        model.addAttribute("roomId", roomId);
+        model.addAttribute("chatList", chatList);
+        return "thymeleaf/room";
     }
 
-    //채팅방 개설
-    @PostMapping(value = "/room")
-    public String create(@RequestParam String name, RedirectAttributes rttr){
-
-        log.info("# Create Chat Room , name: " + name);
-        rttr.addFlashAttribute("roomName", repository.createChatRoomDTO(name));
-        return "redirect:/chat/rooms";
+    /**
+     * 채팅방 등록
+     * @param form
+     */
+    @PostMapping("/room")
+    public String createRoom(@RequestParam(value="StudentID")int Student,@RequestParam(value="TeacherID")int Teacher) {
+        chatService.createRoom(Student,Teacher);
+        return "redirect:/roomList";
     }
 
-    //채팅방 조회
-    @GetMapping("/room")
-    public void getRoom(String roomId, Model model){
-
-        log.info("# get Chat Room, roomID : " + roomId);
-
-        model.addAttribute("room", repository.findRoomById(roomId));
+    /**
+     * 채팅방 리스트 보기
+     */
+    @GetMapping("/roomList")
+    public String roomList(Model model) {
+        List<Room> roomList = chatService.findAllRoom();
+        model.addAttribute("roomList", roomList);
+        return "thymeleaf/roomList";
     }
+
+    /**
+     * 방만들기 폼
+     */
+    @GetMapping("/roomForm")
+    public String roomForm() {
+        return "thymeleaf/roomForm";
+    }
+
 }
