@@ -9,6 +9,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.ColumnDefault;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -34,10 +36,13 @@ public class Room {
 			
 			@ManyToOne
 		    @JoinColumn(name = "StudentID")
-		    private Users Student;
+		    private Users student;
 
 		    @ManyToOne
 		    @JoinColumn(name = "TeacherID")
-		    private Users Teacher;
+		    private Users teacher;
 		    
+		    @ColumnDefault("0")
+		    private int lesson;
+
 }

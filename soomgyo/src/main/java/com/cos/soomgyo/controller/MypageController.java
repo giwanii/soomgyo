@@ -64,7 +64,9 @@ public class MypageController {
 			model.addAttribute("community",communityService.내글목록(principal.getUser()));
 		}
 		else {
+			
 			model.addAttribute("info",mypageService.강사정보(principal.getUser()));
+			model.addAttribute("lesson",mypageService.레슨목록(principal.getUser()));
 		}
 		return "user/mypage";
 	}

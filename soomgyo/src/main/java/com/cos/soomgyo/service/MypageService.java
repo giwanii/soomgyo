@@ -12,8 +12,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.cos.soomgyo.config.auth.PrincipalDetail;
 import com.cos.soomgyo.model.FindTeacher;
+import com.cos.soomgyo.model.Room;
 import com.cos.soomgyo.model.Users;
+import com.cos.soomgyo.model.Youtube;
 import com.cos.soomgyo.repository.FindTeacherRepository;
+import com.cos.soomgyo.repository.RoomRepository;
 import com.cos.soomgyo.repository.UserRepositroy;
 
 @Service
@@ -22,6 +25,8 @@ public class MypageService {
 	private UserRepositroy userRepositroy;
 	@Autowired
 	private FindTeacherRepository findteacher;
+	@Autowired
+	private RoomRepository roomRepository;
 	@Autowired
 	private BCryptPasswordEncoder encodeer;
 
@@ -50,7 +55,47 @@ public class MypageService {
 	}
 	@Transactional
 	public FindTeacher 강사정보(Users user){
+		
+		if(findteacher.existsByUsers(user)) {
 		FindTeacher ft=findteacher.findByUsers(user).orElseThrow();
 		return ft;
+		}
+		return null;
+		
+		
+		
+	}
+	@Transactional
+	public boolean 상담중복(int student,int teacher) {
+		Users stu = userRepositroy.findById(student).orElseThrow(() -> {
+			return new IllegalArgumentException("회원 찾기 실패");
+		});
+		Users tea = userRepositroy.findById(teacher).orElseThrow(() -> {
+			return new IllegalArgumentException("회원 찾기 실패");
+		});
+	return roomRepository.existsByStudentAndTeacher(stu,tea);
+		
+	
+	}
+	@Transactional
+	public void 상담신청(int student, int teacher) {
+		Users stu = userRepositroy.findById(student).orElseThrow(() -> {
+			return new IllegalArgumentException("회원 찾기 실패");
+		});
+		Users tea = userRepositroy.findById(teacher).orElseThrow(() -> {
+			return new IllegalArgumentException("회원 찾기 실패");
+		});
+		Room room =new Room();
+		room.setStudent(stu);
+		room.setTeacher(tea);
+		roomRepository.save(room);
+		}
+	public List<Room> 레슨목록(Users user){
+		if(roomRepository.existsByTeacher(user)) {
+			List<Room> room=roomRepository.findByTeacher(user);
+			return room;
+			}
+			return null;
+	
 	}
 }

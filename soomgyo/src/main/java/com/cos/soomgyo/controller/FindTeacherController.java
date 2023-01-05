@@ -64,7 +64,7 @@ public class FindTeacherController {
 		findTeacher.setFileurl(fileUrl);
 		findTeacherService.강사정보등록(principal.getUser(), findTeacher);
 
-		return "board/TeacherFind";
+		return "redirect:/auth/FindTeacher";
 	}
 
 	// 이미지 경로설정
@@ -92,4 +92,5 @@ public class FindTeacherController {
 		model.addAttribute("teacher", findTeacherService.글상세보기(id));
 		return "board/TeacherFindDetail";
 	}
+	
 }

@@ -27,7 +27,6 @@ public class UserApiController {
 	}
 	@PostMapping("/auth/idCheck.do/{userid}")//아이디 중복확인
 	public boolean idck(@PathVariable String userid) {
-
 		
 		boolean result=userService.idck(userid);
 
@@ -62,6 +61,7 @@ public class UserApiController {
 		
 		return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
 	}
+
 	
 	
 	
