@@ -8,8 +8,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import com.cos.soomgyo.model.Community;
+import com.cos.soomgyo.model.Users;
 
 public interface CommunityRepository extends JpaRepository<Community, Integer>{
 
 	Page<Community> findByNotice(int notice, Pageable pageable);
+	List<Community> findByUsers(Users user);
 }

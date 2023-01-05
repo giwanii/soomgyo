@@ -7,7 +7,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.authentication.AuthenticationTrustResolver;
+import org.springframework.security.authentication.AuthenticationTrustResolverImpl;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,32 +44,62 @@ public class UserController {
 	public String loginForm(@RequestParam(value = "error", required = false) String error, 
 				@RequestParam(value = "exception", required = false) String exception,
 				Model model) {
-		model.addAttribute("error", error);
-		model.addAttribute("exception", exception);
-		return "user/login";
+		AuthenticationTrustResolver trustResolver = new AuthenticationTrustResolverImpl();
+		if (trustResolver.isAnonymous(SecurityContextHolder.getContext().getAuthentication())) {
+			model.addAttribute("error", error);
+			model.addAttribute("exception", exception);
+			return "user/login";
+		}
+		return "redirect:/";
+		
 	}
 		
 	@GetMapping("auth/join")
 	public String join() {
-		return "user/Join";
+		AuthenticationTrustResolver trustResolver = new AuthenticationTrustResolverImpl();
+		if (trustResolver.isAnonymous(SecurityContextHolder.getContext().getAuthentication())) {
+		 return "user/Join";
+		}
+		return "redirect:/";
+		
 	}
 	@GetMapping("auth/searchid")
 	public String idsearch() {
-		return "user/FogetID";
+		AuthenticationTrustResolver trustResolver = new AuthenticationTrustResolverImpl();
+		if (trustResolver.isAnonymous(SecurityContextHolder.getContext().getAuthentication())) {
+		 return "user/FogetID";
+		}
+		return "redirect:/";
+		
 	}
 	@GetMapping("auth/searchpwd")
 	public String pwdsearch() {
-		return "user/FogetPassword";
+		AuthenticationTrustResolver trustResolver = new AuthenticationTrustResolverImpl();
+		if (trustResolver.isAnonymous(SecurityContextHolder.getContext().getAuthentication())) {
+			return "user/FogetPassword";
+		}
+		return "redirect:/";
+		
 	}
 	@GetMapping("auth/joinstudent")
 	public String joinstu() {
+		AuthenticationTrustResolver trustResolver = new AuthenticationTrustResolverImpl();
+		if (trustResolver.isAnonymous(SecurityContextHolder.getContext().getAuthentication())) {
+			return"user/JoinStudent";
+		}
+		return "redirect:/";
 		
-		return"user/JoinStudent";
+		
 	}
 	@GetMapping("auth/jointeacher")
 	public String jointea() {
+		AuthenticationTrustResolver trustResolver = new AuthenticationTrustResolverImpl();
+		if (trustResolver.isAnonymous(SecurityContextHolder.getContext().getAuthentication())) {
+			return"user/JoinTeacher";
+		}
+		return "redirect:/";
 		
-		return"user/JoinTeacher";
+		
 	}
 	@Autowired
 	RegisterMail registerMail;
