@@ -3,6 +3,7 @@ package com.cos.soomgyo.model;
 import java.sql.Timestamp;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -36,7 +37,7 @@ public class FindTeacher {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="TEACHER_SEQ_GENERATOR")
 	private int id;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.REMOVE)
 	@JoinColumn(name="userId")
 	private Users users;
 	
@@ -51,7 +52,9 @@ public class FindTeacher {
 	
 	
 	private String filename;
+	
 	private String fileOriName;
+	
 	private String fileurl;
 	
 }

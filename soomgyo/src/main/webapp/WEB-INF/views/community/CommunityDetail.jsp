@@ -48,10 +48,10 @@
                 
                 <img src="img/comment.png" alt="" style="width: 14px;"> <span class="comment_img_label">댓글 : ${reply}</span>
                 <div class="content_btn">
-                <c:if test="${community.users.id==principal.user.id}">
-                    <a href="/community/${community.id}/updateForm">수정</a>
-                    <button id="btn-delete">삭제</button>
-                </c:if>
+	                <c:if test="${community.users.id==principal.user.id}">
+	                    <a href="/community/${community.id}/updateForm">수정</a>
+	                    <button id="btn-delete">삭제</button>
+	                </c:if>
                 </div>
             </div>
         </div>

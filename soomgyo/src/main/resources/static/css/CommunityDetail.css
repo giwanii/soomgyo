@@ -86,15 +86,18 @@
             
         }
         .comment_img_label{
-            font-size: 0.8rem;
-        
+            font-size: 0.8rem; 
             
         }
         .content_btn{
-
             float: right;
         }
-        
+        .content_btn>a{
+        	font-size: 0.9rem;
+        }
+        .content_btn>button{
+        	font-size: 0.9rem;
+        }
         
         .comment{
         	width: 100%;
@@ -138,10 +141,11 @@
         }
         
 
-    @media all and (max-width:760px){
+    @media all and (max-width:1050px){
         #container{
-            width: 20%;
+            width: 90%;
             margin: 0 auto;
+            margin-top: 10px;
         }
     
     }

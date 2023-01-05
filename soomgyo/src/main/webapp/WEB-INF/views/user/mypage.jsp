@@ -48,8 +48,8 @@
               <div class="cont_area">
                 <div id="tab1" class="cont" style="display:block;">
                     <div class="member_modify_box">
-                        <div class="join_modify">
-                            <form action="/InfoModify" method="post" enctype="multipart/form-data" name="join_frm">
+                       	 <div class="join_modify">
+                            	<form action="/InfoModify" method="post" enctype="multipart/form-data" name="join_frm">
                                 <!--아이디-->
                                 <div class="join_input">
                                     <label for="userid">아이디</label><br>
@@ -118,7 +118,7 @@
                     <div class="teacher_info">
                         <p>이름 : 임해원</p>
                         <p>연락처 : 01050045517</p>
-                        <p>관심 종목 : 자바 웹 프로그래밍</p>
+                        <p>과목 : 자바 웹 프로그래밍</p>
                     </div>
                   </div>
 
@@ -127,28 +127,30 @@
                     <div class="teacher_info">
                         <p>이름 : 임해원</p>
                         <p>연락처 : 01050045517</p>
-                        <p>관심 종목 : 자바 웹 프로그래밍</p>
+                        <p>과목 : 자바 웹 프로그래밍</p>
                     </div>
                   </div>
                 </div>
                 <div id="tab3" class="cont">
                     <div class="delete_info">
-                        <form action="" method="post" name="delete_form" >
+                        <form action="/member/delete/${principal.user.id}" method="post" name="delete_form" >
                             <!--비밀번호-->
                             <div class="join_input">
-                                <label for="pwd">비밀번호</label><br>
-                                <input type="password" name="pwd" size="20" placeholder="비밀번호를 입력해 주세요"><br>
+                                <label for="password">비밀번호</label><br>
+                                <input type="hidden" name="userid" id="userid" value="${prinpical.user.id}">
+					            <input type="password" name="password" id="pwd" size="20" placeholder="비밀번호를 입력해 주세요" id="password" onkeyup="pwck()" onblur="pwdcheck()"maxlength="16" >
                             </div>
                             <!--비밀번호 확인-->
                             <div class="join_input">
                                 <label for="pwd_check">비밀번호 확인</label><br>
-                                <input type="password" name="pwd_check" size="20" placeholder="비밀번호를 다시 한번 입력해 주세요"><br>
-                            </div>                           
+                                <input type="password" name="pwd_check" id="pwd_ck" size="20" placeholder="비밀번호를 다시 한번 입력해 주세요"><br>
+                            </div> 
+                            <!--탈퇴하기-->
+	                        <div class="join_input">
+	                            <input type="submit" value="탈퇴하기" >
+	                        </div>                          
                         </form>
-                        <!--탈퇴하기-->
-                        <div class="join_input">
-                            <input type="submit" value="탈퇴하기" onclick="user_delete()">
-                        </div>
+                       
                   </div>
                 </div>
 
@@ -186,9 +188,7 @@
                 </div>
               </div>
             </div>
-          </div>
-
+         </div>
     </div>
 <script type="text/javascript" src="/JS/mypage.js"></script>
-</body>
-</html>
+<%@ include file="../layout/footer.jsp" %>
