@@ -122,25 +122,96 @@
 					</div>
 					</form>
 				</div>
-				<div id="tab2" class="cont">
-					<div class="matching_teacher">
-						<div class="teacher_img"></div>
-						<div class="teacher_info">
-							<p>이름 : 임해원</p>
-							<p>연락처 : 01050045517</p>
-							<p>과목 : 자바 웹 프로그래밍</p>
-						</div>
-					</div>
+				<c:if test="${principal.user.roles eq 'STUDENT'}">
+					<div id="tab2" class="cont">
+						<h1 class="newstu">상담 신청한 교수</h1>
+						<c:forEach var="lesson" items="${lesson}">
+							<div class="matching_teacher">
+								<div class="matching_box">
+									<div class="teacher_img"></div>
+									<div class="teacher_info">
+										<p>이름 : ${lesson}</p>
+										<p>연락처 : 01050045517</p>
+										<p>과목 : 자바 웹 프로그래밍</p>
 
-					<div class="matching_teacher">
-						<div class="teacher_img"></div>
-						<div class="teacher_info">
-							<p>이름 : 임해원</p>
-							<p>연락처 : 01050045517</p>
-							<p>과목 : 자바 웹 프로그래밍</p>
+									</div>
+									<div class="btn">
+										<button class="btn_chat">채팅</button>
+										<button class="btn_o">수락</button>
+										<button class="btn_x">거절</button>
+									</div>
+								</div>
+							</div>
+						</c:forEach>
+					</div>
+				</c:if>
+				<c:if test="${principal.user.roles eq 'TEACHER'}">
+					<div id="tab2" class="cont">
+						<h1 class="newstu">새로운 학생!</h1>
+
+						<div class="matching_teacher">
+							<c:forEach var="lesson" items="${lesson}">
+								<c:if test="${lesson.lesson eq 0}">
+									<div class="matching_box">
+										<div class="teacher_img">
+											<c:choose>
+												<c:when test="${lesson.student.profilefilename != null}">
+													<img
+														src="/auth/img?filename=${lesson.student.profilefilename}">
+												</c:when>
+												<c:otherwise>
+													<img src="/auth/img?filename=default.png">
+												</c:otherwise>
+											</c:choose>
+										</div>
+										<div class="teacher_info">
+											<p>이름 : ${lesson.student.name}</p>
+											<p>연락처 : ${lesson.student.phone}</p>
+											<p>관심분야 : ${lesson.student.category}</p>
+
+										</div>
+										<div class="btn">
+											<button class="btn_chat">채팅</button>
+											<button class="btn_o">수락</button>
+											<button class="btn_x">거절</button>
+										</div>
+									</div>
+								</c:if>
+							</c:forEach>
+						</div>
+						<h1 class="newstu" style="margin-top: 50px;">교육중인 학생</h1>
+						<div class="matching_teacher">
+							<c:forEach var="lesson" items="${lesson}">
+								<c:if test="${lesson.lesson eq 1}">
+									<div class="matching_box">
+										<div class="teacher_img">
+											<c:choose>
+												<c:when test="${lesson.student.profilefilename != null}">
+													<img
+														src="/auth/img?filename=${lesson.student.profilefilename}">
+												</c:when>
+												<c:otherwise>
+													<img src="/auth/img?filename=default.png">
+												</c:otherwise>
+											</c:choose>
+										</div>
+										<div class="teacher_info">
+											<p>이름 : ${lesson.student.name}</p>
+											<p>연락처 : ${lesson.student.phone}</p>
+											<p>관심분야 : ${lesson.student.category}</p>
+
+										</div>
+										<div class="btn">
+											<button class="btn_chat">채팅</button>
+											<button class="btn_o">교육종료</button>
+
+										</div>
+									</div>
+								</c:if>
+							</c:forEach>
 						</div>
 					</div>
-				</div>
+				</c:if>
 				<div id="tab3" class="cont">
 					<div class="delete_info">
 						<form action="/member/delete/${principal.user.id}" method="post"
@@ -174,7 +245,8 @@
 								enctype="multipart/form-data">
 								<!--제목-->
 								<div class="T_upload_input">
-									<label for="title">제목</label> <input type="text" name="title" value="${info.title}">
+									<label for="title">제목</label> <input type="text" name="title"
+										value="${info.title}">
 								</div>
 								<!--본인 소개-->
 								<div class="T_upload_input">
@@ -204,10 +276,10 @@
 				</c:if>
 				<c:if test="${principal.user.roles eq 'STUDENT'}">
 					<div id="tab4" class="cont">
-						<div style="width: 50%; margin:0 auto;">
+						<div style="width: 50%; margin: 0 auto;">
 							<c:forEach var="commu" items="${community}">
 								<ul class="comm_board_ul"
-									style=" padding-top: 50px; padding-bottom: 10px; border-bottom: 1px solid #ccc; width: 100%">
+									style="padding-top: 50px; padding-bottom: 10px; border-bottom: 1px solid #ccc; width: 100%">
 									<a href="/auth/community/${commu.id}">
 										<li class="comm_board_box">
 											<div class="comm_board_text">

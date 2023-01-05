@@ -15,7 +15,8 @@ import com.cos.soomgyo.model.Users;
 public interface FindTeacherRepository extends JpaRepository<FindTeacher, Integer> {
 
 	Page<FindTeacher> findAll(Pageable pageable);
-
+	boolean existsByUsers(Users user);
 	Optional<FindTeacher> findByUsers(Users user);
+	
 
 }
