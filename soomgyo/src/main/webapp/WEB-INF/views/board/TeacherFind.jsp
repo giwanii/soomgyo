@@ -184,9 +184,9 @@
 	          </div>
 	        </div>
 	        </a>
-        </c:forEach>
+        </c:forEach>        
+      </div>
         
-      </div>  
     </div>
   </div>
 <%@ include file="../layout/footer.jsp" %>

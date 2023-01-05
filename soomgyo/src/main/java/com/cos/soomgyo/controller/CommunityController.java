@@ -41,7 +41,7 @@ import com.cos.soomgyo.service.YoutubeService;
 
 
 
-@Controller
+ 
 public class CommunityController {
 	@Autowired
 	private CommunityService communityService;
@@ -161,5 +161,6 @@ public class CommunityController {
 	public String boardsaveForm() {
 		return"community/CommunitySaveForm";
 	}
-
+	
+	
 }

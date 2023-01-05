@@ -1,0 +1,46 @@
+#myclassContainer{
+	width: 80%;
+	height: 800px;
+	margin: 0 auto;
+}
+/* 내 강의실 글씨 박스*/
+.video_font{
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+.video_font>h2{
+    font-family: 'Jua', sans-serif;
+    font-size: 40px;
+    color: black;
+    text-align: center;
+}
+/*동영상 들어가는 큰 박스*/
+.video_list{
+	width: 100%;
+	height: 300px;
+}
+.first_video_box{
+	width: 50%;
+	height: 100%;
+	border: 1px solid red;
+}
+.first_video_box>a{
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+}
+.video_thumbnail{
+	width: 90%;
+	height: 90%;
+	border: 1px solid black;
+}
+.video_thumbnail>img{
+	width: 100%;
+	height: 100%;
+}
+.video_title{
+	width: 90%;
+	height: 10%;
+	border: 1px solid black;
+	overflow: hidden;
+}

@@ -8,7 +8,7 @@
 	prefix="sec"%>
 <sec:authentication property="principal" var="principal" />
 
-<link rel="stylesheet" href="/css/Teacherfind.css">
+<link rel="stylesheet" href="/css/VideoCategory.css">
 <link rel="stylesheet" href="/css/swiper.css">
 <style>
 .youtube {

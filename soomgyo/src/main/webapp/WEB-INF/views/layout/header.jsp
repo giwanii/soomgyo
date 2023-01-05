@@ -84,7 +84,7 @@
 					<a href="/videoCategory">관련 동영상</a>
 				</div>
 				<div class="middle_box middle_box2">
-					<a href="#">내 강의실</a>
+					<a href="/MyClassroom">내 강의실</a>
 				</div>
 				<div class="middle_box middle_box3">
 					<a href="/auth/FindTeacher">강사찾기</a>
