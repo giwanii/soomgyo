@@ -12,35 +12,34 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 </head>
 <body>
-
         <div class="container">
-            <div class="col-6">
-                <h1>[[${room.name}]]</h1>
-            </div>
+
             <div>
                 <div id="msgArea" class="col"></div>
                 <div class="col-6">
                     <div class="input-group mb-3">
                         <input type="text" id="msg" class="form-control">
                         <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" type="button" id="button-send">ì ì¡</button>
+                            <button class="btn btn-outline-secondary" type="button" id="button-send">입력</button>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-6"></div>
         </div>
+
+
         <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
         
+
 </body>
-</html>
-        <script th:inline="javascript">
+
+   <script th:inline="javascript">
             $(document).ready(function(){
 
-                var roomName = [[${room.name}]];
-                var roomId = [[${room.roomId}]];
-                var username = [[${#authentication.principal.username}]];
+                var roomId = [[${room.Id}]];
+                var username = "asdf";
 
                 console.log(roomName + ", " + roomId + ", " + username);
 
@@ -55,7 +54,7 @@
                    //4. subscribe(path, callback)ì¼ë¡ ë©ì¸ì§ë¥¼ ë°ì ì ìì
                    stomp.subscribe("/sub/chat/room/" + roomId, function (chat) {
                        var content = JSON.parse(chat.body);
-
+					   var message = content.message;
                        var writer = content.writer;
                        var str = '';
 
@@ -74,7 +73,7 @@
                            $("#msgArea").append(str);
                        }
 
-                       $("#msgArea").append(str);
+                      
                    });
 
                    //3. send(path, header, message)ë¡ ë©ì¸ì§ë¥¼ ë³´ë¼ ì ìì
@@ -90,3 +89,4 @@
                 });
             });
         </script>
+        </html>

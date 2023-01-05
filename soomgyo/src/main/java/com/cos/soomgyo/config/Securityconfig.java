@@ -36,8 +36,8 @@ public class Securityconfig extends WebSecurityConfigurerAdapter{
 		auth.userDetailsService(principalDetailService).passwordEncoder(encodePWD());
 		//패스워드 인코더가 encodePWD라는 것을 null자리의 오브젝트에게 알려줘야한다.
 	}
+	@Override
 	@Bean
-    @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
