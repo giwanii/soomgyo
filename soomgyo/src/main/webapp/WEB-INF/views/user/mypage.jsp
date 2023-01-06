@@ -171,10 +171,17 @@
 
 										</div>
 										<div class="btn">
-												<button  class="btn_chat" onclick="location.href='/chat/${lesson.id}'">채팅</button>
+												<button  class="btn_chat" onclick="window.open('/chat/${lesson.id}','채팅','width=550,height=550,location=no,status=no,scrollbars=yes');">채팅</button>
 												<button class="btn_o">수락</button>
 												<button class="btn_x">거절</button>
-											
+											<script>
+												function chat(){
+													window.open('/chat/', '네이버팝업', 
+           											'width=500, height=700, scrollbars=yes, resizable=no')
+													   
+												}
+												
+											</script>
 										</div>
 									</div>
 								</c:if>

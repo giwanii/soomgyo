@@ -29,13 +29,13 @@
 					</div>
 						
 				</a>
-			</div>
-			<div class="heartimg">
+				<div class="heartimg">
 					<c:if test="${!(myvideo.likes == null)}">
 						<input type="hidden" id="f${status.index}" value="true">
 						<img alt="heart" src="img/1.png" class="javascript"
 							onclick="like(this.id)" id="${status.index}">
 					</c:if>
+			</div>
 			</div>
 			</c:forEach>
       </div>

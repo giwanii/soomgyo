@@ -35,6 +35,7 @@ public class ChatService {
     public Room findRoomById(int id) {
         return roomRepository.findById(id).orElseThrow();
     }
+ 
 
     /**
      * 채팅방 만들기
@@ -50,7 +51,7 @@ public class ChatService {
     }
 
     /////////////////
-
+    
     /**
      * 채팅 생성
      * @param roomId 채팅방 id
@@ -68,7 +69,7 @@ public class ChatService {
      */
     public List<Chat> findAllChatByRoomId(int roomId) {
     	  Room room = roomRepository.findById(roomId).orElseThrow();  //방 찾기 -> 없는 방일 경우 여기서 예외처리
-        return chatRepository.findAllByRoomId(room.getId());
+        return chatRepository.findAllByRoomIdOrderBySendDate(room.getId());
     }
 
 

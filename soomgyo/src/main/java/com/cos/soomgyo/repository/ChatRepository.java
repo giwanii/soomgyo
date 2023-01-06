@@ -9,5 +9,5 @@ import com.cos.soomgyo.model.Room;
 
 public interface ChatRepository extends CrudRepository<Chat, Integer> {
 
-    List<Chat> findAllByRoomId(int roomId);
+    List<Chat> findAllByRoomIdOrderBySendDate(int roomId);
 }

@@ -2,6 +2,7 @@ package com.cos.soomgyo.controller;
 
 import java.util.List;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.cos.soomgyo.config.auth.PrincipalDetail;
 import com.cos.soomgyo.model.Chat;
 import com.cos.soomgyo.model.Room;
 import com.cos.soomgyo.service.ChatService;
@@ -26,14 +28,28 @@ public class RoomController {
      * @param roomId 채팅방 id
      */
     @GetMapping("/chat/{roomId}")
-    public String joinRoom(@PathVariable(required = false)  int roomId, Model model) {
+    public String joinRoom(@PathVariable(required = false)  int roomId, Model model,@AuthenticationPrincipal PrincipalDetail principal) {
     	//room findbyid ==if(getstudent id ==principal.id)
         List<Chat> chatList = chatService.findAllChatByRoomId(roomId);
-        System.out.println(chatList);
-
-        model.addAttribute("roomId", roomId);
-        model.addAttribute("chatList", chatList);
-        return "thymeleaf/room";
+        System.out.println("ㅎㅁㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㄻㄴㅇㄹㄹㅎ");
+        Room userid=chatService.findRoomById(roomId);
+        if(userid.getStudent().getId()==principal.getUser().getId()) {
+        	 model.addAttribute("roomId", roomId);
+             model.addAttribute("chatList", chatList);
+             model.addAttribute("sender",principal.getUser().getName());
+             model.addAttribute("receiver",userid.getTeacher().getProfilefilename());
+             return "thymeleaf/room";
+        }
+        else if(userid.getTeacher().getId()==principal.getUser().getId()) {
+        	 model.addAttribute("roomId", roomId);
+             model.addAttribute("chatList", chatList);
+             model.addAttribute("sender",principal.getUser().getName());
+             model.addAttribute("receiver",userid.getStudent().getName());
+             return "thymeleaf/room";
+        }
+        return "index";
+        
+       
     }
 
     /**

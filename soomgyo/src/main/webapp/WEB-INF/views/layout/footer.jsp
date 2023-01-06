@@ -14,6 +14,6 @@
       <a href="#"><P>개인정보처리방침</P></a>
       <p>&copy;SoomGyo, All Rights Reserved.</p>
     </div>
-  </div>
+</div>
 </body>
 </html>
