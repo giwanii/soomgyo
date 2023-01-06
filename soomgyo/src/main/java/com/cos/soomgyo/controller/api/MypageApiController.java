@@ -17,17 +17,21 @@ import com.cos.soomgyo.service.MypageService;
 public class MypageApiController {
 	@Autowired
 	MypageService mypageService;
-	
+
 	@PostMapping("/counsel/{student}/{teacher}")
-	public ResponseDto<Integer> counsel(@PathVariable int student,@PathVariable int teacher) {
-	
-			mypageService.상담신청(student,teacher);
-		return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
+	public ResponseDto<Integer> counsel(@PathVariable int student, @PathVariable int teacher) {
+
+		mypageService.상담신청(student, teacher);
+		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}
+
 	@PostMapping("/counselck/{student}/{teacher}")
-	public boolean counselck(@PathVariable int student,@PathVariable int teacher) {
-		
+	public boolean counselck(@PathVariable int student, @PathVariable int teacher) {
+
 		System.out.println("중복실행");
-		return mypageService.상담중복(student,teacher);
+		return mypageService.상담중복(student, teacher);
 	}
+	
+
+	
 }

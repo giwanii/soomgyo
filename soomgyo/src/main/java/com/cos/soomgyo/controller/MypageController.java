@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.hibernate.internal.build.AllowSysOut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
@@ -29,6 +28,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
@@ -57,15 +57,16 @@ public class MypageController {
 	
 	
 	@GetMapping("/mypage")
-	public String index(Model model,@AuthenticationPrincipal PrincipalDetail principal) {
-		
+	public String mypage(Model model,@AuthenticationPrincipal PrincipalDetail principal) {
 		
 		if(principal.getUser().getRoles().equals(RoleType.STUDENT)) {
 			model.addAttribute("community",communityService.내글목록(principal.getUser()));
+			model.addAttribute("lesson",mypageService.레슨목록학생(principal.getUser()));
+			model.addAttribute("info",mypageService.강사정보(principal.getUser()));
 		}
 		else {
-			
 			model.addAttribute("info",mypageService.강사정보(principal.getUser()));
+		
 			model.addAttribute("lesson",mypageService.레슨목록(principal.getUser()));
 		}
 		return "user/mypage";
@@ -87,7 +88,7 @@ public class MypageController {
 			model.addAttribute("msg2", "등록된 비밀번호와 일치하지 않습니다.");
 			return "user/mypage";
 		}
-		return "user/mypage";	//메인 페이지로 이동
+		return "index";	//메인 페이지로 이동
 	}
 	
 	
@@ -135,6 +136,23 @@ public class MypageController {
 			}
 			return new ResponseEntity<Resource>(resource, header, HttpStatus.OK);
 
+		}
+		
+		@PostMapping("/member/lessonOk/{teacher}/{student}")
+		public String 레슨수락(@PathVariable int student, @PathVariable int teacher) {
+
+			mypageService.레슨승인(student, teacher);
+			
+			return "redirect:/mypage";
+			 
+		}
+
+		@PostMapping("/member/lessonNo/{teacher}/{student}")
+		public String 레슨거절(@PathVariable int student, @PathVariable int teacher) {
+			mypageService.레슨거절(student, teacher);
+			return "redirect:/mypage";
+			
+			
 		}
 			
 }

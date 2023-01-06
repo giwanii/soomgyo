@@ -28,4 +28,5 @@ public class PrincipalDetailService implements UserDetailsService {
 		//시큐리티 세션에 유저 정보가 저장이 된다.
 		//그때 타입이 userdetails 타입이다.
 	}
+
 }

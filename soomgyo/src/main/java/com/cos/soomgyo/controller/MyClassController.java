@@ -37,5 +37,5 @@ public class MyClassController {
 		model.addAttribute("myvideo", youtubeService.메모보기(principal.getUser()));
 		return "board/VideoDetail";
 	}
-	
+
 }

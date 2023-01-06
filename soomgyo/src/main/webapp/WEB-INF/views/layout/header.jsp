@@ -30,6 +30,12 @@
 								<li><a href="/auth/join">회원가입</a></li>
 							</ul>
 						</c:when>
+						<c:when test="${principal.user.roles == 'ADMIN'}">
+						<ul>
+							<li><a href="/logout">로그아웃</a></li>
+							<li><a href="/admin">관리페이지</a></li>
+						</ul>
+						</c:when>
 						<c:otherwise>
 							<ul>
 								<li><a href="/logout">로그아웃</a></li>

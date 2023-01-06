@@ -27,8 +27,11 @@ public class UserService {
 		if(role.equals("student")) {
 			user.setRoles(RoleType.STUDENT);
 		}
-		else {
+		else if (role.equals("teacher")){
 			user.setRoles(RoleType.TEACHER);
+		}
+		else {
+			user.setRoles(RoleType.ADMIN);
 		}
 		userRepository.save(user); //하나의 트랜젝션
 	}

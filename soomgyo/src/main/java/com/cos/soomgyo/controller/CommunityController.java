@@ -38,10 +38,7 @@ import com.cos.soomgyo.service.ReplyService;
 import com.cos.soomgyo.service.YoutubeService;
 
 
-
-
-
- 
+@Controller
 public class CommunityController {
 	@Autowired
 	private CommunityService communityService;
@@ -84,6 +81,27 @@ public class CommunityController {
 	     community.setFileurl(fileUrl);
 	     communityService.글쓰기(community,principal.getUser());
 	     return "redirect:/auth/community";
+	}
+	@RequestMapping(value="/notice", method= {RequestMethod.POST})
+	public String noticesave(Community community, MultipartFile file, @AuthenticationPrincipal PrincipalDetail principal) throws Exception{
+		
+		System.out.println("api/board"+community.getTitle()+", " + file); 
+		String sourFileName = file.getOriginalFilename();
+		String sourFileNameExtension = FilenameUtils.getExtension(sourFileName).toLowerCase();
+		File destinationFile;
+		String destinationFileName;
+		String fileUrl = "C:\\images\\";
+		do { 
+			destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + sourFileNameExtension; 
+			destinationFile = new File(fileUrl + destinationFileName); 
+		} while (destinationFile.exists());
+		destinationFile.getParentFile().mkdirs();
+		file.transferTo(destinationFile);
+		community.setFilename(destinationFileName);
+		community.setFileOriName(sourFileName);
+		community.setFileurl(fileUrl);
+		communityService.공지사항(community,principal.getUser());
+		return "redirect:/admin";
 	}
 	//게시글 이미지 수정
 	@RequestMapping(value="/communityupdate/{id}", method= {RequestMethod.POST})
@@ -136,7 +154,7 @@ public class CommunityController {
 		return "community/community";
 	}
 	
-	@GetMapping("/video/{youtube}")
+	@GetMapping("/youtube/{youtube}")
 	public String detailvideo(@PathVariable Youtube youtube, Model model,@AuthenticationPrincipal PrincipalDetail principal) {
 		model.addAttribute("youtube", youtubeService.동영상상세보기(youtube));
 		model.addAttribute("myvideo", youtubeService.메모보기(principal.getUser()));

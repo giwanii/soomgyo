@@ -25,6 +25,15 @@ public class CommunityService {
 	public void 글쓰기(Community community, Users user) {
 		community.setCount(0);
 		community.setUsers(user);
+		
+		communityRepository.save(community);
+	}
+	@Transactional
+	public void 공지사항(Community community, Users user) {
+		community.setCount(0);
+		community.setUsers(user);
+		community.setNotice(1);
+		community.setCategory("공지사항");
 		communityRepository.save(community);
 	}
 

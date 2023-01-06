@@ -23,11 +23,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.cos.soomgyo.config.auth.PrincipalDetail;
+import com.cos.soomgyo.dto.ResponseDto;
 import com.cos.soomgyo.model.FindTeacher;
 import com.cos.soomgyo.service.FindTeacherService;
 
@@ -63,8 +65,9 @@ public class FindTeacherController {
 		findTeacher.setFileOriName(sourFileName);
 		findTeacher.setFileurl(fileUrl);
 		findTeacherService.강사정보등록(principal.getUser(), findTeacher);
-
+		
 		return "redirect:/auth/FindTeacher";
+		
 	}
 
 	// 이미지 경로설정
@@ -91,6 +94,17 @@ public class FindTeacherController {
 	public String findById(@PathVariable int id, Model model) {
 		model.addAttribute("teacher", findTeacherService.글상세보기(id));
 		return "board/TeacherFindDetail";
+	}
+	
+	@PostMapping("/premiumOk/{pre}")
+	public ResponseDto<Integer> 프리미엄수락(@PathVariable int pre) {
+		findTeacherService.프리미엄수락(pre);
+		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
+	}
+	@PostMapping("/premiumNo/{pre}")
+	public ResponseDto<Integer> 프리미엄거절(@PathVariable int pre) {
+		findTeacherService.프리미엄거절(pre);
+		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}
 	
 }

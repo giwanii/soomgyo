@@ -622,7 +622,11 @@ function mailck() {
 
 	function save(){
 		//alert('user의 save함수 호출됨');
-		
+		var admin=$("#admin").val();
+		let role=$("#role").val();
+		if(admin ==="admin"){
+			role="ADMIN";
+		}
 		
 		let data={
 			userid: $("#reid").val(),
@@ -633,7 +637,7 @@ function mailck() {
 			category: sub
 			
 		};
-		let role=$("#role").val();
+		
 		
 		$.ajax({ 
 			type:"POST",

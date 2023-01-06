@@ -34,10 +34,10 @@
 		<div class="tab_menu">
 			<ul class="list">
 				<li class="is_on"><a href="#tab1" class="btn">회원정보수정</a></li>
-				<li><a href="#tab2" class="btn">매칭강사</a></li>
+				<li><a href="#tab2" class="btn">매칭정보</a></li>
 				<li><a href="#tab3" class="btn">계정탈퇴</a></li>
 				<c:if test="${principal.user.roles eq 'TEACHER'}">
-					<li><a href="#tab4" class="btn">강사정보등록</a></li>
+					<li><a href="#tab4" class="btn">교수정보등록</a></li>
 				</c:if>
 				<c:if test="${principal.user.roles eq 'STUDENT'}">
 					<li><a href="#tab4" class="btn">내글목록</a></li>
@@ -128,18 +128,28 @@
 						<c:forEach var="lesson" items="${lesson}">
 							<div class="matching_teacher">
 								<div class="matching_box">
-									<div class="teacher_img"></div>
+									<div class="teacher_img">
+										<c:choose>
+												<c:when test="${lesson.student.profilefilename != null}">
+													<img
+														src="/auth/img?filename=${lesson.teacher.profilefilename}">
+												</c:when>
+												<c:otherwise>
+													<img src="/auth/img?filename=default.png">
+												</c:otherwise>
+											</c:choose>
+									</div>
 									<div class="teacher_info">
-										<p>이름 : ${lesson}</p>
-										<p>연락처 : 01050045517</p>
-										<p>과목 : 자바 웹 프로그래밍</p>
-
+										<p>이름 : ${lesson.teacher.name}</p>
+										<p>연락처 : ${lesson.teacher.phone}</p>
+										<p>전문분야 : ${lesson.teacher.category}</p>
 									</div>
 									<div class="btn">
-										<button class="btn_chat">채팅</button>
-										<button class="btn_o">수락</button>
-										<button class="btn_x">거절</button>
-									</div>
+										<button  class="btn_chat" onclick="window.open('/chat/${lesson.id}','채팅','width=550,height=540,location=no,status=no,scrollbars=yes');">채팅</button>
+										<form action="/member/lessonNo/${lesson.teacher.id}/${principal.user.id}" method="post">
+											<button class="btn_x" >취소</button>
+										</form>
+								</div>
 								</div>
 							</div>
 						</c:forEach>
@@ -168,26 +178,21 @@
 											<p>이름 : ${lesson.student.name}</p>
 											<p>연락처 : ${lesson.student.phone}</p>
 											<p>관심분야 : ${lesson.student.category}</p>
-
 										</div>
 										<div class="btn">
-												<button  class="btn_chat" onclick="window.open('/chat/${lesson.id}','채팅','width=550,height=550,location=no,status=no,scrollbars=yes');">채팅</button>
-												<button class="btn_o">수락</button>
-												<button class="btn_x">거절</button>
-											<script>
-												function chat(){
-													window.open('/chat/', '네이버팝업', 
-           											'width=500, height=700, scrollbars=yes, resizable=no')
-													   
-												}
-												
-											</script>
+												<button  class="btn_chat" onclick="window.open('/chat/${lesson.id}','채팅','width=550,height=540,location=no,status=no,scrollbars=yes');">채팅</button>
+												<form action="/member/lessonOk/${principal.user.id}/${lesson.student.id}" method="post">
+													<button class="btn_o">수락</button>
+												</form>
+												<form action="/member/lessonNo/${principal.user.id}/${lesson.student.id}" method="post">
+													<button class="btn_x" >거절</button>
+												</form>
 										</div>
 									</div>
 								</c:if>
 							</c:forEach>
 						</div>
-						<h1 class="newstu" style="margin-top: 50px;">교육중인 학생</h1>
+						<h1 class="newstu" style="margin-top: 50px;">교육중인 학생!</h1>
 						<div class="matching_teacher">
 							<c:forEach var="lesson" items="${lesson}">
 								<c:if test="${lesson.lesson eq 1}">
@@ -210,8 +215,10 @@
 
 										</div>
 										<div class="btn">
-											<button class="btn_chat">채팅</button>
-											<button class="btn_o">교육종료</button>
+											<button  class="btn_chat" onclick="window.open('/chat/${lesson.id}','채팅','width=550,height=520,location=no,status=no,scrollbars=yes');">채팅</button>
+											<form action="/member/lessonNo/${principal.user.id}/${lesson.student.id}" method="post">
+												<button class="btn_o">교육종료</button>
+											</form>
 
 										</div>
 									</div>
@@ -274,11 +281,20 @@
 									<label for="addfile">첨부 파일</label><br> <br> <input
 										type="file" id="file" name="file" multiple="multiple">
 								</div>
+								<div class="T_upload_input">
+									<label for="premium">프리미엄 등록</label>
+									<input type="checkbox" value="1" name="premium">
+									<br>
+								</div>
+								
+								
 								<!--제출하기 버튼-->
 								<div class="T_upload_btn">
 									<button>제출하기</button>
 								</div>
-							</form>
+								</form>
+								
+							
 						</div>
 					</div>
 				</c:if>

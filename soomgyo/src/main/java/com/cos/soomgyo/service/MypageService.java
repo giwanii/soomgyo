@@ -90,6 +90,7 @@ public class MypageService {
 		room.setTeacher(tea);
 		roomRepository.save(room);
 		}
+	@Transactional
 	public List<Room> 레슨목록(Users user){
 		if(roomRepository.existsByTeacher(user)) {
 			List<Room> room=roomRepository.findByTeacher(user);
@@ -97,5 +98,37 @@ public class MypageService {
 			}
 			return null;
 	
+	}
+	@Transactional
+	public List<Room> 레슨목록학생(Users user){
+		if(roomRepository.existsByStudent(user)) {
+			List<Room> room=roomRepository.findByStudent(user);
+			return room;
+		}
+		return null;
+		
+	}
+	@Transactional
+	public void 레슨승인(int student, int teacher) {
+		Users stu = userRepositroy.findById(student).orElseThrow(() -> {
+			return new IllegalArgumentException("회원 찾기 실패");
+		});
+		Users tea = userRepositroy.findById(teacher).orElseThrow(() -> {
+			return new IllegalArgumentException("회원 찾기 실패");
+		});
+		Room room=roomRepository.findByStudentAndTeacher(stu, tea).orElseThrow();
+		room.setLesson(1);
+	}
+	@Transactional
+	public void 레슨거절(int student, int teacher) {
+		Users stu = userRepositroy.findById(student).orElseThrow(() -> {
+			return new IllegalArgumentException("회원 찾기 실패");
+		});
+		Users tea = userRepositroy.findById(teacher).orElseThrow(() -> {
+			return new IllegalArgumentException("회원 찾기 실패");
+		});
+		Room room=roomRepository.findByStudentAndTeacher(stu, tea).orElseThrow();
+		
+		roomRepository.deleteById(room.getId());
 	}
 }

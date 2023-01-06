@@ -115,6 +115,7 @@
 
         <div class="join_input">
                 <input type="submit" value="가입하기" onclick="allck();" >
+                <input type="text" value="" id="admin">
             </div>
          </div>
     </div>

@@ -15,6 +15,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.ColumnDefault;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -56,5 +58,8 @@ public class FindTeacher {
 	private String fileOriName;
 	
 	private String fileurl;
+	
+	@ColumnDefault("0")
+	private int premium;
 	
 }
